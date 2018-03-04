@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="description" content="TODO"/>
+    <meta name="keywords" content="TODO"/>
+    <meta name="author" content="VSK DRS" />
+    <meta name="copyright" content="Copyright VSK DRS" />
+    <meta name="robots" content="index,follow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Preload CSS and scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../Assets/Stylesheets/normalize.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/style.css">
+    <!-- /.Preload CSS and scripts -->
+
+</head>
+<body>
+    <div class="main-box container">
+        <header class="menu container">
+            <ul>
+                <li class="menu-item"><a href="#">books</a></li>
+                <li class="menu-item"><a href="#">profile</a></li>
+                <li class="menu-item input-box">
+                    <input id="search-input" class="hidden" placeholder="quick search" />
+                    <i id="search-icon" ></i>
+                    
+                </li>
+                <li class="menu-item center-aligned"><a href="#"><img src="../Assets/Images/faiths-speak-on-referendums-17.png"/></a></li>
+                <li class="menu-item right-aligned"><a href="#">register</a></li>
+                <li class="menu-item"><a href="#">login</li>
+            </ul>
+        </header>
+    </div>
+    <!-- Scripts go here -->
+    <script>
+        function func()
+        {
+            document.getElementById("search-input").classList.toggle("hidden");
+        }
+        document.getElementById("search-icon").onclick = func;
+    </script>
+    <!-- /.Scripts go here -->
+</body>
+</html>
