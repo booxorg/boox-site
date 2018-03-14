@@ -48,40 +48,59 @@
     <div class="statistics-container">
         <div class="stat-item">
             <div class="stat-item-data">
-                <span>0</span>
-                Users
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
             </div>  
+            <span class="stat-name">Users</span>
         </div>
         <div class="stat-item">
             <div class="stat-item-data">
-                <span>0</span>
-                Connections
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
             </div>  
-        </div>        
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <span>0</span>
-                Books
-            </div>  
-        </div>        
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <span>0</span>
-                Locations
-            </div>  
-        </div>       
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <span>0</span>
-                Template
-            </div>  
+            <span class="stat-name">Users</span>
         </div>
         <div class="stat-item">
             <div class="stat-item-data">
-                <span>0</span>
-                Template
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
             </div>  
+            <span class="stat-name">Users</span>
         </div>
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
+            </div>  
+            <span class="stat-name">Users</span>
+        </div>
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
+            </div>  
+            <span class="stat-name">Users</span>
+        </div>
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <div class="loader"></div>
+                <div class="number">
+                    <span class="number-text">0</span>
+                </div>
+            </div>  
+            <span class="stat-name">Users</span>
+        </div>
+        
     </div>
     <!-- Scripts go here -->
     <script>
@@ -93,17 +112,16 @@
             var current = 0;
             var number = Math.floor(Math.random() * 500);
             var intervalID = setInterval(function() {
-                var span = element.children[0];
-                span.innerHTML = current.toString();
+                element.innerHTML = current.toString();
                 current += 10;
                 if (current >= number) {
-                    span.innerHTML = Math.min(current, number);
+                    element.innerHTML = Math.min(current, number);
                     clearInterval(intervalID);
                 }
             }, 50);
         }
         function assign_random() {
-            var arr = document.getElementsByClassName("stat-item-data");
+            var arr = document.getElementsByClassName("number-text");
             for (var i = 0; i < arr.length; i++) {
                 create_interval(arr[i]);
             }

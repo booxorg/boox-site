@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
   position: relative;
 }
@@ -176,24 +180,63 @@ a {
     margin-top: 20px;
     display: grid;
     grid-template-columns: 33% 33% 33%; 
-    grid-template-rows: 200px 200px;
+    grid-row-gap: 50px;
     justify-content: center;
 }
 .statistics-container .stat-item {
-    text-align: center;
+    position: relative;
+    justify-content: center;
     align-self: center;
+    text-align: center;
     font-family: "Raleway", sans-serif;
     font-weight: 700;
     font-size: 1.625em;
 }
-
 .statistics-container .stat-item span {
     display: block;
+}
+.statistics-container .stat-item .stat-name {
+    margin-top: 30px;
+}
+
+.statistics-container .stat-item .stat-item-data {
+    position: relative;
+    margin: 0 auto;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.statistics-container .stat-item .loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 8px solid #1976D2; 
+}
+
+.statistics-container .stat-item .number {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+
     font-size: 2em;
-    margin-bottom: 20px;
     font-family: "Raleway", sans-serif;
     font-weight: 400;
-    transform: 1s ease-in-out;
+    color: #212121;
+    border: 8px solid transparent; 
+}
+
+.statistics-container .stat-item .number .number-text {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media (max-width: 768px) { 
@@ -201,17 +244,20 @@ a {
         margin-top: 30px;
         align-self: center;
         grid-template-columns: 40% 40%;
-        grid-template-rows: 150px 150px 150px;
+        grid-template-rows: 200px 200px 200px;
+        grid-row-gap: 60px;
     }
-    .statistics-container .stat-item {
-        font-size: 1em;
+    .statistics-container .stat-item .number-text {
+        font-size: 40px;
     }
+
 }
 
-@media (max-width: 426px) {
+@media (max-width: 570px) {
     .statistics-container {
         grid-template-columns: 100%;
-        grid-template-rows: 150px 150px 150px 150px 150px 150px;
+        grid-row-gap: 60px;
+        grid-template-rows: 200px 200px 200px 200px 200px 200px;
     }
 }
 
