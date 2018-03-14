@@ -14,7 +14,8 @@
 
 body, html {
   width: 100%;
-  height: 100%:
+  height: 100%;
+  font-size: 16px;
 }
 
 a {
@@ -159,3 +160,60 @@ a {
 }
 
 /* ======================== ./MENU ============================== */
+
+
+/* ======================== STATS =============================== */
+.main-page-header {
+    margin-top: 50px;
+    padding-bottom: 10px;
+    font-size: 2.5em;
+    font-weight: 400;
+    font-family: "Raleway", sans-serif;
+    text-align: center;
+}
+
+.statistics-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%; 
+    grid-template-rows: 200px 200px;
+    justify-content: center;
+}
+.statistics-container .stat-item {
+    text-align: center;
+    align-self: center;
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    font-size: 1.625em;
+}
+
+.statistics-container .stat-item span {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+    transform: 1s ease-in-out;
+}
+
+@media (max-width: 768px) { 
+    .statistics-container {
+        margin-top: 30px;
+        align-self: center;
+        grid-template-columns: 40% 40%;
+        grid-template-rows: 150px 150px 150px;
+    }
+    .statistics-container .stat-item {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 426px) {
+    .statistics-container {
+        grid-template-columns: 100%;
+        grid-template-rows: 150px 150px 150px 150px 150px 150px;
+    }
+}
+
+
+/* ======================== ./STATS ============================= */

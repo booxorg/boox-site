@@ -44,13 +44,72 @@
             </div>
         </header>
     </div>
+    <h1 class="main-page-header">This is us</h1>
+    <div class="statistics-container">
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Users
+            </div>  
+        </div>
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Connections
+            </div>  
+        </div>        
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Books
+            </div>  
+        </div>        
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Locations
+            </div>  
+        </div>       
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Template
+            </div>  
+        </div>
+        <div class="stat-item">
+            <div class="stat-item-data">
+                <span>0</span>
+                Template
+            </div>  
+        </div>
+    </div>
     <!-- Scripts go here -->
     <script>
-        function func()
-        {
+        function func() {
             document.getElementById("search-input").classList.toggle("hidden");
         }
         document.getElementById("search-icon").onclick = func;
+        function create_interval(element) {
+            var current = 0;
+            var number = Math.floor(Math.random() * 500);
+            var intervalID = setInterval(function() {
+                var span = element.children[0];
+                span.innerHTML = current.toString();
+                current += 10;
+                if (current >= number) {
+                    span.innerHTML = Math.min(current, number);
+                    clearInterval(intervalID);
+                }
+            }, 50);
+        }
+        function assign_random() {
+            var arr = document.getElementsByClassName("stat-item-data");
+            for (var i = 0; i < arr.length; i++) {
+                create_interval(arr[i]);
+            }
+
+        }
+        assign_random();
     </script>
     <!-- /.Scripts go here -->
 </body>
