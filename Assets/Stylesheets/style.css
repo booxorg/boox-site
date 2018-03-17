@@ -133,3 +133,96 @@
 
 /* ======================== ./STATS ============================= */
 
+/* ======================== SEARCH ============================== */
+.personalized-search {
+    width: 80%;
+    margin: 0 auto;
+}
+.personalized-search .search-bar {
+    margin-top: 50px;
+}
+.personalized-search .search-bar-wrapper {
+    display: flex;
+    -webkit-box-shadow: 0px 11px 84px -12px rgba(0,0,0,0.61);
+    -moz-box-shadow: 0px 11px 84px -12px rgba(0,0,0,0.61);
+    box-shadow: 0px 11px 84px -12px rgba(0,0,0,0.61);
+}
+
+.personalized-search .search-bar-wrapper #search-bar-input {
+    width: 100%;
+    height: 34px;
+    padding: 0px 20px 0px 20px;
+    border: 1px solid #CDCDCD;
+    border-right: none;
+}
+
+.personalized-search .search-bar-wrapper #search-bar-input:hover {
+    border: 1px solid #1976D2;
+}
+
+.personalized-search .search-bar-wrapper #search-bar-submit,
+.personalized-search .search-bar-wrapper #search-bar-more
+ {
+    width: 60px;
+    display: block;
+    background-color: #1976D2;
+    color: #FFFFFF;
+    border: unset;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0px 7px 0px 7px;
+    border: none;
+}
+.personalized-search .search-bar-wrapper #search-bar-submit:hover,
+.personalized-search .search-bar-wrapper #search-bar-more:hover {
+    border: 2px solid #1976D2;
+    background-color: transparent;
+    color: #1976D2;    
+}
+
+.personalized-search .search-bar-wrapper #search-bar-submit:hover {
+    border-right: unset;
+}
+
+.personalized-search .search-bar-wrapper #search-bar-more:hover {
+    border-left: none;
+}
+
+.personalized-search .advanced-search-wrapper {
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+.personalized-search .advanced-search-wrapper {
+    margin-top: 30px;
+}
+
+.personalized-search .advanced-search-wrapper .input-box {
+    position: relative;
+    display: flex;
+    height: 34px;
+}
+
+.personalized-search .advanced-search-wrapper .box-description {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    padding: 0px 7px 0px 7px;
+    text-align: center;
+    background-color: #1976D2;
+    color: #FFFFFF;    
+}
+
+.personalized-search .advanced-search-wrapper .box-description-name {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);   
+} 
+
+.personalized-search .advanced-search-wrapper .input-box input {
+    width: 100%;
+    padding: 5px 10px 5px 110px;
+    border: 1px solid #CDCDCD;
+}
+/* ======================== ./SEARCH ============================ */
