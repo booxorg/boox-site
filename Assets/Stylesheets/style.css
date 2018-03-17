@@ -3,8 +3,16 @@
 
 
 /* ======================== STATS =============================== */
+.main-page {
+    background-image: url("../Images/reading-925589_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;   
+    padding-bottom: 40px; 
+}
+
 .main-page-header {
-    margin-top: 50px;
+    margin-top: 0;
+    padding-top: 50px;
     padding-bottom: 10px;
     font-size: 2.5em;
     font-weight: 700;
@@ -81,6 +89,9 @@
 }
 
 @media (max-width: 768px) { 
+    .main-page {
+        background-image: unset;
+    }
     .statistics-container {
         margin-top: 30px;
         align-self: center;
