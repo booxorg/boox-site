@@ -13,6 +13,7 @@
     <!-- Preload CSS and scripts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="../Assets/Stylesheets/normalize.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/common.css">
     <link rel="stylesheet" href="../Assets/Stylesheets/style.css">
     <!-- /.Preload CSS and scripts -->
 
@@ -20,90 +21,101 @@
 <body>
     <div class="main-box container">
         <header class="menu container">
-            <div class="menu-item menu-button">
-                <a href="#">books</a>
+            <div class="menu-item menu-button block">
+                <a class="centered" href="#">books</a>
             </div>
-            <div class="menu-item menu-button">
-                <a href="#">profile</a>
+            <div class="menu-item menu-button block">
+                <a class="centered" href="#">profile</a>
             </div>
-            <div class="menu-item input-box">
-                <input id="search-input" class="hidden" placeholder="quick search" />
-                <i id="search-icon" ></i>
-                
+            <div class="menu-item input-box block">
+                <div class="centered">
+                    <input id="search-input" placeholder="quick search" />
+                    <i id="search-icon" ></i>
+                </div>
             </div>
-            <div class="menu-item logo-image">
-                <a href="#">
+            <div class="menu-item menu-logo block">
+                <a class="centered" href="#">
                     <!--
                     <img src="../Assets/Images/faiths-speak-on-referendums-17.png"/>
                 -->
                     B00X
                 </a>
             </div>
-            <div class="menu-item right-aligned menu-button">
-                <a href="#">register</a>
+            <div class="menu-item right-aligned menu-button block">
+                <a class="centered" href="#">register</a>
             </div>
-            <div class="menu-item menu-button">
-                <a href="#">login</a>
+            <div class="menu-item menu-button block">
+                <a class="centered" href="#">login</a>
             </div>
         </header>
-    </div>
-    <h1 class="main-page-header">This is us</h1>
-    <div class="statistics-container">
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Users</span>
+    
+        <h1 class="main-page-header">This is us</h1>
+        <div class="statistics-container">
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Users</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Connections</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Locations</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Books</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Nearby</span>
+            </div>
+            <div class="stat-item">
+                <div class="stat-item-data">
+                    <div class="loader"></div>
+                    <div class="number">
+                        <span class="number-text">0</span>
+                    </div>
+                </div>  
+                <span class="stat-name">Online</span>
+            </div>
         </div>
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Connections</span>
-        </div>
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Locations</span>
-        </div>
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Books</span>
-        </div>
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Nearby</span>
-        </div>
-        <div class="stat-item">
-            <div class="stat-item-data">
-                <div class="loader"></div>
-                <div class="number">
-                    <span class="number-text">0</span>
-                </div>
-            </div>  
-            <span class="stat-name">Online</span>
-        </div>
-        
+    
+        <footer class="main-footer">
+            <div class="footer-logo block">B00X</div>
+            <div class="footer-subscribe block">
+                <div class="centered">Subscribe to our news feed</div> 
+            </div>
+            <form class="footer-input block">
+                <input class="centered" placeholder="enter email" type="email" />
+            </form>
+        </footer>
     </div>
     <!-- Scripts go here -->
     <script>

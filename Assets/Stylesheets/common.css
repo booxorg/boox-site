@@ -1,0 +1,282 @@
+/*
+    This stylesheet defines the styles generally aplied to the
+    whole application
+    What can be found:
+    1. Menu
+    2. Footer
+*/
+
+
+* {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.container {
+    position: relative;
+}
+
+.block:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+.centered {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    background-image: url("../Images/reading-925589_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ======================== MENU ============================== */
+.menu {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    padding: 0px 20px 0px 20px;
+    background-color: #FFFFFF;
+    
+}
+
+.menu .menu-item {
+    margin: 0px 10px 0px 10px;
+    color: #212121;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.menu .menu-item:hover {
+    color: #455A64;
+}
+
+.menu .menu-item.menu-logo {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 150px;
+    color: #212121;
+    text-align: center;
+    font-size: 50px;
+}
+
+.menu .menu-item.menu-button {
+    padding: 0px 12px 0px 12px;
+}
+
+.menu .menu-item.menu-button:hover {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}
+
+.menu .menu-item.menu-logo img {
+    display: block;
+    width: 150px;
+    height: 100%;
+}
+
+.menu .menu-item.right-aligned {
+    margin-left: auto;
+}
+
+.menu .menu-item.input-box input.hidden {   
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    width: 0px;
+}
+
+.menu .menu-item.input-box input {
+    display: inline-block;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #212121;
+
+    font-size: 14px;
+    font-weight: 300;
+
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+
+.menu .menu-item.input-box input:focus {
+    outline: none;
+}
+
+.menu .menu-item.input-box #search-icon {
+    display: inline-block;
+    height: 24px;
+    vertical-align: middle;
+    background-image: url("../Images/ic_search_black_48dp.png");
+    background-size: contain;
+    width: 24px;
+    cursor: pointer; 
+}
+
+@media (max-width: 1200px) {
+    .menu .menu-logo {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body, html {
+        background-image: unset;
+    }
+    .menu {
+        margin-top: 20px;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        border-bottom: none;
+        padding: unset;
+        margin-top: unset;
+    }
+    .menu .menu-item {
+        margin: 0;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+    }
+    .menu .menu-item.right-aligned {
+        margin: 0;
+    }
+    .menu .menu-item.menu-logo {
+        display: block;
+        width: 100%;
+        order: -1;
+        position: inherit;
+        top: 0;
+        left: 0;
+        margin: 0;
+        height: 80px;
+        line-height: normal;
+        transform: none;
+        background-color: #1976D2;
+        color: #FFFFFF;
+    }
+    .menu .menu-item.input-box {
+        order: 2;
+        justify-content: center;
+    }
+    .menu .menu-item.input-box input.hidden {
+        width: 200px;
+    }
+}
+
+/* ======================== ./MENU ============================== */
+
+/* ======================== FOOTER ============================== */
+.main-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    height: 70px;
+    background-color: #FFFFFF;
+}
+
+
+.main-footer .footer-logo {
+    width: 150px;
+    height: 100%;
+    border-right: 3px solid #212121;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    
+}
+.main-footer .footer-subscribe {
+    height: 100%;
+    font-size: 26px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.main-footer .footer-input {
+    margin-left: 20px;
+    text-align: center;
+}
+
+.main-footer .footer-input input {
+    border: none;
+    height: 34px;
+    padding: 0px 10px 0px 10px;
+    border-bottom: 2px solid #212121;
+}
+
+.main-footer .footer-input input:hover, 
+.main-footer .footer-input input:focus {
+    outline: none;
+}
+
+@media (max-width: 1024px) {
+    .main-footer .footer-subscribe {
+        font-size: 20px;
+    } 
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        margin-top: 20px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        background-color: #1976D2;
+        color: #FFFFFF;
+        justify-content: center;
+    }
+    .main-footer .footer-logo {
+        display: none;
+    }
+    .main-footer .footer-subscribe,
+    .main-footer .footer-input
+    {
+        height: auto;
+        line-height: normal;
+        text-align: center;
+        margin: unset;
+        margin: 10px 0px 10px 0px;
+    }
+    .main-footer .footer-input {
+        height: auto;
+        line-height: normal;
+        text-align: center;
+        margin: unset;
+    }
+    .main-footer .footer-input input {
+        background-color: transparent;
+        border-bottom-width: 1px;
+        border-bottom-color: #FFFFFF;
+        color: #FFFFFF;
+    }
+    .main-footer .footer-input input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+}
+/* ======================== ./FOOTER ============================== */
