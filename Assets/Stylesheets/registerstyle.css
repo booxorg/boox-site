@@ -2,14 +2,25 @@
     box-sizing: border-box;
 }
 
+.main-box-register {
+  background-image: url("../Images/background_register.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 30px;
+  height: 100vh;
+}
+
 .register-box {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: rgba(25, 118, 210, 0.2);
+	background: rgba(25, 118, 210, 0.4);
 	width: 30%;
 	font-family: "Raleway";
-	margin: 94px auto;
+	margin: 0 auto;
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 0 0 30px #ccc;
 }
 
 .register-box .input-wrapper {
