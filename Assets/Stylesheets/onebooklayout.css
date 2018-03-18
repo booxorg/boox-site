@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+.bookentry-container-parent {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.bookentry-container
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.bookentry-container .bookentryinfo {
+	display: flex;
+	background: rgba(25, 118, 210, 0.8);
+	flex-direction: column;
+	padding: 20px 15px;
+}
+
+.bookentry-container .bookentryinfo .bookentrytext
+{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	line-height: 1.5;
+}
+
+.bookentry-container .bookentryinfo .buttons-container {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	margin-top: auto;
+	padding-bottom: 12px;
+	width: 100%;
+}
+
+.bookentry-container .buttons-container .icon-button {
+	width: 100%;
+	padding: 0px 10px;
+}
+
+
+.bookentry-container .bookentryinfo h1, h2, h3{
+	color: white;
+	font-family: "Raleway";
+	margin: 0;
+}
+
+.bookentry-container .bookentryinfo h1 {
+	font-size: 2em;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+.bookentry-container .bookentryinfo h2 {
+	font-size: 1.5em;
+	padding-left: 12px;
+}
+
+.bookentry-container .bookentryinfo h3 {
+	font-size: 1em;
+	padding-left: 12px;
+}
+
+.bookentry-container .bookentryinfo p{
+	color: white;
+	font-family: "Raleway";
+	padding-left: 12px; 
+}
+
