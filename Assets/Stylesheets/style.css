@@ -139,11 +139,9 @@
     width: 80%;
     max-width: 1600px;
     margin: 0 auto;
+    padding-top: 50px;
 }
 
-.personalized-search .search-bar {
-    margin-top: 50px;
-}
 .personalized-search .search-bar-wrapper {
     display: flex;
     -webkit-box-shadow: 0px 11px 84px -12px rgba(0,0,0,0.61);
