@@ -45,10 +45,11 @@ input:focus {
     outline: none;
 }
 
-.valigned {
-    position: relative;
+.center-aligned {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);   
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 button {
@@ -61,14 +62,52 @@ button {
 }
 
 .main-box {
-    height: 100%;
+    position: relative;
     max-width: 2000px;
     margin: 0 auto;
 }
 
 .page-box {
+    position: relative;
     min-height: 100vh;
 }
+
+/* ======================== BUTTON ============================ */
+.icon-button {
+  width: 100%;
+}
+
+
+.icon-button > div {
+  position: relative;
+  display: flex;
+  border: 1px solid #FFFFFF;
+  height: 40px;
+  line-height: 40px;
+  color: #FFFFFF;
+  text-align: center;
+  outline: none;  
+}
+
+.icon-button .button-icon {
+  width: 40px;
+  border-right: 1px solid #FFFFFF;
+}
+
+.icon-button .button-text {
+  width: 100%;
+}
+
+.icon-button:hover .button-icon {
+  background-color: #FFFFFF;
+  color: #1976D2;
+}
+
+.icon-button:hover .button-text {
+  font-weight: 700;
+}
+
+/* ======================== ./BUTTON ========================== */
 
 /* ======================== MENU ============================== */
 .menu {

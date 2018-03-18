@@ -6,23 +6,23 @@
   background-image: url("../Images/background_register.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 30px;
+  position: relative;
+  padding-top: 50px;
 }
 
 .register-page .register-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  width: 30%;
-  max-width: 600px;
+  width: 600px;
+  max-width: 500px;
+  min-width: 300px;
   margin: 0 auto;
-  padding-bottom: 20px;
-
 	background: rgba(25, 118, 210, 0.7);
   -moz-box-shadow: 0 0 30px #ccc;
   -webkit-box-shadow: 0 0 30px #ccc;
   box-shadow: 0 0 30px #ccc;
+  padding: 30px 20px 20px 20px;
 }
 
 .register-page .register-box .head {
@@ -40,7 +40,8 @@
 	flex-direction: row;
 	justify-content: center;
 	width: 100%;
-	padding: 10px 30px 10px 30px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .register-page .register-box .inpicon {
@@ -61,18 +62,17 @@
 }
 
 
-.register-page .register-box button {
+.register-page .register-box .submit-button {
   position: relative;
   height: 45px;
   width: 150px;
-  margin: 10px 7px;
+  margin: 20px 7px;
   padding: 5px 5px;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 2px;
   color: white;
   border: 2px white solid;
-  border-radius: 4px;
   text-transform: uppercase;
   outline: 0;
   overflow:hidden;
@@ -98,24 +98,20 @@
 
 .register-page .register-box .slide:before {
   content:"Do it!";
+  position:absolute;
   height:100%;
   width:100%;
-  position:absolute;
   color: white;
   left:-100%;
   opacity: 0;
   -webkit-transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
 }
 
-.register-page .register-box .slide:hover{
-  background: white;
-  background:none;
-}
 
 .register-page .register-box .slide:hover:before{
   left:0;
   opacity:1;
-  color:#fff;
+  color:#FFFFFF;
 }
 .register-page .register-box .slide:hover:after{
   left:100%;
@@ -129,9 +125,36 @@
   -webkit-transition: all 425ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
 }
 
+.register-page .login-platforms {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.register-page .login-platforms .fb-login {
+  margin-right: 10px;
+}
+
+.register-page .login-platforms .goodreads-login {
+  margin-left: 10px;
+}
+
+
 @media (max-width: 768px) 
 { 
   .register-page .register-box { 
     width: 300px; 
   } 
+
+  .register-page .login-platforms {
+    flex-direction: column;
+    margin-top: unset;
+  }
+
+  .register-page .login-platforms .fb-login,
+  .register-page .login-platforms .goodreads-login {
+    margin: unset;
+    margin-top: 15px;
+  }
 }
