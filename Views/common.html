@@ -27,11 +27,8 @@
             <div class="menu-item menu-button block">
                 <a class="centered" href="#">profile</a>
             </div>
-            <div class="menu-item input-box block">
-                <div class="centered">
-                    <input id="search-input" placeholder="quick search" />
-                    <i id="search-icon" ></i>
-                </div>
+            <div class="menu-item menu-button block">
+                <a class="centered" href="#">search</a>
             </div>
             <div class="menu-item menu-logo block">
                 <a class="centered" href="#">
@@ -123,7 +120,6 @@
         function func() {
             document.getElementById("search-input").classList.toggle("hidden");
         }
-        document.getElementById("search-icon").onclick = func;
         function create_interval(element) {
             var current = 0;
             var number = Math.floor(Math.random() * 500);

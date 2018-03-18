@@ -101,42 +101,6 @@ input:focus {
     margin-left: auto;
 }
 
-.menu .menu-item.input-box input.hidden {   
-    -webkit-transition: width 0.5s ease-in-out;
-    -moz-transition: width 0.5s ease-in-out;
-    -o-transition: width 0.5s ease-in-out;
-    transition: width 0.5s ease-in-out;
-    width: 0px;
-}
-
-.menu .menu-item.input-box input {
-    display: inline-block;
-    width: 200px;
-    border: none;
-    border-bottom: 1px solid #212121;
-
-    font-size: 14px;
-    font-weight: 300;
-
-    -webkit-transition: width 1s ease-in-out;
-    -moz-transition: width 1s ease-in-out;
-    -o-transition: width 1s ease-in-out;
-    transition: width 1s ease-in-out;
-}
-
-.menu .menu-item.input-box input:focus {
-    outline: none;
-}
-
-.menu .menu-item.input-box #search-icon {
-    display: inline-block;
-    height: 24px;
-    vertical-align: middle;
-    background-image: url("../Images/ic_search_black_48dp.png");
-    background-size: contain;
-    width: 24px;
-    cursor: pointer; 
-}
 
 @media (max-width: 1200px) {
     .menu .menu-logo {
@@ -176,13 +140,6 @@ input:focus {
         transform: none;
         background-color: #1976D2;
         color: #FFFFFF;
-    }
-    .menu .menu-item.input-box {
-        order: 2;
-        justify-content: center;
-    }
-    .menu .menu-item.input-box input.hidden {
-        width: 200px;
     }
 }
 

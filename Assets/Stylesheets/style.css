@@ -3,6 +3,12 @@
 
 
 /* ======================== STATS =============================== */
+
+.main-box {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
 .main-page {
     background-image: url("../Images/reading-925589_1280.jpg");
     background-repeat: no-repeat;
@@ -136,8 +142,10 @@
 /* ======================== SEARCH ============================== */
 .personalized-search {
     width: 80%;
+    max-width: 1600px;
     margin: 0 auto;
 }
+
 .personalized-search .search-bar {
     margin-top: 50px;
 }
