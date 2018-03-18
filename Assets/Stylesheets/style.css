@@ -204,6 +204,7 @@
 }
 .personalized-search .advanced-search-wrapper {
     margin-top: 30px;
+    transition: height 1s ease-in-out;
 }
 
 .personalized-search .advanced-search-wrapper .input-box {
@@ -232,5 +233,52 @@
     width: 100%;
     padding: 5px 10px 5px 110px;
     border: 1px solid #CDCDCD;
+    border-right: unset;
+}
+
+.personalized-search .advanced-search-wrapper .button-add {
+    width: 40px;
+    background-color: #1976D2;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.personalized-search .advanced-search-wrapper .button-add > i {
+    display: block;
+}
+
+.personalized-search .advanced-search-wrapper .button-add:hover {
+    background-color: transparent;
+    color: #1976D2;
+    border: 1px solid #1976D2;
+}
+
+.personalized-search .search-hidden {
+    transition: height 1s ease-in-out;
+    height: 0px;
+    overflow: hidden;
+    margin: 0;
+    
+}
+
+@media (max-width: 900px) {
+    .personalized-search .advanced-search-wrapper {
+        grid-template-columns: 100fr;
+        grid-column-gap: 0px;
+    }
+}
+@media (max-width: 426px) {
+    .personalized-search {
+        width: 100%;
+        padding: 10px;
+    }
+    .personalized-search .advanced-search-wrapper .box-description {
+        width: 60px;
+        font-size: 12px;
+    }
+
+    .personalized-search .advanced-search-wrapper .input-box input {
+        padding-left: 70px;
+    }
 }
 /* ======================== ./SEARCH ============================ */

@@ -20,15 +20,16 @@
     <!-- /.Preload CSS and scripts -->
 </head>
 <body>
-    <div class="personalized-search container">
+    <div class="main-box">
+        <div class="personalized-search container">
         <div class="search-bar">
             <form>
                 <div class="search-bar-wrapper">
                     <input id="search-bar-input" name="search-bar" placeholder="enter keywords" />
-                    <button id="search-bar-submit" type="submit"/>
+                    <button type="button" id="search-bar-submit" type="submit"/>
                         <i class="fas fa-search"></i>
                     </button>
-                    <button id="search-bar-more"/>
+                    <button type="button" id="search-bar-more"/>
                         <i class="fas fa-chevron-circle-down"></i>
                     </button>
                 </div>
@@ -36,34 +37,48 @@
         </div>
         <div class="advanced-search">
             <form>
-                <div class="advanced-search-wrapper">
+                <div id="advanced-search-wrapper" class="advanced-search-wrapper search-hidden">
                     <div class="input-box">
                         <div class="box-description">
-                            <div class="box-description-name">Subject</div>
+                            <div class="box-description-name">Authors</div>
                         </div>
-                        <input placeholder="specific subject" />
+                        <input placeholder="J.K. Rowling, Stephen King ..." />
+                        <button type="button" class="button-add">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
                     </div>
                     <div class="input-box">
                         <div class="box-description">
-                            <div class="box-description-name">Subject</div>
+                            <div class="box-description-name">Genre</div>
                         </div>
-                        <input placeholder="specific subject" />
+                        <input alt="Genre name" placeholder="Fantasy, SciFi, Drama ..." />
+                        <button type="button" class="button-add">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
                     </div>
                     <div class="input-box">
                         <div class="box-description">
-                            <div class="box-description-name">Subject</div>
+                            <div class="box-description-name">Before</div>
                         </div>
-                        <input placeholder="specific subject" />
+                        <input alt="Latest date of publishing" type="month" placeholder="" />
+                        <button type="button" class="button-add">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
                     </div>
                     <div class="input-box">
                         <div class="box-description">
-                            <div class="box-description-name">Subject</div>
+                            <div class="box-description-name">After</div>
                         </div>
-                        <input placeholder="specific subject" />
+                        <input alt="Earliest date of publishing" type="month" placeholder="" />
+                        <button type="button" class="button-add">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
+        </div>
     </div>
+    <script src="../Assets/JavaScript/personalized_search.js"></script>
 </body>
 </html>
