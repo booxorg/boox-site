@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="description" content="TODO"/>
+    <meta name="keywords" content="TODO"/>
+    <meta name="author" content="VSK DRS" />
+    <meta name="copyright" content="Copyright VSK DRS" />
+    <meta name="robots" content="index,follow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Preload CSS and scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../Assets/Stylesheets/normalize.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/common.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/style.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/registerstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- /.Preload CSS and scripts -->
+
+</head>
+<body>
+<<<<<<< HEAD
+    <div class="main-box">
+        <div class="page-box register-page">
+            <div class="register-box container">
+                <h1 class="head">Join b00x!</h1>
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                         <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" placeholder="Username" class="uname">
+                    </div>
+                </div>
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" placeholder="First Name" class="fname">
+                    </div>
+                </div>  
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" placeholder="Last Name" class="lname">
+                    </div>
+                </div>
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                            <i class="fa fa-at" aria-hidden="true"></i>
+                        </span>
+                        <input type="email" placeholder="Email" class="email">
+                    </div>
+                </div>
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" placeholder="Password" class="passwd">
+                    </div>
+                </div>  
+                <div class="input-icon">
+                    <div class="input-wrapper">
+                        <span class="inpicon">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" placeholder="Confirm password" class="passwd">
+                    </div>
+                </div>
+                <button class="slide left">&nbsp;</button>
+                <button class="slide left">&nbsp;</button>
+            </div>
+            
+        </div>
+<<<<<<< HEAD
+    </div>
+=======
+>>>>>>> 007bbfed47353a40211d133a68698ef8511171a9
+</body>
+</html>

@@ -2,11 +2,16 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .register-page {
+=======
+.main-box-register {
+>>>>>>> 007bbfed47353a40211d133a68698ef8511171a9
   background-image: url("../Images/background_register.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 30px;
+<<<<<<< HEAD
 }
 
 .register-page .register-box {
@@ -23,6 +28,23 @@
   -moz-box-shadow: 0 0 30px #ccc;
   -webkit-box-shadow: 0 0 30px #ccc;
   box-shadow: 0 0 30px #ccc;
+
+=======
+  height: 100vh;
+}
+
+.register-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgba(25, 118, 210, 0.4);
+	width: 30%;
+	font-family: "Raleway";
+	margin: 0 auto;
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  box-shadow: 0 0 30px #ccc;
+>>>>>>> 007bbfed47353a40211d133a68698ef8511171a9
 }
 
 .register-page .register-box .head {
