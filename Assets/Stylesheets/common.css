@@ -72,6 +72,64 @@ button {
     min-height: 100vh;
 }
 
+.labeled-input-box {
+    position: relative;
+    display: flex;
+    height: 34px;
+}
+
+.labeled-input-box .box-description {
+    position: absolute;
+    width: 100px; 
+    height: 100%;
+    padding: 0px 7px 0px 7px;
+    text-align: center;
+    background-color: #1976D2;
+    color: #FFFFFF;    
+}
+
+.labeled-input-box .box-description-name {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);   
+} 
+
+.labeled-input-box input {
+    width: 100%;
+    padding: 5px 10px 5px 110px;
+    border: 1px solid #CDCDCD;
+    border-right: unset;
+}
+
+.checkbox {
+  display: block;
+}
+
+.checkbox label {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox input[type="checkbox"] + label:before {
+  position: relative;
+  top: 5px;
+  display:inline-block;
+  content:"";
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border: 1px solid #a1a194;
+  border-radius: 1px;
+}
+
+.checkbox input[type="checkbox"]:checked + label:before {
+  background: url("../Images/blue-check-mark-hi.png") no-repeat;
+}
+
 /* ======================== BUTTON ============================ */
 .icon-button {
   width: 100%;
