@@ -21,9 +21,26 @@
     <!-- /.Preload CSS and scripts -->
 
 </head>
+<body>
     <div class="main-box">
         <div class="page-box">
-            <div class="bookentry-container-parent">
+            <div class="bookentrybar-container-parent" onclick="growDiv()"> 
+                <div class="bookentrybar-container">
+                    <div class="barbooktitle"> 
+                        <h1> HTML and CSS: Design and Build Websites </h1>
+                    </div>
+                    <div class="barauthor"> 
+                        <h1> Jon Duckett </h1>
+                    </div>
+                    <div class="baruser">
+                        <h1> stickyfingers123 </h1>
+                    </div>
+                    <div class="bargenre">
+                        <h1> Design </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="bookentry-container-parent" id="grow">
                 <div class="bookentry-container">
                     <img src="../Assets/Images/book1_cover.jpg">
                     <div class="bookentryinfo">
@@ -61,3 +78,22 @@
             </div>
         </div>
     </div>
+</body>
+
+<script>
+    function growDiv() 
+    {
+        var growDiv = document.getElementById('grow');
+        if (growDiv.clientHeight) 
+        {
+            growDiv.style.height = 0;
+        }
+        else 
+        {
+            var wrapper = document.querySelector('.bookentry-container');
+            growDiv.style.height = wrapper.clientHeight + "px";
+        }
+    }
+</script>
+
+</html>

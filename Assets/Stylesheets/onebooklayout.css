@@ -72,3 +72,35 @@
 	padding-left: 12px; 
 }
 
+.bookentrybar-container-parent {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.bookentrybar-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background: rgba(25, 118, 210, 1);
+}
+
+.bookentrybar-container {
+	font-size: 0.7em;
+	font-family: "Raleway";
+	color: white;
+}
+
+.bookentrybar-container div {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#grow {
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    -webkit-transition: height .5s;
+    transition: height .5s;
+    height: 0;
+    overflow: hidden;
+  }
