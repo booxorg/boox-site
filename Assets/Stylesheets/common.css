@@ -130,6 +130,26 @@ button {
   background: url("../Images/blue-check-mark-hi.png") no-repeat;
 }
 
+
+.named-label {
+    display: flex;
+    flex-direction: row;
+    height: 34px;
+    line-height: 34px;
+    border-bottom: 2px solid #1976D2;
+}
+
+.named-label .named-label-name {
+    background-color: #1976D2;
+    padding: 0px 10px;
+    color: #FFFFFF;
+}
+
+.named-label .named-label-content {
+    padding: 0px 10px;
+}
+
+
 /* ======================== BUTTON ============================ */
 .icon-button {
   width: 100%;

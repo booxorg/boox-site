@@ -289,3 +289,45 @@
     }
 }
 /* ======================== ./SEARCH ============================ */
+
+/* ======================== PROFILE ============================= */
+.view-profile {
+    padding-top: 50px;
+}
+.view-profile .profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 0 auto;
+    height: 300px;
+    -webkit-box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
+    -moz-box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
+    box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
+}
+
+.view-profile .profile-wrapper .profile-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 300fr;
+    height: 100%;
+}
+
+.view-profile .profile-wrapper .profile-image {
+    width: 300px;
+    object-fit: fill;
+}
+
+.view-profile .profile-wrapper .profile-description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+
+.view-profile .profile-wrapper .profile-description .named-label {
+    margin-top: 10px;
+}
+
+/* ======================== /.PROFILE ============================= */
