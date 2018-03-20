@@ -145,3 +145,6 @@
 	}
 }
 
+.bookentry-container-parent .bookentry-container img {
+		height: 100%;
+	}
