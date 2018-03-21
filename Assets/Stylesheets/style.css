@@ -136,12 +136,11 @@
 
 /* ======================== SEARCH ============================== */
 .personalized-search {
+    background-image: url("../Images/background_register.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
-    width: 80%;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 50px 10%;
 }
 
 .personalized-search .search-bar-wrapper {
@@ -235,6 +234,7 @@
 
 .personalized-search .search-results h1 {
     text-align: center;
+    color: #FFFFFF;
 }
 
 .personalized-search .location-box {
@@ -296,6 +296,10 @@
 .view-profile {
     padding-top: 50px;
     min-height: 100vh;
+    background-image: url("../Images/background_register.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 .view-profile .profile-wrapper {
     display: flex;
@@ -313,7 +317,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
-    width: 300fr;
+    width: 300px;
     height: 100%;
 }
 
