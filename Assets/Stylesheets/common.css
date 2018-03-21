@@ -95,9 +95,15 @@ button {
   transform: translateY(-50%);   
 } 
 
-.labeled-input-box input {
+.labeled-input-box > input
+ {
   width: 100%;
   padding: 5px 10px 5px 10px;
+  border: 1px solid #CDCDCD;
+}
+
+.labeled-input-box .box-complex-input {
+  width: 100%;
   border: 1px solid #CDCDCD;
 }
 
