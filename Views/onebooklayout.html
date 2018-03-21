@@ -1,19 +1,16 @@
-
-<div class="page-box">
-    <div class="bookentrybar-container-parent" bentryid="grow1" bentryclass=".book1" onclick="growDiv(this)"> 
-        <div class="bookentrybar-container">
-            <div class="barbooktitle"> 
-                <h1> HTML and CSS: Design and Build Websites </h1>
-            </div>
-            <div class="barauthor"> 
-                <h1> Jon Duckett </h1>
-            </div>
-            <div class="baruser">
-                <h1> stickyfingers123 </h1>
-            </div>
-            <div class="bargenre">
-                <h1> Design </h1>
-            </div>
+<section class="bookentrybar-container-parent" bentryid="grow1" bentryclass=".book1" onclick="growDiv(this)"> 
+    <div class="bookentrybar-container">
+        <div class="barbooktitle"> 
+            <h1>HTML and CSS: Design and Build Websites</h1>
+        </div>
+        <div class="barauthor"> 
+            <h1>Jon Duckett</h1>
+        </div>
+        <div class="baruser">
+            <h1>stickyfingers123</h1>
+        </div>
+        <div class="bargenre">
+            <h1>Design</h1>
         </div>
     </div>
     <div class="bookentry-container-parent" id="grow1">
@@ -54,21 +51,22 @@
             </div>
         </div>
     </div>
+</section>
+    
 
-    <div class="bookentrybar-container-parent" bentryid="grow2" bentryclass=".book2" onclick="growDiv(this)"> 
-        <div class="bookentrybar-container">
-            <div class="barbooktitle"> 
-                <h1> HTML and CSS: Design and Build Websites </h1>
-            </div>
-            <div class="barauthor"> 
-                <h1> Jon Duckett </h1>
-            </div>
-            <div class="baruser">
-                <h1> stickyfingers123 </h1>
-            </div>
-            <div class="bargenre">
-                <h1> Design </h1>
-            </div>
+<section class="bookentrybar-container-parent" bentryid="grow2" bentryclass=".book2" onclick="growDiv(this)"> 
+    <div class="bookentrybar-container">
+        <div class="barbooktitle"> 
+            <h1> HTML and CSS: Design and Build Websites </h1>
+        </div>
+        <div class="barauthor"> 
+            <h1> Jon Duckett </h1>
+        </div>
+        <div class="baruser">
+            <h1> stickyfingers123 </h1>
+        </div>
+        <div class="bargenre">
+            <h1> Design </h1>
         </div>
     </div>
     <div class="bookentry-container-parent" id="grow2">
@@ -109,20 +107,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-    function growDiv(elem) 
-    {
-        var growDiv = document.getElementById(elem.getAttribute("bentryid"));
-        if (growDiv.clientHeight) 
-        {
-            growDiv.style.height = 0;
-        }
-        else 
-        {
-            var wrapper = document.querySelector(elem.getAttribute("bentryclass"));
-            growDiv.style.height = wrapper.clientHeight + "px";
-        }
-    }
-</script>
+</section>

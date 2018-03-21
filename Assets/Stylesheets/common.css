@@ -4,6 +4,7 @@
   What can be found:
   1. Menu
   2. Footer
+  3. labeled-input-box class
 */
 
 
@@ -72,6 +73,7 @@ button {
   min-height: 100vh;
 }
 
+/* ========================== LABELED INPUT BOX ============================ */
 .labeled-input-box {
   position: relative;
   display: flex;
@@ -79,8 +81,7 @@ button {
 }
 
 .labeled-input-box .box-description {
-  position: absolute;
-  width: 100px; 
+  min-width: 140px;
   height: 100%;
   padding: 0px 7px 0px 7px;
   text-align: center;
@@ -96,10 +97,20 @@ button {
 
 .labeled-input-box input {
   width: 100%;
-  padding: 5px 10px 5px 110px;
+  padding: 5px 10px 5px 10px;
   border: 1px solid #CDCDCD;
-  border-right: unset;
 }
+
+@media (max-width: 426px) {
+  .labeled-input-box .box-description {
+    min-width: unset;
+  }
+  .labeled-input-box .box-description-text {
+    display: none;
+  }
+}
+/* ========================== /.LABELED INPUT BOX ============================ */
+
 
 .checkbox {
   display: block;

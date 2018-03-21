@@ -42,22 +42,6 @@
 }
 
 @media (max-width: 600px) {
-    .labeled-input-box .named-label-text {
-    	display: none;
-    }
-
-    .labeled-input-box .box-description {
-    	width: 50px;
-    }
-
-    .labeled-input-box input {
-    	padding-left: 60px;
-    }
-
-    .addbook-genre-selection .genre-select {
-		padding-left: 50px;
-	}
-
 	.addbook-container-parent {
 		width: 80%;
 	}
