@@ -1,18 +1,18 @@
 .addbook {
-    padding-top: 30px;
-    padding-bottom: 50px;
+padding-top: 30px;
+padding-bottom: 50px;
 }
 
 .addbook-container-parent {
-	width: 60%;
-	margin: 0 auto;
-	min-height: 100vh;
-	padding-top: 50px;
+width: 60%;
+margin: 0 auto;
+min-height: 100vh;
+padding-top: 50px;
 }
 
 .addbook-container {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .addbook-container-parent .labeled-input-box {
@@ -20,21 +20,21 @@
 }
 
 .addbook-container-parent .labeled-input-box .box-description-name {
-    text-align: left;
-    padding-left: 20px;
+  text-align: left;
+  padding-left: 20px;
 }
 
 .addbook-container-parent .genre-select select {
-    display: block;
-	height: 100%;
-	width: 100%;
-    padding-left: 10px;
-    border: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding-left: 10px;
+  border: none;
 }
 
 .addbook-container-parent .genre-select select:hover,
 .addbook-container-parent .genre-select select:focus {
-    outline: none;
+  outline: none;
 }
 
 .addbook-addimage {
@@ -88,8 +88,8 @@
 }
 
 @media (max-width: 426px) {
-    .addbook-container-parent .labeled-input-box .box-description-name {
-        text-align: center;
-        padding-left: unset;
-    }
+  .addbook-container-parent .labeled-input-box .box-description-name {
+    text-align: center;
+    padding-left: unset;
+  }
 }

@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .bookentrybar-container-parent {
@@ -98,14 +98,18 @@
 }
 
 .bookentry-container-parent {
-    -moz-transition: height .5s;
-    -ms-transition: height .5s;
-    -o-transition: height .5s;
-    -webkit-transition: height .5s;
-    transition: height .5s;
-    height: 0;
-    overflow: hidden;
-  }
+  -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+  height: 0;
+  overflow: hidden;
+}
+
+.bookentry-container-parent .bookentry-container img {
+	height: 100%;
+}
 
 @media (max-width: 1250px) {
 	.bookentry-container {
@@ -151,6 +155,4 @@
 	}
 }
 
-.bookentry-container-parent .bookentry-container img {
-		height: 100%;
-	}
+
