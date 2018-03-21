@@ -341,8 +341,13 @@
 }
 
 
-.view-profile .profile-wrapper .icon-button {  
-  width: 50%;
+.view-profile .profile-button-container {
+  display: grid;
+  grid-template-columns: 100fr 100fr;
+  grid-column-gap: 20px;
+}
+
+.view-profile .profile-wrapper .icon-button {
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -374,6 +379,12 @@
 }
 
 @media (max-width: 500px) {
+  .view-profile .profile-button-container {
+    grid-template-columns: 100%;
+    grid-column-gap: unset;
+    grid-row-gap: 10px;
+    margin-top: 20px;
+  }
   .view-profile .profile-wrapper {
     padding-top: 20px;
     flex-direction: column;
@@ -386,6 +397,7 @@
   }
   .view-profile .profile-wrapper .icon-button {
     width: 100%;
+    margin-top: unset;
   }
 }
 
