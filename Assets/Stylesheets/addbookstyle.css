@@ -1,0 +1,64 @@
+.addbook-container-parent {
+	width: 60%;
+	margin: 0 auto;
+	min-height: 100vh;
+	padding-top: 50px;
+}
+
+.addbook-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.addbook-container-parent .labeled-input-box {
+	border-right: 1px solid #cdcdcd;
+	margin-top: 10px;
+}
+
+.addbook-genre-selection {
+	display: flex;
+	flex-direction: row;
+}
+
+.addbook-genre-selection .genre-select {
+	padding-left: 99px;
+}
+
+.addbook-genre-selection .genre-select select {
+	height: calc(100% - 10px);
+	margin-top: 10px;
+	width: 100%;
+}
+
+.addbook-addimage {
+	display: flex;
+	flex-direction: row;
+}
+
+.addbook-container .icon-button {
+	padding-top: 20px;
+	width: 50%;
+	align-self: center;
+}
+
+@media (max-width: 600px) {
+    .labeled-input-box .named-label-text {
+    	display: none;
+    }
+
+    .labeled-input-box .box-description {
+    	width: 50px;
+    }
+
+    .labeled-input-box input {
+    	padding-left: 60px;
+    }
+
+    .addbook-genre-selection .genre-select {
+		padding-left: 50px;
+	}
+
+	.addbook-container-parent {
+		width: 80%;
+	}
+}
