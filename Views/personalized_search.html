@@ -1,105 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <meta name="description" content="TODO"/>
-    <meta name="keywords" content="TODO"/>
-    <meta name="author" content="VSK DRS" />
-    <meta name="copyright" content="Copyright VSK DRS" />
-    <meta name="robots" content="index,follow"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <!-- Preload CSS and scripts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="../Assets/Stylesheets/normalize.css">
-    <link rel="stylesheet" href="../Assets/Stylesheets/common.css">
-    <link rel="stylesheet" href="../Assets/Stylesheets/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
-    <!-- /.Preload CSS and scripts -->
-</head>
-<body>
-    <div class="main-box">
-        <div class="page-box personalized-search">
-            <div class="search-bar">
-                <form>
-                    <div class="search-bar-wrapper">
-                        <input id="search-bar-input" name="search-bar" placeholder="enter keywords" />
-                        <button type="button" id="search-bar-submit" type="submit"/>
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <button type="button" id="search-bar-more"/>
-                            <i class="fas fa-chevron-circle-down"></i>
-                        </button>
-                    </div>
-                </form>
+<div class="page-box personalized-search">
+    <div class="search-bar">
+        <form>
+            <div class="search-bar-wrapper">
+                <input id="search-bar-input" name="search-bar" placeholder="enter keywords" />
+                <button type="button" id="search-bar-submit" type="submit"/>
+                    <i class="fas fa-search"></i>
+                </button>
+                <button type="button" id="search-bar-more"/>
+                    <i class="fas fa-chevron-circle-down"></i>
+                </button>
             </div>
-            <div class="advanced-search">
-                <form>
-                    <div id="advanced-search-wrapper" class="advanced-search-wrapper search-hidden">
-                        <div class="labeled-input-box">
-                            <div class="box-description">
-                                <div class="box-description-name">Authors</div>
-                            </div>
-                            <input placeholder="J.K. Rowling, Stephen King ..." />
-                            <button type="button" class="button-add">
-                                <i class="fas fa-plus-square"></i>
-                            </button>
-                        </div>
-                        <div class="labeled-input-box">
-                            <div class="box-description">
-                                <div class="box-description-name">Genre</div>
-                            </div>
-                            <input alt="Genre name" placeholder="Fantasy, SciFi, Drama ..." />
-                            <button type="button" class="button-add">
-                                <i class="fas fa-plus-square"></i>
-                            </button>
-                        </div>
-                        <div class="labeled-input-box">
-                            <div class="box-description">
-                                <div class="box-description-name">Before</div>
-                            </div>
-                            <input alt="Latest date of publishing" type="month" placeholder="" />
-                            <button type="button" class="button-add">
-                                <i class="fas fa-plus-square"></i>
-                            </button>
-                        </div>
-                        <div class="labeled-input-box">
-                            <div class="box-description">
-                                <div class="box-description-name">After</div>
-                            </div>
-                            <input alt="Earliest date of publishing" type="month" placeholder="" />
-                            <button type="button" class="button-add">
-                                <i class="fas fa-plus-square"></i>
-                            </button>
-                        </div>
-                        <div class="location-box">
-                            <div class="checkbox">
-                                <input id="select-1" type="checkbox">
-                                <label for="select-1">Nearby</label>
-                            </div>
-                            <div class="labeled-input-box location">
-                                <div class="box-description">
-                                    <div class="box-description-name">Location</div>
-                                </div>
-                                <input alt="Location" placeholder="" />
-                                <button type="button" class="button-add">
-                                    <i class="fas fa-plus-square"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div>
-                    </div>
-                </form>
-            </div>
-            <div class="search-results">
-                <h1>Recommended For You</h1>
-                <hr/>
-                
-            </div>
-        </div>
+        </form>
     </div>
-    <script src="../Assets/JavaScript/personalized_search.js"></script>
-</body>
-</html>
+    <div class="advanced-search">
+        <form>
+            <div id="advanced-search-wrapper" class="advanced-search-wrapper search-hidden">
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">Authors</div>
+                    </div>
+                    <input placeholder="J.K. Rowling, Stephen King ..." />
+                    <button type="button" class="button-add">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                </div>
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">Genre</div>
+                    </div>
+                    <input alt="Genre name" placeholder="Fantasy, SciFi, Drama ..." />
+                    <button type="button" class="button-add">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                </div>
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">Before</div>
+                    </div>
+                    <input alt="Latest date of publishing" type="month" placeholder="" />
+                    <button type="button" class="button-add">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                </div>
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">After</div>
+                    </div>
+                    <input alt="Earliest date of publishing" type="month" placeholder="" />
+                    <button type="button" class="button-add">
+                        <i class="fas fa-plus-square"></i>
+                    </button>
+                </div>
+                <div class="location-box">
+                    <div class="checkbox">
+                        <input id="select-1" type="checkbox">
+                        <label for="select-1">Nearby</label>
+                    </div>
+                    <div class="labeled-input-box location">
+                        <div class="box-description">
+                            <div class="box-description-name">Location</div>
+                        </div>
+                        <input alt="Location" placeholder="" />
+                        <button type="button" class="button-add">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="search-results">
+        <h1>Recommended For You</h1>
+        <hr/>      
+        {% include 'onebooklayout.html' %} 
+    </div>
+</div>
+<script src="Assets/JavaScript/personalized_search.js"></script>

@@ -2,9 +2,8 @@
     box-sizing: border-box;
 }
 
-.bookentry-container-parent {
-	width: 60%;
-	margin: 0 auto;
+.bookentrybar-container-parent {
+	margin-top: 20px;
 }
 
 .bookentry-container
@@ -14,11 +13,18 @@
 	justify-content: center;
 }
 
+.bookentry-container .imagediv {
+	min-height: 0;
+	min-width: 0;
+}
+
 .bookentry-container .bookentryinfo {
 	display: flex;
 	background: rgba(25, 118, 210, 0.8);
 	flex-direction: column;
 	padding: 20px 15px;
+	min-height: 0;
+	min-width: 0;
 }
 
 .bookentry-container .bookentryinfo .bookentrytext
@@ -72,10 +78,6 @@
 	padding-left: 12px; 
 }
 
-.bookentrybar-container-parent {
-	width: 60%;
-	margin: 0 auto;
-}
 
 .bookentrybar-container {
 	display: flex;
@@ -120,6 +122,10 @@
 
 	.bookentry-container-parent .bookentry-container img {
 		width: 300px;
+	}
+
+	.bookentry-container-parent .bookentryinfo {
+		width: 100%;
 	}
 }
 

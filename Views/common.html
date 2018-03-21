@@ -12,136 +12,23 @@
 
     <!-- Preload CSS and scripts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="../Assets/Stylesheets/normalize.css">
-    <link rel="stylesheet" href="../Assets/Stylesheets/common.css">
-    <link rel="stylesheet" href="../Assets/Stylesheets/style.css">
+    <link rel="stylesheet" href="Assets/Stylesheets/normalize.css">
+    <link rel="stylesheet" href="Assets/Stylesheets/common.css">
+    <link rel="stylesheet" href="Assets/Stylesheets/style.css">
+    <link rel="stylesheet" href="Assets/Stylesheets/onebooklayout.css">
+    <link rel="stylesheet" href="../Assets/Stylesheets/registerstyle.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
     <!-- /.Preload CSS and scripts -->
 
 </head>
 <body>
     <div class="main-box">
-        <header class="menu container">
-            <div class="menu-item menu-button block">
-                <a class="centered" href="#">books</a>
-            </div>
-            <div class="menu-item menu-button block">
-                <a class="centered" href="#">profile</a>
-            </div>
-            <div class="menu-item menu-button block">
-                <a class="centered" href="#">search</a>
-            </div>
-            <div class="menu-item menu-logo block">
-                <a class="centered" href="#">
-                    <!--
-                    <img src="../Assets/Images/faiths-speak-on-referendums-17.png"/>
-                -->
-                    B00X
-                </a>
-            </div>
-            <div class="menu-item right-aligned menu-button block">
-                <a class="centered" href="#">register</a>
-            </div>
-            <div class="menu-item menu-button block">
-                <a class="centered" href="#">login</a>
-            </div>
-        </header>
-
-        <div class="page-box main-page">
-            <h1 class="main-page-header">This is us</h1>
-            <div class="statistics-container">
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Users</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Connections</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Locations</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Books</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Nearby</span>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-item-data">
-                        <div class="loader"></div>
-                        <div class="number">
-                            <span class="number-text">0</span>
-                        </div>
-                    </div>  
-                    <span class="stat-name">Online</span>
-                </div>
-            </div>
-        </div>
-    
-        <footer class="main-footer">
-            <div class="footer-logo block">B00X</div>
-            <div class="footer-subscribe block">
-                <div class="centered">Subscribe to our news feed</div> 
-            </div>
-            <form class="footer-input block">
-                <input class="centered" placeholder="enter email" type="email" />
-            </form>
-        </footer>
+        {% include 'menu.html' %}
+        {% include page_name %}
+        {% include 'footer.html' %}
     </div>
     <!-- Scripts go here -->
-    <script>
-        function func() {
-            document.getElementById("search-input").classList.toggle("hidden");
-        }
-        function create_interval(element) {
-            var current = 0;
-            var number = Math.floor(Math.random() * 500);
-            var intervalID = setInterval(function() {
-                element.innerHTML = current.toString();
-                current += 10;
-                if (current >= number) {
-                    element.innerHTML = Math.min(current, number);
-                    clearInterval(intervalID);
-                }
-            }, 50);
-        }
-        function assign_random() {
-            var arr = document.getElementsByClassName("number-text");
-            for (var i = 0; i < arr.length; i++) {
-                create_interval(arr[i]);
-            }
-
-        }
-        assign_random();
-    </script>
     <!-- /.Scripts go here -->
 </body>
 </html>

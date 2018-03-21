@@ -136,10 +136,12 @@
 
 /* ======================== SEARCH ============================== */
 .personalized-search {
+    min-height: 100vh;
     width: 80%;
     max-width: 1600px;
     margin: 0 auto;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .personalized-search .search-bar-wrapper {
@@ -293,6 +295,7 @@
 /* ======================== PROFILE ============================= */
 .view-profile {
     padding-top: 50px;
+    min-height: 100vh;
 }
 .view-profile .profile-wrapper {
     display: flex;

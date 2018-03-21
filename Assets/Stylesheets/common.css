@@ -127,7 +127,7 @@ button {
 }
 
 .checkbox input[type="checkbox"]:checked + label:before {
-  background: url("../Images/blue-check-mark-hi.png") no-repeat;
+  background: url("Assets/Images/blue-check-mark-hi.png") no-repeat;
 }
 
 
@@ -168,8 +168,18 @@ button {
   outline: none;  
 }
 
+.icon-button:hover,
+.icon-button:focus {
+    outline: none;
+}
+
 .icon-button .button-icon {
+  position: relative;
+  top: -1px;
+  left: -1px;
+  height: 40px;
   width: 40px;
+  border: none;
   border-right: 1px solid #FFFFFF;
 }
 
@@ -192,9 +202,14 @@ button {
   color: #FFFFFF;
 }
 
+.icon-button.inverted .button-icon {
+  border: none;
+  outline: none;
+}
+
 .icon-button.inverted:hover > div {
-  background-color: transparent;
   border: 1px solid #1976D2;
+  background-color: transparent;
   color: #1976D2;
 }
 
@@ -203,9 +218,6 @@ button {
   color: #FFFFFF;
 }
 
-.icon-button.inverted .button-icon {
-  border: none;
-}
 
 .icon-button.inverted:hover .button-icon {
   border-right: 1px solid #1976D2;
@@ -221,7 +233,9 @@ button {
     height: 70px;
     padding: 0px 20px 0px 20px;
     background-color: #FFFFFF;
-    
+-webkit-box-shadow: 0px 4px 36px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 4px 36px -8px rgba(0,0,0,0.75);
+box-shadow: 0px 4px 36px -8px rgba(0,0,0,0.75);
 }
 
 .menu .menu-item {
@@ -365,7 +379,6 @@ button {
         display: flex;
         flex-direction: column;
         height: auto;
-        margin-top: 20px;
         padding-top: 10px;
         padding-bottom: 30px;
         background-color: #1976D2;
