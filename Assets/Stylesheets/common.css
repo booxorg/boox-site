@@ -73,6 +73,10 @@ button {
   min-height: 100vh;
 }
 
+.page-box > h1 {
+  text-align: center;
+}
+
 /* ========================== LABELED INPUT BOX ============================ */
 .labeled-input-box {
   position: relative;
