@@ -11,6 +11,10 @@
   padding-bottom: 50px;
 }
 
+.register-page form {
+  width: 100%;
+}
+
 .register-page .register-box {
   display: flex;
   flex-direction: column;
