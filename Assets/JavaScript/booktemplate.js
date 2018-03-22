@@ -8,6 +8,6 @@ function growDiv(elem)
     else 
     {
         var wrapper = document.querySelector(elem.getAttribute("data-bentryclass"));
-        growDiv.style.height = wrapper.clientHeight + "px";
+        growDiv.style.height = "auto";
     }
 }

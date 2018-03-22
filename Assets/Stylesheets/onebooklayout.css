@@ -41,7 +41,9 @@
 }
 
 .bookentry-container .bookentryinfo .buttons-container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 100fr 100fr;
+	grid-column-gap: 10px;
 	flex-direction: row;
 	align-self: center;
 	margin-top: auto;
@@ -51,7 +53,7 @@
 
 .bookentry-container .buttons-container .icon-button {
 	width: 100%;
-	padding: 0px 10px;
+
 }
 
 
@@ -140,7 +142,13 @@
 
 @media (max-width: 850px) {
 	.bookentrybar-container-parent .bookentrybar-container {
-		flex-direction: column;
+		flex-direction: columns;	
+	}
+
+	.bookentry-container .bookentryinfo .buttons-container {
+		grid-template-columns: 100%;
+		grid-column-gap: unset;
+		grid-row-gap: 10px;
 	}
 }
 
