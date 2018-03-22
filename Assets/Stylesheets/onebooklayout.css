@@ -6,6 +6,11 @@
 	margin-top: 20px;
 }
 
+.bookentrybar-container {
+	min-height: 40px;
+	line-height: 40px;
+}
+
 .bookentry-container
 {
 	display: flex;
