@@ -157,6 +157,12 @@
 	.bookentry-container-parent .bookentry-container .buttons-container {
 		flex-direction: column;
 	}
+
+	.bookentrybar-container {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 @media (max-width: 400px) {
