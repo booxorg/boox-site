@@ -1,6 +1,9 @@
 .addbook {
   padding-top: 50px;
   padding-bottom: 50px;
+  background-image: url("../Images/background_register.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;  
 }
 
 .addbook-container-parent {
