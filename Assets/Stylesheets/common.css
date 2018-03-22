@@ -176,9 +176,7 @@ background: url("../Images/blue-check-mark-hi.png") no-repeat;
 /* ======================== BUTTON ============================ */
 .icon-button {
   width: 100%;
-}
-
-.icon-button > div {
+  height: 40px;
   position: relative;
   display: flex;
   border: 1px solid #FFFFFF;
@@ -202,6 +200,7 @@ background: url("../Images/blue-check-mark-hi.png") no-repeat;
   width: 40px;
   border: none;
   border-right: 1px solid #FFFFFF;
+  font-weight: 700;
 }
 
 .icon-button .button-text {
@@ -217,19 +216,18 @@ background: url("../Images/blue-check-mark-hi.png") no-repeat;
   font-weight: 700;
 }
 
-.icon-button.inverted > div {
-  border: 1px solid transparent;
+.icon-button.inverted .button-icon {
+  border-right: none;
+}
+
+.icon-button.inverted {
+  border: 1px solid #1976D2;
   background-color: #1976D2;
   color: #FFFFFF;
 }
 
-.icon-button.inverted .button-icon {
-  border: none;
-  outline: none;
-}
 
-.icon-button.inverted:hover > div {
-  border: 1px solid #1976D2;
+.icon-button.inverted:hover {
   background-color: transparent;
   color: #1976D2;
 }
@@ -237,11 +235,6 @@ background: url("../Images/blue-check-mark-hi.png") no-repeat;
 .icon-button.inverted:hover .button-icon {
   background-color: #1976D2;
   color: #FFFFFF;
-}
-
-
-.icon-button.inverted:hover .button-icon {
-  border-right: 1px solid #1976D2;
 }
 
 /* ======================== ./BUTTON ========================== */

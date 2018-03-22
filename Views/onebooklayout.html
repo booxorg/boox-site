@@ -1,4 +1,5 @@
-<section class="bookentrybar-container-parent" data-bentryid="grow1" data-bentryclass=".book1" onclick="growDiv(this)"> 
+{% for i in range(3) %}
+<section class="bookentrybar-container-parent" data-bentryid="grow{{ i }}" data-bentryclass=".book{{ i }}" onclick="growDiv(this)"> 
     <div class="bookentrybar-container">
         <div class="barbooktitle"> 
             <h2>HTML and CSS: Design and Build Websites</h2>
@@ -13,8 +14,8 @@
             <h2>Design</h2>
         </div>
     </div>
-    <div class="bookentry-container-parent" id="grow1">
-        <div class="bookentry-container book1">
+    <div class="bookentry-container-parent" id="grow{{ i }}">
+        <div class="bookentry-container book{{ i }}">
             <div class="imagediv">
                 <img alt="Book cover image" src="../Assets/Images/book1_cover.jpg">
             </div>
@@ -28,83 +29,24 @@
                 </div>
                 <div class="buttons-container">
                     <button class="icon-button fb-login">
-                        <div>
-                            <div class="button-icon">
-                                <i class="far fa-user"></i>
-                            </div>
-                            <div class="button-text">
-                                See profile
-                            </div>     
-                        </div>   
+                        <span class="button-icon">
+                            <i class="far fa-user"></i>
+                        </span>
+                        <span class="button-text">
+                            See profile
+                        </span>       
                     </button>                            
                     <button class="icon-button fb-login">
-                        <div>
-                            <div class="button-icon">
-                                <i class="fab fa-goodreads-g"></i> 
-                            </div>
-                            <div class="button-text">
-                                View on Goodreads
-                            </div>     
-                        </div>   
+                        <span class="button-icon">
+                            <i class="fab fa-goodreads-g"></i> 
+                        </span>
+                        <span class="button-text">
+                            View on Goodreads
+                        </span>     
                     </button>
                 </div>
             </div>
         </div>
     </div>
 </section>
-    
-
-<section class="bookentrybar-container-parent" data-bentryid="grow2" data-bentryclass=".book2" onclick="growDiv(this)"> 
-    <div class="bookentrybar-container">
-        <div class="barbooktitle"> 
-            <h2>HTML and CSS: Design and Build Websites</h2>
-        </div>
-        <div class="barauthor"> 
-            <h2>Jon Duckett</h2>
-        </div>
-        <div class="baruser">
-            <h2>stickyfingers123</h2>
-        </div>
-        <div class="bargenre">
-            <h2>Design</h2>
-        </div>
-    </div>
-    <div class="bookentry-container-parent" id="grow2">
-        <div class="bookentry-container book2">
-            <div class="imagediv">
-                <img alt="Book cover image" src="../Assets/Images/book1_cover.jpg">
-            </div>
-            <div class="bookentryinfo">
-                <div class="bookentrytext">
-                    <h2>HTML and CSS: Design and Build Websites </h2>
-                    <h3>by Jon Duckett</h3>
-                    <h3>Uploaded by: stickyfingers123</h3>
-                    <p> Description: This book teaches you about HTML and CSS. Nifty, right?
-                    </p>
-                </div>
-                <div class="buttons-container">
-                    <button class="icon-button fb-login">
-                        <div>
-                            <div class="button-icon">
-                                <i class="far fa-user"></i>
-                            </div>
-                            <div class="button-text">
-                                See profile
-                            </div>     
-                        </div>   
-                    </button>                            
-                    <button class="icon-button fb-login">
-                        <div>
-                            <div class="button-icon">
-                                <i class="fab fa-goodreads-g"></i> 
-                            </div>
-                            <div class="button-text">
-                                View on Goodreads
-                            </div>     
-                        </div>   
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% endfor %}    

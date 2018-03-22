@@ -45,7 +45,7 @@
 }
 
 .addbook-container .icon-button {
-	padding-top: 20px;
+	margin-top: 20px;
 	width: 50%;
 	align-self: center;
 }
@@ -83,7 +83,7 @@
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 	.addbook-container-parent {
 		width: 80%;
 	}
@@ -93,5 +93,8 @@
   .addbook-container-parent .labeled-input-box .box-description-name {
     text-align: center;
     padding-left: unset;
+  }
+  .addbook-container .icon-button {
+    width: 100%;
   }
 }
