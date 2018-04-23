@@ -7,3 +7,7 @@ def test_route(variables):
 @route(url='/', method='GET')
 def main_route(variables):
     return 'This is the main page 2'
+
+@route(url='/silviu{num::\d}denis{num2::\d}')
+def test2(variables):
+    return variables['num'] + variables['num2']
