@@ -1,0 +1,75 @@
+
+Books
+----
+ID PK int
+ISBN NULL string
+Title string
+Genre string
+Expires date
+AuthorID string FK >- Authors.ID
+CoverID int FK >- Covers.ID
+Deleted bool
+
+Covers
+-----
+ID PK int
+Cover blob
+
+Authors
+------
+ID PK int
+Name string
+BookCount int
+
+Users
+----
+ID PK int
+Username string
+Password string
+PasswordSalt string
+FirstName string
+LastName string
+Email string
+isAdministrator bool
+
+UserBooks
+---------
+ID PK int
+BookID int FK >- Books.ID
+UserID int FK >- Users.ID
+
+Tokens
+------
+ID PK int
+UserID int FK >- Users.ID
+TokenType string
+Token string
+
+Locations
+---------
+ID PK int
+UserID int FK >- Users.ID
+Location string
+
+Preferences
+-----------
+ID PK int 
+UserID int FK >- Users.ID
+PreferenceType string
+Preference string
+
+History
+-------
+ID PK int
+UserID int FK >- Users.ID
+BookID int FK >- Books.ID
+
+Exchanges
+---------
+ID PK int
+OwnerID int FK >- Users.ID
+RecieverID int FK >- Users.ID
+BookID int FK >- Books.ID
+ExchangeDate date
+isFinished bool
+hasSucceeded bool
