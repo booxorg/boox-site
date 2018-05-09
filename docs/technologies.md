@@ -16,7 +16,11 @@ The public directory of the server is specified as
         Allow from all
 </Directory>
 ```
+The simplified flow looks like that, where Apache creates a new process for each request and runs the application script.
+After running index.wsgi, a new class instance of Application si created and control passed to the framework. When the framework finishes its work, it provides the runner (Apache) with a response, alongside with the content type and  other headers.
+![apache flow](https://raw.githubusercontent.com/beaverden/boox/master/docs/images/apache_diagram.png?token=AKZybneF-sxbPXWBuihMAZTVpx-kHtT1ks5a-_hKwA%3D%3D)
 
-
-
+### Framework
+The mini-framework is based on MVC model, having Models (database classes), Views (all views extending the base class View, that are being rendered and shown to the user) and Controllers (that will connect user interactions to the backend and realise all the application's business logic). 
+**The main architectural diagram is shown [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)**
 
