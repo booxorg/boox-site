@@ -34,3 +34,8 @@ _The main architectural diagram is below, also visible in svg format [here](http
     After the parsing has succeeded, the router will call the action method of the route and pass it all the variables found.
 
 2. **Controller** will accept the request variables and execute the logic neded to handle it. For example, addign the newly registered user to the database, adding a book, marking a book as removed, etc. All of the actions will have an attached controller.
+
+
+## Database
+The application diagram is shown below
+![database diagram](https://raw.githubusercontent.com/beaverden/boox/master/docs/architecture/DatabaseDiagram.png?token=AKZybg9Ly2-z5ibOok49CzRT3YXlWdpFks5a_AAjwA%3D%3D).
