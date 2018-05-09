@@ -23,4 +23,5 @@ After running index.wsgi, a new class instance of Application si created and con
 ### Framework
 The mini-framework is based on MVC model, having Models (database classes), Views (all views extending the base class View, that are being rendered and shown to the user) and Controllers (that will connect user interactions to the backend and realise all the application's business logic). 
 **The main architectural diagram is shown [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)**
+![architectural-diagram](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)
 
