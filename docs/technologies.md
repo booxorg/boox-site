@@ -120,7 +120,7 @@ The output format can be json or xml. The application presented in this paper us
 A geocoding request which returns a json looks like this:
 https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY
 
-### Google Books API
+#### Google Books API
 
 The Google Books API is used in combination with the Goodreads API to provide more information about books that don’t have all the characteristics set by the user who added them. To perform a search, the application sends an HTTP GET request to the following URI:
 
