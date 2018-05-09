@@ -20,6 +20,9 @@ The visitor: this user can view the profiles created on the application and sear
 
 ## Technologies
 
+### Python
+All the server side application code is written in Python, a high level scripting programming language used in such popular web frameworks as Django, Flask, Pyramid. It has proven to be readable and easy to write. As well as maintainable over time.
+
 ### Apache
 The server used by the application is *Apache HTTP Web Server*. Backed by [mod_wsgi](https://modwsgi.readthedocs.io/en/develop/), that allows the server to be [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) standard compliant. 
 It allows the server to be compatible with most web frameworks written in Python, including our developed mini-framework.
@@ -43,7 +46,7 @@ After running index.wsgi, a new class instance of Application si created and con
 ### Framework
 The mini-framework is based on MVC model, having Models (database classes), Views (all views extending the base class View, that are being rendered and shown to the user) and Controllers (that will connect user interactions to the backend and realise all the application's business logic). 
 
-_The main architectural diagram is below, a more detailed, technical one is available[here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
+_The main architectural diagram is below, a more detailed, technical one is available [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
 ![architectural-diagram](https://github.com/beaverden/boox/blob/master/docs/architecture/GeneralDiagram.svg)
 
 1. **Router** will accept, parse and find the matching route for the url. Then it will call the associated controller and return a fully qualified and rendered response.
@@ -72,13 +75,13 @@ The application diagram is shown below
 
 ### Frontend 
 The technologies used for design are
-1. HTML5
-2. CSS3
-3. JavaScript
+1. HTML5 (Hyper Text Markup Language for defining the structure of the pages)
+2. CSS3 (Cascading Style Sheets for designing the layout and look of the frontend)
+3. JavaScript (For interaction and AJAX requests to the server)
 
 ### Server side API
 The RESTful application will provide useful APIs for interaction:
-
+Cliends must make a request to the APIS and handle the result
 1. User registration `POST` `/register` 
 2. User login `POST` `/login`
 3. Select books `GET` `/book?id={book_id}&format={return_format}&limit=1`
@@ -89,6 +92,17 @@ The RESTful application will provide useful APIs for interaction:
 8. Search books `GET` `/search?filters={filter_dict}&keywords={keywords}&format={return_format}&limit={max_result_limit}`
 9. Generate report `GET` `/report?type={report_type}`
 10. Request book `POST` `/request`
+
+### External APIs
+Some of the modules that compose the application require the use of one or more APIs to correctly perform their tasks. The APIs used in this project come from Goodreads, Facebook, Google Books and Google Maps. 
+#### Goodreads API
+This API requires the user to have a developer key that can be passed through the link when accessing a method. Some of the methods require the using of OAuth, but those methods are not used in this project. For example, a request looks like this: `https://www.goodreads.com/search.xml?key=YOUR_KEY&q=Ender%27s+Game`
+The response is an XML document that describes the object we’ve requested, in this case being the book “Ender’s Game”.
+
+#### Facebook Oauth2 API
+A new app will be registered in "Facebook App Creation" section.
+The URL ```https://www.facebook.com/`v3.0`/dialog/oauth? client_id={app-id}  &redirect_uri={redirect-uri}  &state={state-param}``` will be used to get the temporary Oauth2 access token. 
+Then requests to the Facebook Graph API will be made to aceess user first name, last name, email, etc.
 
 ### Use cases
 ##### Book adding, including a invalid named book
