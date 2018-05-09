@@ -24,7 +24,7 @@ After running index.wsgi, a new class instance of Application si created and con
 ## Framework
 The mini-framework is based on MVC model, having Models (database classes), Views (all views extending the base class View, that are being rendered and shown to the user) and Controllers (that will connect user interactions to the backend and realise all the application's business logic). 
 
-_The main architectural diagram is below, a more detailed, technical one is available here [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
+_The main architectural diagram is below, a more detailed, technical one is available[here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
 ![architectural-diagram](https://github.com/beaverden/boox/blob/master/docs/architecture/GeneralDiagram.svg)
 
 1. **Router** will accept, parse and find the matching route for the url. Then it will call the associated controller and return a fully qualified and rendered response.
@@ -50,6 +50,17 @@ _The main architectural diagram is below, a more detailed, technical one is avai
 ## Database
 The application diagram is shown below
 ![database diagram](https://raw.githubusercontent.com/beaverden/boox/master/docs/architecture/DatabaseDiagram.png?token=AKZybg9Ly2-z5ibOok49CzRT3YXlWdpFks5a_AAjwA%3D%3D)
+
+## Use cases
+#### Book adding, including a invalid named book
+![book add usecase](https://github.com/beaverden/boox/blob/master/docs/usecase/svg/AddBookUseCase.svg)
+
+#### Book publishing options
+![book publish options](https://github.com/beaverden/boox/blob/master/docs/usecase/svg/PublishBook.svg)
+
+#### Search book filters
+![search filters](https://github.com/beaverden/boox/blob/master/docs/usecase/svg/SearchUseCase.svg)
+
 
 ## Development roles
 ##### Rozimovschii Denis 
