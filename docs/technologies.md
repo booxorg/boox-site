@@ -97,12 +97,28 @@ Cliends must make a request to the APIS and handle the result
 Some of the modules that compose the application require the use of one or more APIs to correctly perform their tasks. The APIs used in this project come from Goodreads, Facebook, Google Books and Google Maps. 
 #### Goodreads API
 This API requires the user to have a developer key that can be passed through the link when accessing a method. Some of the methods require the using of OAuth, but those methods are not used in this project. For example, a request looks like this: `https://www.goodreads.com/search.xml?key=YOUR_KEY&q=Ender%27s+Game`
-The response is an XML document that describes the object weíve requested, in this case being the book ìEnderís Gameî.
+The response is an XML document that describes the object we‚Äôve requested, in this case being the book ‚ÄúEnder‚Äôs Game‚Äù.
 
 #### Facebook Oauth2 API
 A new app will be registered in "Facebook App Creation" section.
 The URL ```https://www.facebook.com/`v3.0`/dialog/oauth? client_id={app-id}  &redirect_uri={redirect-uri}  &state={state-param}``` will be used to get the temporary Oauth2 access token. 
 Then requests to the Facebook Graph API will be made to aceess user first name, last name, email, etc.
+
+#### Geocoding API (Google Maps)
+Geocoding is the process of converting human-readable addresses into geographic coordinates. The Geocoding API provides a direct way to perform this conversion via an HTTP request.
+
+The Geocoding API request has the following format: https://maps.googleapis.com/maps/api/geocode/outputFormat?parameters
+
+The output format can be json or xml. The application presented in this paper uses Latitude/Longitude Lookup. For this lookup, some parameters have to be included in the geocoding request:
+
+-   address, the street address that the application wants to geocode
+    
+-   Components, a components filter with elements separated by a pipe; each element in the components filter is a component:value pair
+    
+-   key, the application‚Äôs API key
+
+A geocoding request which returns a json looks like this:
+https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY
 
 ### Use cases
 ##### Book adding, including a invalid named book
