@@ -7,4 +7,3 @@ def test_route(variables):
 @route(url='/', method='GET')
 def main_route(variables):
     return 'This is the main page 2'
-
