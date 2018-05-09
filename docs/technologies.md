@@ -1,3 +1,4 @@
+
 # Technologies
 
 ## Apache
@@ -23,8 +24,8 @@ After running index.wsgi, a new class instance of Application si created and con
 ## Framework
 The mini-framework is based on MVC model, having Models (database classes), Views (all views extending the base class View, that are being rendered and shown to the user) and Controllers (that will connect user interactions to the backend and realise all the application's business logic). 
 
-_The main architectural diagram is below, also visible in svg format [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
-![architectural-diagram](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)
+_The main architectural diagram is below, a more detailed, technical one is available here [here](https://github.com/beaverden/boox/blob/master/docs/architecture/ArchitecturalDiagram.svg)_
+![architectural-diagram](https://github.com/beaverden/boox/blob/master/docs/architecture/GeneralDiagram.svg)
 
 1. **Router** will accept, parse and find the matching route for the url. Then it will call the associated controller and return a fully qualified and rendered response.
     The components of a route url are:
@@ -33,11 +34,37 @@ _The main architectural diagram is below, also visible in svg format [here](http
     
     After the parsing has succeeded, the router will call the action method of the route and pass it all the variables found.
 
-2. **Controller** will accept the request variables and execute the logic neded to handle it. For example, addign the newly registered user to the database, adding a book, marking a book as removed, etc. All of the actions will have an attached controller.
+2. **Controller** will accept the request variables from the router and execute the logic neded to handle it. For example, adding the newly registered user to the database, adding a book, marking a book as removed, etc. All of the actions will have an attached controller.
     1. `BooksController` handles adding (publishBook) and removing a book. Also it will serve all the books required by the views. When adding a book, the server will verify its existence in the GoodReads and GoogleBooks databases and deny the user adding if it's not present.
     2. `NotifyController` will handle user notifications about nearby books and reminders
+    3. `FileRequestHandler` will generate serve the application resources like Images, PDFs, JavaScript files and CSS files, it will contain the routes to such folders
+    4. `SearchController` will apply the filters and return the most appropriate matches
+    5. `AuthController` takes care of the login and register processes, adds new users to the database and verifies their validity during login
+    6. `ProfileController` serves the information about the user profile like name, username, all the books it has, avatar
+    7. `ReportController`generates and servers statistics about the current application state, including the most active users, most popular books, etc. Also available in formats like JSON, PDF
+
+3. **Model** is an abstraction layer over the raw database connection and interaction. Each Model is a subclass of the main interface that contains all the needed methods and attributes to elliminate the sometimes painful Database work. 
+	
 
 
 ## Database
 The application diagram is shown below
-![database diagram](https://raw.githubusercontent.com/beaverden/boox/master/docs/architecture/DatabaseDiagram.png?token=AKZybg9Ly2-z5ibOok49CzRT3YXlWdpFks5a_AAjwA%3D%3D).
+![database diagram](https://raw.githubusercontent.com/beaverden/boox/master/docs/architecture/DatabaseDiagram.png?token=AKZybg9Ly2-z5ibOok49CzRT3YXlWdpFks5a_AAjwA%3D%3D)
+
+## Development roles
+##### Rozimovschii Denis 
+1. Books functionality module
+2. Search module
+3. Report module
+4. Profile module
+5. Goodreads API for book addition
+6. Google books API for book addition
+
+#### Vitel Silviu-Constantin
+1. Login module
+2. Register module
+3. Model class development (Database abstraction layer)
+4. Notification module
+5. Facebook API for auth
+6. Goodreads API for auth
+7. Google Maps API for location
