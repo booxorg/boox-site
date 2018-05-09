@@ -120,6 +120,20 @@ The output format can be json or xml. The application presented in this paper us
 A geocoding request which returns a json looks like this:
 https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=API_KEY
 
+### Google Books API
+
+The Google Books API is used in combination with the Goodreads API to provide more information about books that don’t have all the characteristics set by the user who added them. To perform a search, the application sends an HTTP GET request to the following URI:
+
+https://www.googleapis.com/books/v1/volumes?q=search+terms
+
+The request has a single required parameter q that tells the API to search for volumes that contain the specified string. There is a set of special keywords that can be specified in the search terms to search in particular fields, such as:
+
+-   Intitle: returns results where the text is found in the title
+    
+-   Inauthor: returns result where the text is found in the author’s name
+    
+-   inpublisher, subject, isbn, etc.
+
 ### Use cases
 ##### Book adding, including a invalid named book
 ![book add usecase](https://github.com/beaverden/boox/blob/master/docs/usecase/svg/AddBookUseCase.svg)
