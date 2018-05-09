@@ -34,6 +34,8 @@ _The main architectural diagram is below, also visible in svg format [here](http
     After the parsing has succeeded, the router will call the action method of the route and pass it all the variables found.
 
 2. **Controller** will accept the request variables and execute the logic neded to handle it. For example, addign the newly registered user to the database, adding a book, marking a book as removed, etc. All of the actions will have an attached controller.
+    1. `BooksController` handles adding (publishBook) and removing a book. Also it will serve all the books required by the views. When adding a book, the server will verify its existence in the GoodReads and GoogleBooks databases and deny the user adding if it's not present.
+    2. `NotifyController` will handle user notifications about nearby books and reminders
 
 
 ## Database
