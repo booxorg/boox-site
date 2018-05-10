@@ -81,7 +81,7 @@ The technologies used for design are
 
 ### Server side API
 The RESTful application will provide useful APIs for interaction:
-Cliends must make a request to the APIS and handle the result
+Clients must make a request to the API and handle the result
 1. User registration `POST` `/register` 
 2. User login `POST` `/login`
 3. Select books `GET` `/book?id={book_id}&format={return_format}&limit=1`
