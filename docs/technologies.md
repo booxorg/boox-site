@@ -9,11 +9,11 @@ The application integrates external services (such as Goodreads and Google Books
 ### User roles
 
 Based on the privileges that the users have in the context of the application, we can define three types of users:
-The visitor: this user can view the profiles created on the application and search for books, but he cannot initiate an exchange
+1. The visitor: this user can view the profiles created on the application and search for books, but he cannot initiate an exchange
 
-1. The registered user: this user can view the profiles created on the site, add books, remove books (from his own portfolio), initiate and decline and exchange
+2. The registered user: this user can view the profiles created on the site, add books, remove books (from his own portfolio), initiate and decline and exchange
 
-2. The administrator: this user can remove the accounts of other users, remove books and export data about the traffic on the application   
+3. The administrator: this user can remove the accounts of other users, remove books and export data about the traffic on the application   
 
 
 
@@ -21,7 +21,7 @@ The visitor: this user can view the profiles created on the application and sear
 ## Technologies
 
 ### Python
-All the server side application code is written in Python, a high level scripting programming language used in such popular web frameworks as Django, Flask, Pyramid. It has proven to be readable and easy to write. As well as maintainable over time.
+All the server side application code is written in Python, a high level scripting programming language used in such popular web frameworks as Django, Flask, Pyramid. It has proven to be readable and easy to write, as well as maintainable over time.
 
 ### Apache
 The server used by the application is *Apache HTTP Web Server*. Backed by [mod_wsgi](https://modwsgi.readthedocs.io/en/develop/), that allows the server to be [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) standard compliant. 
