@@ -26,10 +26,11 @@
 <body>
     <div class="main-box">
         {% include 'menu.html' %}
-        {% include page_name %}
+        {% block content %}{% endblock %}
         {% include 'footer.html' %}
     </div>
     <!-- Scripts go here -->
+    {% block scripts %}{% endblock %}
     <!-- /.Scripts go here -->
 </body>
 </html>

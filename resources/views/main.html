@@ -1,4 +1,7 @@
+{% extends "common.html" %}
 
+{% block content %}
+<div>Salut, {{ username }}</div>
 <section class="page-box main-page">
     <h1 class="main-page-header">This is us</h1>
     <div class="statistics-container">
@@ -58,7 +61,9 @@
         </div>
     </div>
 </section>
+{% endblock %}
     
+{% block scripts %}    
 <script>
     function create_interval(element) {
         var current = 0;
@@ -81,3 +86,4 @@
     }
     assign_random();
 </script>
+{% endblock %}
