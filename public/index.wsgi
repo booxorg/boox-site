@@ -1,10 +1,13 @@
 #!/usr/bin/python2.7
 import sys, os
 import monitor
+import posixpath
 monitor.start(interval=1.0)
 monitor.track(os.path.join(os.path.dirname(__file__), '..'))
 
 from liteframework.application import Application
+from liteframework.routing import Router
+from app.routes import *
 
 #####################################################################################
 ###    The entry point of the application. 
@@ -12,6 +15,11 @@ from liteframework.application import Application
 #####################################################################################
 
 def application(environ, start_response):   
-    app = Application(environ, start_response)
-    return app.handle_request()
+    # Wrapper to set SCRIPT_NAME to actual mount point.
+    environ['SCRIPT_NAME'] = posixpath.dirname(environ['SCRIPT_NAME'])
+    if environ['SCRIPT_NAME'] == '/':
+        environ['SCRIPT_NAME'] = ''
+    path = os.path.join(os.path.dirname(__file__), '..')
+    Application.init(environ, start_response, path)
+    return Router.handle_request()
 

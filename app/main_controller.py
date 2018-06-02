@@ -1,9 +1,7 @@
-from liteframework.routing import route
+from liteframework.routing import Route
+from liteframework.controller import Controller
 
-@route(url='/test/{name::[A-Za-z]+}', method='GET')
-def test_route(variables):
-    return 'Hello! ' + variables['name']
+@Route(url='/', method='GET')
+def index(variables):
+    return Controller.view('main')
 
-@route(url='/', method='GET')
-def main_route(variables):
-    return 'This is the main page 2'
