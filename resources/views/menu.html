@@ -1,15 +1,15 @@
 <header class="menu container">
     <div class="menu-item menu-button block">
-        <a class="centered" href="#">books</a>
+        <a class="centered" href="{{ full_url('/books') }} ">books</a>
     </div>
     <div class="menu-item menu-button block">
-        <a class="centered" href="viewprofile.html">profile</a>
+        <a class="centered" href="{{ full_url('/profile') }}">profile</a>
     </div>
     <div class="menu-item menu-button block">
-        <a class="centered" href="personalized_search.html">search</a>
+        <a class="centered" href="{{ full_url('/search') }}">search</a>
     </div>
     <div class="menu-item menu-logo block">
-        <a class="centered" href="main.html">
+        <a class="centered" href="{{ full_url('/') }}">
             <!--
             <img src="../Assets/Images/faiths-speak-on-referendums-17.png"/>
         -->
@@ -17,12 +17,12 @@
         </a>
     </div>
     <div class="menu-item right-aligned menu-button block">
-        <a class="centered" href="registerpage.html">register</a>
+        <a class="centered" href="{{ full_url('/register') }}">register</a>
     </div>
     <div class="menu-item menu-button block">
-        <a class="centered" href="loginpage.html">login</a>
+        <a class="centered" href="{{ full_url('/login') }}">login</a>
     </div>
     <div class="menu-item menu-button block">
-        <a class="centered" href="addbook.html">add book</a>
+        <a class="centered" href="{{ full_url('/add') }}">add book</a>
     </div>
 </header>

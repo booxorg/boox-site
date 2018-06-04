@@ -1,4 +1,6 @@
+{% extends 'common.html' %}
 
+{% block content %}
 <section class="page-box addbook">
     <h1>Add a new book</h1>
     <div class="addbook-container-parent">
@@ -85,8 +87,12 @@
         </div>
     </div>
 </section>
-<script src="Assets/JavaScript/fileselectcustom.js">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ full_url('/public/assets/JavaScript/fileselectcustom.js') }}">
 </script>
+{% endblock %}
 
 
             

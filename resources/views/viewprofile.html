@@ -1,3 +1,6 @@
+{% extends 'common.html' %}
+
+{% block content %}
 <section class="page-box view-profile">
     <div class="profile-wrapper">
         <img alt="User profile picture" src="../Assets/Images/blank-profile-picture.png" class="profile-image"/>
@@ -60,4 +63,8 @@
         {% include 'onebooklayout.html' %}
     </div>
 </section>
-<script src="Assets/JavaScript/booktemplate.js"></script>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ full_url('/public/assets/JavaScript/booktemplate.js') }}"></script>
+{% endblock %}

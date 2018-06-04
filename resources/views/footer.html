@@ -3,7 +3,7 @@
     <div class="footer-subscribe block">
         <div class="centered">Subscribe to our news feed</div> 
     </div>
-    <form class="footer-input block">
+    <form action="{{ full_url('/subscribe-feed') }}" class="footer-input block" method=POST>
         <input class="centered" placeholder="enter email" type="email" />
     </form>
 </footer>

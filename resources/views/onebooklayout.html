@@ -1,3 +1,6 @@
+{% extends 'common.html' %}
+
+{% block content %}
 {% for i in range(3) %}
 <section class="bookentrybar-container-parent" data-bentryid="grow{{ i }}" data-bentryclass=".book{{ i }}" onclick="growDiv(this)"> 
     <div class="bookentrybar-container">
@@ -50,3 +53,4 @@
     </div>
 </section>
 {% endfor %}    
+{% endblock %}

@@ -1,4 +1,6 @@
+{% extends 'common.html' %}
 
+{% block content %}
 <section class="page-box personalized-search">
     <div class="search-bar">
         <form>
@@ -101,5 +103,9 @@
         {% include 'onebooklayout.html' %} 
     </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
 <script src="Assets/JavaScript/personalized_search.js"></script>
 <script src="Assets/JavaScript/booktemplate.js"></script>
+{% endblock %}
