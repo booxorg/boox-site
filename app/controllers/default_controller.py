@@ -2,7 +2,7 @@
 import liteframework.controller as Controller 
 import liteframework.routing as Routing 
 
-@Routing.Route(url='/', method='GET')
+@Routing.Route(url='/', method='GET', disabled=True)
 def index(variables={}, request={}):
     lines = r'''
                __.                                              

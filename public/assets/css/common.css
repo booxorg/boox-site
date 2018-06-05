@@ -148,7 +148,7 @@ button {
 }
 
 .checkbox input[type="checkbox"]:checked + label:before {
-background: url("../Images/blue-check-mark-hi.png") no-repeat;
+background: url("../images/blue-check-mark-hi.png") no-repeat;
 }
 
 

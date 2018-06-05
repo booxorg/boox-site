@@ -5,7 +5,7 @@
 /* ======================== STATS =============================== */
 
 .main-page {
-  background-image: url("../Images/reading-925589_1280.jpg");
+  background-image: url("../images/reading-925589_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;   
   padding-bottom: 40px; 
@@ -135,7 +135,7 @@
 
 /* ======================== SEARCH ============================== */
 .personalized-search {
-  background-image: url("../Images/background_register.jpg");
+  background-image: url("../images/background_register.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -298,7 +298,7 @@
   padding-top: 50px;
   padding-bottom: 50px;
   min-height: 100vh;
-  background-image: url("../Images/background_register.jpg");
+  background-image: url("../images/background_register.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
