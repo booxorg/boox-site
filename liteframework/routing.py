@@ -26,6 +26,10 @@ class Request:
         self.method = None
         self.url = None
         self.input = None    
+        self.cookies = None
+        self.new_cookies = None
+        self.params = None
+        self.url_no_params = None
 
     def get(self, key, default):
         pass
@@ -41,8 +45,8 @@ def Route(*args, **kwargs):
             new_route.method = 'GET' if 'method' not in kwargs else kwargs['method']
             new_route.action = action_method
             new_route.disabled = False if 'disabled' not in kwargs else kwargs['disabled']
-            App.routing_table[kwargs['url']] = copy.deepcopy(new_route)
-        print('Route reclared!')
+            if not new_route.disabled:
+                App.routing_table[kwargs['url']] = copy.deepcopy(new_route)
         return wrapper
     return decorator
 
@@ -50,15 +54,21 @@ def Route(*args, **kwargs):
 def route_url(request):
     for template, route in App.routing_table.iteritems():
         if request.method == route.method and route.disabled == False:
-            result, variables = Util.match_url(template, request.url)
+            result, variables = Util.match_url(template, request.url_no_params)
             if result:
                 print 'url {} matched route {}, variables={}'.format(request.url, template, variables)
+                if request.params:
+                    for (key, value) in request.params.items():
+                        variables.update({key: value[0]})
                 return route.action(request=request, variables=variables)
     return Controller.response_not_found()
 
 def handle_request(request):
     output, content, status = route_url(request)
     response_headers = output.items()
+
+    for cookie in request.new_cookies.values():
+        response_headers.append(('Set-Cookie', cookie.OutputString()))
     App.start_response(status, response_headers)
     return content
 

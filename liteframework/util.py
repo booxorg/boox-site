@@ -12,10 +12,9 @@ def url_reconstruction(environ):
         url += '?' + environ['QUERY_STRING']
     return url
 
-def get_base(environ):
-    pass
 
 def match_url(template, actual_url):
+    print template, actual_url
     template = template.strip()
     actual_url = actual_url.strip()
 

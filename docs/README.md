@@ -1,6 +1,9 @@
 # liteframework
 A POC Python Web Framework following MVC principles
 
+## Disclaimer 
+This is a POC Framework that doesn't in any way claim to be secure or correct. It does not and will never guarantee compatibility or reliability and exists purely for educational purposes.
+
 ## General description
 Everything starts with Apache receiving a request. `mod_wsgi` executes `index.wsgi` located in the public directory, passing variables `environ` and `start_response` to a function called `application` (defined by the standard [PEP 3333](https://www.python.org/dev/peps/pep-0333/)).
 * The `environ` dictionary contains all the information about the request such as `SERVER_PORT`, `REQUEST_METHOD`, `SERVER_PROTOCOL`, `CONTENT_LENGTH`, `HTTP_USER_AGENT` and others.
@@ -91,12 +94,81 @@ A template can contain an indefinite number of variables with **unique** names.
 **All the variables will be passed along to the controller in the `variables` dictionary having their names as keys.**
 
 
+### Cookies
+```
+import liteframework.cookies as Cookies
+Cookies.set_cookie(request, 'name', 'John Doe', expires_after_days=60)
+name = Cookies.get_cookie(request, 'name', 'Unknown name')
+```
+The framework supports a very primitive version of cookies.
+They are encrypted with `1024 bit RSA` and stored in the user's browser for 30 days but default or for  `expires_after_days`.
+The encryption keys are genereated an stored as `/storage/keys/cookie_private.pem` and `/storage/keys/cookie_public.pem`.
+1. When the user sends an request, the script checks for the existence of the header `HTTP-COOKIE`, which will be parsed and
+kept in `request.cookies` internal object. 
+2. When the user asks for a cookie, its value is extracted from the object and decrypted with the private key.
+3. When the user stores a cookie, it gets encrypted with the public key and saved in `request.new_cookies` and then added to the response as a `Set-Cookie` header 
+
+The current cookie functions are 
+
+#### set_cookie
+
+| Name | Description |
+|------|-------------|
+| request               | _Mandatory parameter_, the received request object |
+| key                   | _Mandatory parameter_ The cookie name |
+| value                 | _Mandatory parameter_ The cookie value (will be encrypted) |
+| path                  | Cookie path    |
+| expires_after_days    | Number of days for the cookie to live |
+| domain                | Cookie domain |
+
+#### get_cookie
+
+| Name | Description |
+|------|-------------|
+| request               | _Mandatory parameter_, the received request object |
+| key                   | _Mandatory parameter_ The cookie name |
+| default               | _Mandatory parameter_ The cookie default value if it's not found |
+
+#### delete_cookie
+Will invalidate the cookie by setting expire date to past
+
+| Name | Description |
+|------|-------------|
+| request               | _Mandatory parameter_, the received request object |
+| key                   | _Mandatory parameter_ The cookie name |
+
 ### Installation
 
-`sudo apt-get update`
+1. `sudo apt-get update`
 
+2. Install apache
 `sudo apt-get install apache2 apache2-utils libexpat1 ssl-cert python`
 
+3. Install mod-wsgi
 `sudo apt-get install libapache2-mod-wsgi`
 
+4. Restart apache
 `sudo /etc/init.d/apache2 restart`
+
+5. Add the config (with a proper name, and chaning all the names in the conf)
+`cp docs/defaults/000-default.conf /etc/apache2/sites-available/project.conf`
+
+6. Enable the site
+`sudo a2ensite project.conf`
+
+7. Reload apache
+`sudo service apache2 reload`
+
+8. Install mysql
+
+    ```
+    sudo apt-get install mysql-server
+    sudo apt-get install python-pip python-dev libmysqlclient-dev
+    sudo pip install MySQL-python
+    ```
+
+9. Create the database and tables
+
+10. Copy the default `docs/defaults/config.ini` to the root and change all the necessary variables 
+ 
+11. Enjoy
