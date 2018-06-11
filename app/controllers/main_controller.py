@@ -3,6 +3,7 @@ import liteframework.routing as Routing
 import liteframework.controller as Controller
 import liteframework.global_function as Global 
 import liteframework.application as App
+import liteframework.middleware.params as Params
 
 @Global.GlobalFunction
 def api_address():
@@ -43,3 +44,8 @@ def add_book(request={}, variables={}):
         'title' : 'Search for a book'
     }
     return Controller.response_view('personalized_search.html', pass_variables)    
+
+@Routing.Route(url='/session', method='GET', middleware=[Params.has_params('msg')])
+def add_session(variables={}, request={}):
+    App.session.set('message', request.params['msg'])
+    return Controller.response_json({'status' : 'success'})

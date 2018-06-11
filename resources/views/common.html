@@ -33,6 +33,19 @@
     </div>
     <!-- Scripts go here -->
     {% block scripts %}{% endblock %}
+    <script>
+        function setMessage(msg) {
+            $.ajax({
+                url: '{{ full_url("/session") }}' + '?msg={0}'.format(msg),
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function () {
+                    console.log('Error!');
+                }
+            })
+        }
+    </script>
     <!-- /.Scripts go here -->
 </body>
 </html>

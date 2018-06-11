@@ -74,7 +74,9 @@
         $.ajax({
             url: '{{ api_address() }}' + url_format,
             success: function (response) {
-                console.log(response);
+                $.ajax({
+                    
+                })
             },
             error: function() {
                 console.error('Error!');
