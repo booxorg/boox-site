@@ -2,7 +2,7 @@
 
 {% block content %}
 <section class="page-box register-page">
-    <form>
+    <form onsubmit="return register();">
         <div class="register-box">
             <h1 class="head">Join b00x!</h1>
             <div class="input-icon">
@@ -10,7 +10,7 @@
                     <span class="inpicon">
                      <i class="fa fa-user-circle" aria-hidden="true"></i>
                     </span>
-                    <input type="text" placeholder="Username">
+                    <input id="username" type="text" placeholder="Username">
                 </div>
             </div>
             <div class="input-icon">
@@ -18,7 +18,7 @@
                     <span class="inpicon">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
-                    <input type="text" placeholder="First Name">
+                    <input id="firstName" type="text" placeholder="First Name">
                 </div>
             </div>  
             <div class="input-icon">
@@ -26,7 +26,7 @@
                     <span class="inpicon">
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </span>
-                    <input type="text" placeholder="Last Name">
+                    <input id="lastName" type="text" placeholder="Last Name">
                 </div>
             </div>
             <div class="input-icon">
@@ -34,7 +34,7 @@
                     <span class="inpicon">
                         <i class="fa fa-at" aria-hidden="true"></i>
                     </span>
-                    <input type="email" placeholder="Email">
+                    <input id="email" type="email" placeholder="Email">
                 </div>
             </div>
             <div class="input-icon">
@@ -42,7 +42,7 @@
                     <span class="inpicon">
                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                     </span>
-                    <input type="password" placeholder="Password">
+                    <input id="password" type="password" placeholder="Password">
                 </div>
             </div>  
             <div class="input-icon">
@@ -50,11 +50,37 @@
                     <span class="inpicon">
                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                     </span>
-                    <input type="password" placeholder="Confirm password">
+                    <input id="confirmPassword" type="password" placeholder="Confirm password">
                 </div>
             </div>
             <button type="submit" class="submit-button slide">&nbsp;</button>
         </div>
     </form>
 </section>
+{% endblock %}
+
+{% block scripts %}
+<script type="application/javascript">
+    function register() {
+        var username = $('#username').val();
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var confirmPassword = $('#confirmPassword').val();
+        var url_format = '/register?username={0}&password={1}&cpassword={2}&fname={3}&lname={4}&email={5}'.format(
+            username, password, confirmPassword, firstName, lastName, email
+        );
+        $.ajax({
+            url: '{{ api_address() }}' + url_format,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function() {
+                console.error('Error!');
+            }
+        });
+        return false;
+    }
+</script>
 {% endblock %}

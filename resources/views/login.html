@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="page-box register-page">
-    <form>
+    <form onsubmit="return login_request();" action='javascript:void(0);'>
         <div class="register-box">
         <h1 class="head">Login to b00x!</h1>
         <div class="input-icon">
@@ -10,7 +10,7 @@
                 <span class="inpicon">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                 </span>
-                <input type="text" placeholder="Username/Email">
+                <input id="login" type="text" placeholder="Username/Email">
             </div>
         </div>
         <div class="input-icon">
@@ -18,7 +18,7 @@
                 <span class="inpicon">
                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                 </span>
-                <input type="password" placeholder="Password">
+                <input id="password" type="password" placeholder="Password">
             </div>
         </div>
         <div class="login-platforms">
@@ -43,4 +43,26 @@
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="application/javascript">
+    function login_request() {
+        var username = $('#login').val();
+        var password = $('#password').val();
+        var url_format = '/login?username={0}&password={1}'.format(username, password);
+        $.ajax({
+            url: '{{ api_address() }}' + url_format,
+            success: function (response) {
+                if ('response' in response && 'token' in response['response']) {
+                    Cookies.set('token', response['response']['token'], { expires: 3 });
+                }
+            },
+            error: function() {
+                console.error('Error!');
+            }
+        });
+        return false;
+    }
+</script>
 {% endblock %}

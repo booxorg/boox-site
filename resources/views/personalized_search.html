@@ -115,18 +115,22 @@
     $(document).ready(function() {
         $('#search-bar-input').bind('input', function () {
             var newValue = $(this).val();
-            if (newValue !== oldValue) {
-                $.ajax({
-                    url: '{{ api_address() }}' + '/search?token={token}&keywords={}'.format({'token' : 'tok', 'keywords' : 'jane'}),
-                    success: function(response) {
-                        console.log(response);
-                        console.log('OK');
-                    },
-                    error: function() {
-                        console.error('Failed!');
-                    }
-                });
-            }
+            var token = Cookies.get('token');
+            if (token) {
+                var api_addr = '/search?token={0}&keywords={1}'.format(token, newValue);
+                if (newValue !== oldValue) {
+                    $.ajax({
+                        url: '{{ api_address() }}' + api_addr,
+                        success: function(response) {
+                            console.log(response);
+                            console.log('OK');
+                        },
+                        error: function() {
+                            console.error('Failed!');
+                        }
+                    });
+                }
+            }            
         })
     })
 </script>
