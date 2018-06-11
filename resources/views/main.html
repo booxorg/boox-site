@@ -78,7 +78,7 @@
 
     $(document).ready(function() {
         $.ajax({
-            url: 'http://192.168.1.102:81/report/info',
+            url: '{{ api_address() }}' + '/report/info',
             success : function(response) {
                 var attributes = ['users', 'connections', 'locations', 'books', 'authors', 'nearby'];
                 attributes.forEach(function (element) {

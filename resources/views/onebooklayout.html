@@ -1,5 +1,3 @@
-{% extends 'common.html' %}
-
 {% block content %}
 {% for i in range(3) %}
 <section class="bookentrybar-container-parent" data-bentryid="grow{{ i }}" data-bentryclass=".book{{ i }}" onclick="growDiv(this)"> 
@@ -20,7 +18,7 @@
     <div class="bookentry-container-parent" id="grow{{ i }}">
         <div class="bookentry-container book{{ i }}">
             <div class="imagediv">
-                <img alt="Book cover image" src="../Assets/Images/book1_cover.jpg">
+                <img alt="Book cover image" src="{{ full_url('/public/assets/images/book1_cover.jpg') }}">
             </div>
             <div class="bookentryinfo">
                 <div class="bookentrytext">

@@ -108,4 +108,26 @@
 {% block scripts %}
 <script src="{{ full_url('/public/assets/js/personalized_search.js') }}"></script>
 <script src="{{ full_url('/public/assets/js/booktemplate.js') }}"></script>
+<script type="application/javascript">
+
+
+    var oldValue = '';
+    $(document).ready(function() {
+        $('#search-bar-input').bind('input', function () {
+            var newValue = $(this).val();
+            if (newValue !== oldValue) {
+                $.ajax({
+                    url: '{{ api_address() }}' + '/search?token={token}&keywords={}'.format({'token' : 'tok', 'keywords' : 'jane'}),
+                    success: function(response) {
+                        console.log(response);
+                        console.log('OK');
+                    },
+                    error: function() {
+                        console.error('Failed!');
+                    }
+                });
+            }
+        })
+    })
+</script>
 {% endblock %}
