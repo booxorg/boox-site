@@ -8,7 +8,7 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="users" class="number-text">0</span>
                 </div>
             </div>  
             <span class="stat-name">Users</span>
@@ -17,7 +17,7 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="connections" class="number-text">0</span>
                 </div>
             </div>  
             <span class="stat-name">Connections</span>
@@ -26,7 +26,7 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="locations" class="number-text">0</span>
                 </div>
             </div>  
             <span class="stat-name">Locations</span>
@@ -35,7 +35,7 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="books" class="number-text">0</span>
                 </div>
             </div>  
             <span class="stat-name">Books</span>
@@ -44,19 +44,19 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="authors" class="number-text">0</span>
                 </div>
             </div>  
-            <span class="stat-name">Nearby</span>
+            <span class="stat-name">Authors</span>
         </div>
         <div class="stat-item">
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span class="number-text">0</span>
+                    <span id="nearby" class="number-text">0</span>
                 </div>
             </div>  
-            <span class="stat-name">Online</span>
+            <span class="stat-name">Nearby</span>
         </div>
     </div>
 </section>
@@ -64,9 +64,8 @@
     
 {% block scripts %}    
 <script>
-    function create_interval(element) {
-        var current = 0;
-        var number = Math.floor(Math.random() * 500);
+    function create_interval(element, number) {
+        var current = 0;    
         var intervalID = setInterval(function() {
             element.innerHTML = current.toString();
             current += 10;
@@ -76,13 +75,24 @@
             }
         }, 50);
     }
-    function assign_random() {
-        var arr = document.getElementsByClassName("number-text");
-        for (var i = 0; i < arr.length; i++) {
-            create_interval(arr[i]);
-        }
 
-    }
-    assign_random();
+    $(document).ready(function() {
+        $.ajax({
+            url: 'http://192.168.1.102:81/report/info',
+            success : function(response) {
+                var attributes = ['users', 'connections', 'locations', 'books', 'authors', 'nearby'];
+                attributes.forEach(function (element) {
+                    if ('response' in response && element in response['response']) {
+                        create_interval($('#' + element).get(0), parseInt(response['response'][element]));
+                    }
+                });       
+            },
+            error : function(e) {
+                console.error(e);
+            }
+            
+        });
+    });
 </script>
+
 {% endblock %}
