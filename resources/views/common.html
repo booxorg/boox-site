@@ -23,26 +23,10 @@
     <script src="{{ full_url('/public/lib/js-cookie.js') }}" crossorigin="anonymous"></script>
     <script src="{{ full_url('/public/assets/js/helpers.js') }}" crossorigin="anonymous"></script>
     <!-- /.Preload CSS and scripts -->
-
-</head>
-<body>
-    <div class="main-box">
-        {% include 'menu.html' %}
-
-        {% set message = flash('message', '') %}
-        {% if message %}
-            <div class="push-message">{{ message }}</div>
-        {% endif %}
-
-        {% block content %}{% endblock %}
-        {% include 'footer.html' %}
-    </div>
-    <!-- Scripts go here -->
-    {% block scripts %}{% endblock %}
     <script>
-        function setMessage(msg) {
+        function setMessage(name, msg) {
             $.ajax({
-                url: '{{ full_url("/session") }}' + '?msg={0}'.format(msg),
+                url: '{{ full_url("/session") }}' + '?key={0}&msg={1}'.format(name, msg),
                 success: function (result) {
                     console.log(result);
                 },
@@ -52,6 +36,27 @@
             })
         }
     </script>
+    {% block head_scripts %}{% endblock %}
+</head>
+<body>
+    <div class="main-box">
+        {% include 'menu.html' %}
+
+        {% set message = flash('message', '') %}
+        {% if message %}
+            <div class="push-message success">{{ message }}</div>
+        {% endif %}
+        {% set error = flash('error', '') %}
+        {% if error %}
+            <div class="push-message error">{{ error }}</div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+        {% include 'footer.html' %}
+    </div>
+    <!-- Scripts go here -->
+    {% block scripts %}{% endblock %}
+
     <!-- /.Scripts go here -->
 </body>
 </html>

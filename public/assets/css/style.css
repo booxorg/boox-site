@@ -444,12 +444,20 @@
 /* ======================== /.PROFILE ============================= */
 
 .push-message {
-  height: 24px;
-  line-height: 24px;
+  height: 26px;
+  line-height: 26px;
   text-align: center;
   font-size: 1em;
   padding-left: 10px;
+  font-weight: bold;
+}
+
+.push-message.success {
   background-color: #2ECC40;
   color: white;
-  font-weight: bold;
+}
+
+.push-message.error {
+  background-color: #d9534f;
+  color: white;
 }

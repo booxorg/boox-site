@@ -1,6 +1,13 @@
 {% extends 'common.html' %}
 
+
 {% block content %}
+<script>
+    if (Cookies.get('token')) {
+        setMessage('error', 'You are already logged');
+        window.location.href = '{{ full_url("/") }}';
+    }
+</script>
 <div class="page-box register-page">
     <form onsubmit="return login_request();">
         <div class="register-box">
@@ -56,11 +63,11 @@
             success: function (response) {
                 if ('response' in response && 'token' in response['response']) {
                     Cookies.set('token', response['response']['token'], { expires: 3 });
-                    setMessage('You have successfully logged in');
+                    setMessage('message', 'You have successfully logged in');
                     window.location.href = '{{ full_url("/") }}';
                 }
                 else {
-                    setMessage('login failed');
+                    setMessage('error', 'Login failed. Please try again');
                     window.location.href = '{{ full_url("/login") }}';
                 }
             },
@@ -68,6 +75,7 @@
                 console.error('Error!');
             }
         });
+        
         return false;
     }
 </script>
