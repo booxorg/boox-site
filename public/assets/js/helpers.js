@@ -16,3 +16,9 @@ function () {
 
     return str;
 };
+
+$(document).ready(function () {
+    $('.push-message').click(function() {
+        $(this).remove();
+    })
+})

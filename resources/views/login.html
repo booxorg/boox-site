@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="page-box register-page">
-    <form onsubmit="return login_request();" action='javascript:void(0);'>
+    <form onsubmit="return login_request();">
         <div class="register-box">
         <h1 class="head">Login to b00x!</h1>
         <div class="input-icon">
@@ -56,7 +56,12 @@
             success: function (response) {
                 if ('response' in response && 'token' in response['response']) {
                     Cookies.set('token', response['response']['token'], { expires: 3 });
-                    setMessage('login successful!');
+                    setMessage('You have successfully logged in');
+                    window.location.href = '{{ full_url("/") }}';
+                }
+                else {
+                    setMessage('login failed');
+                    window.location.href = '{{ full_url("/login") }}';
                 }
             },
             error: function() {
