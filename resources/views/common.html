@@ -68,10 +68,10 @@
             if (Cookies.get('token')) {
                 Cookies.remove('token');
                 setMessage('message', 'Logout successful');
-                window.location.href = '{{ full_url("/") }}';
+                reload();
             } else {
                 setMessage('error', 'You were not logged in');
-                window.location.href = '{{ full_url("/") }}';
+                reload();
             }
             return false;
         }

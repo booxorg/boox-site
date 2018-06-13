@@ -23,3 +23,21 @@ $(document).ready(function () {
     })
 })
 
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.substr(1);
+}
+
+function redirect(addr) {
+    var redirect = setInterval(function() { 
+        window.location.href = addr;
+        clearInterval(redirect);
+    }, 1000);
+}
+
+function reload() {
+    var redirect = setInterval(function() { 
+        window.location.reload(true); 
+        clearInterval(redirect);
+    }, 1000);
+}
+

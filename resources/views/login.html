@@ -61,21 +61,20 @@
         $.ajax({
             url: '{{ api_address() }}' + url_format,
             success: function (response) {
-                if ('response' in response && 'token' in response['response']) {
+                if ('response' in response && 'token' in response['response'] && response['status'] === 'success') {
                     Cookies.set('token', response['response']['token'], { expires: 3 });
-                    setMessage('message', 'You have successfully logged in');
-                    window.location.href = '{{ full_url("/") }}';
+                    setMessage('message', capitalize(response['message']));
+                    setInterval(function() { window.location.href = '{{ full_url("/") }}'; }, 1000);
                 }
                 else {
-                    setMessage('error', 'Login failed. Please try again');
-                    window.location.href = '{{ full_url("/login") }}';
+                    setMessage('error', 'Login failed. {0}'.format(capitalize(response['message'])));
+                    setInterval(function() { window.location.href = '{{ full_url("/") }}'; }, 1000);
                 }
             },
             error: function() {
                 console.error('Error!');
             }
         });
-        
         return false;
     }
 </script>
