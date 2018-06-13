@@ -73,7 +73,7 @@ function getBookTemplate(index, book) {
     );
 }
 
-function getBookTemplate(exchange_info) {
+function getExchangeTemplate(exchange_info) {
   return `
   <section class = "exchange-container">
 <div class = "exchange-info"> 
