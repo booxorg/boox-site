@@ -63,16 +63,24 @@
             success: function (response) {
                 if ('response' in response && 'token' in response['response'] && response['status'] === 'success') {
                     Cookies.set('token', response['response']['token'], { expires: 3 });
-                    setMessage('message', capitalize(response['message']));
-                    setInterval(function() { window.location.href = '{{ full_url("/") }}'; }, 1000);
+                    setMessage(
+                        'message', capitalize(response['message']),
+                        function () { redirect('{{ full_url("/") }}'); }
+                    );
+                    
                 }
                 else {
-                    setMessage('error', 'Login failed. {0}'.format(capitalize(response['message'])));
-                    setInterval(function() { window.location.href = '{{ full_url("/") }}'; }, 1000);
+                    setMessage(
+                        'error', 'Login failed. {0}'.format(capitalize(response['message'])),
+                        function () { redirect('{{ full_url("/") }}'); }
+                    );
                 }
             },
             error: function() {
-                console.error('Error!');
+                setMessage(
+                    'error', 'Unable to fetch BooX API',
+                    function () { redirect('{{ full_url("/") }}'); }
+                );
             }
         });
         return false;

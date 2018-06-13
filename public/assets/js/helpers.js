@@ -28,16 +28,10 @@ function capitalize(str) {
 }
 
 function redirect(addr) {
-    var redirect = setInterval(function() { 
-        window.location.href = addr;
-        clearInterval(redirect);
-    }, 1000);
+    window.location.href = addr;
 }
 
 function reload() {
-    var redirect = setInterval(function() { 
-        window.location.reload(true); 
-        clearInterval(redirect);
-    }, 1000);
+    window.location.reload(true);
 }
 

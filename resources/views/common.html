@@ -24,14 +24,16 @@
     <script src="{{ full_url('/public/assets/js/helpers.js') }}" crossorigin="anonymous"></script>
     <!-- /.Preload CSS and scripts -->
     <script>
-        function setMessage(name, msg) {
+        function setMessage(name, msg, callback=null) {
             $.ajax({
                 url: '{{ full_url("/session") }}' + '?key={0}&msg={1}'.format(name, msg),
                 success: function (result) {
                     console.log(result);
+                    if (callback) callback();
                 },
                 error: function () {
                     console.log('Error!');
+                    if (callback) callback();
                 }
             })
         }
@@ -67,11 +69,9 @@
         function logout() {
             if (Cookies.get('token')) {
                 Cookies.remove('token');
-                setMessage('message', 'Logout successful');
-                reload();
+                setMessage('message', 'Logout successful', reload);
             } else {
-                setMessage('error', 'You were not logged in');
-                reload();
+                setMessage('error', 'You were not logged in', reload);
             }
             return false;
         }
