@@ -28,7 +28,6 @@
             $.ajax({
                 url: '{{ full_url("/session") }}' + '?key={0}&msg={1}'.format(name, msg),
                 success: function (result) {
-                    console.log(result);
                     if (callback) callback();
                 },
                 error: function () {
@@ -37,6 +36,17 @@
                 }
             })
         }
+
+        function setCurrentMessage(name, msg) {
+            var element = $('<div/>', {
+                'class' : 'push-message {0}'.format(name),
+                'text' : msg
+            }).click(function() {
+                $(this).remove();
+            })
+            $('#{0}-messages'.format(name)).append(element);
+        }
+
         $(document).ready(function() {
             if (Cookies.get('token')) {
                 $('#menu-login').addClass('hidden');
@@ -51,14 +61,12 @@
     <div class="main-box">
         {% include 'menu.html' %}
 
-        {% set message = flash('message', '') %}
-        {% if message %}
-            <div class="push-message success">{{ message }}</div>
-        {% endif %}
-        {% set error = flash('error', '') %}
-        {% if error %}
-            <div class="push-message error">{{ error }}</div>
-        {% endif %}
+        <div id="success-messages">
+            {% set message = flash('message', '') %}      
+        </div>
+        <div id="error-messages">
+            {% set error = flash('error', '') %}
+        </div>
 
         {% block content %}{% endblock %}
         {% include 'footer.html' %}
@@ -75,6 +83,16 @@
             }
             return false;
         }
+
+        $(document).ready(function() {
+            {% if message %}
+            setCurrentMessage('success', '{{ message }}');
+            {% endif %}
+
+            {% if error %}
+            setCurrentMessage('error', '{{ error }}');
+            {% endif %}
+        })
     </script>
     <!-- /.Scripts go here -->
 </body>

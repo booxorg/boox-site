@@ -70,17 +70,12 @@
                     
                 }
                 else {
-                    setMessage(
-                        'error', 'Login failed. {0}'.format(capitalize(response['message'])),
-                        function () { redirect('{{ full_url("/") }}'); }
-                    );
+                    setCurrentMessage(
+                        'error', 'Login failed. {0}'.format(capitalize(response['message'])))
                 }
             },
             error: function() {
-                setMessage(
-                    'error', 'Unable to fetch BooX API',
-                    function () { redirect('{{ full_url("/") }}'); }
-                );
+                setCurrentMessage('error', 'Unable to fetch BooX API');
             }
         });
         return false;

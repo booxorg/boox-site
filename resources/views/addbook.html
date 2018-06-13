@@ -15,82 +15,56 @@
 <section class="page-box addbook">
     <h1>Add a new book</h1>
     <div class="addbook-container-parent">
-        <div class="addbook-container">
-            <div class="labeled-input-box">
-                <div class="box-description">
-                    <div class="box-description-name">
-                        <i class="fas fa-book fa-fw"></i> 
-                        <span class="box-description-text">
-                            Title
-                        </span>
+        <form onsubmit="return addBook();">
+            <div class="addbook-container">
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">
+                            <i class="fas fa-book fa-fw"></i> 
+                            <span class="box-description-text">
+                                Title
+                            </span>
+                        </div>
+                    </div>
+                    <input id="book-title" placeholder="Write the book title" />
+                </div>
+                <div id="book-container" class="book-container">
+                </div>
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">
+                            <i class="fas fa-calendar-times fa-fw"></i> 
+                            <span class="box-description-text">
+                                Expires
+                            </span>
+                        </div>
+                    </div>
+                    <input id="expires" type="date"/>
+                </div>
+                <div class="labeled-input-box">
+                    <div class="box-description">
+                        <div class="box-description-name">
+                            <i class="fas fa-book fa-fw"></i> 
+                            <span class="box-description-text">
+                                Genre
+                            </span>
+                        </div>
+                    </div>             
+                    <div class="box-complex-input genre-select">
+                        <select id="genres">
+                        </select>
                     </div>
                 </div>
-                <input id="book-title" placeholder="Write the book title" />
+                <button type="submit" class="icon-button inverted">
+                    <span class="button-icon">
+                        <i class="fas fa-plus-square"></i> 
+                    </span>
+                    <span class="button-text">
+                        Add book
+                    </span>     
+                </button> 
             </div>
-            <div id="book-container" class="book-container">
-            </div>
-            <div class="labeled-input-box">
-                <div class="box-description">
-                    <div class="box-description-name">
-                        <i class="fas fa-pencil-alt fa-fw"></i> 
-                        <span class="box-description-text">
-                            Authors
-                        </span>
-                    </div>
-                </div>
-                <input readonly placeholder="J.K. Rowling, Stephen King, Robert J. Sawyer ..." />
-            </div>
-            <div class="labeled-input-box">
-                <div class="box-description">
-                    <div class="box-description-name">
-                        <i class="fas fa-calendar-times fa-fw"></i> 
-                        <span class="box-description-text">
-                            Expires
-                        </span>
-                    </div>
-                </div>
-                <input type="month"/>
-            </div>
-            <div class="labeled-input-box">
-                <div class="box-description">
-                    <div class="box-description-name">
-                        <i class="fas fa-camera-retro fa-fw"></i> 
-                        <span class="box-description-text">
-                            Cover
-                        </span>
-                    </div>
-                </div>
-                <input readonly placeholder="Cover URL will appear here" />
-            </div>
-            <div class="labeled-input-box">
-                <div class="box-description">
-                    <div class="box-description-name">
-                        <i class="fas fa-book fa-fw"></i> 
-                        <span class="box-description-text">
-                            Genre
-                        </span>
-                    </div>
-                </div>             
-                <div class="box-complex-input genre-select">
-                    <select>
-                        <option value="comedy">Comedy</option>
-                        <option value="drama">Drama</option>
-                        <option value="romance">Romance</option>
-                        <option value="science">Science</option>
-                        <option value="sci-fy">Sci-fy</option>
-                        <option value="cooking">Cooking</option>
-                    </select>
-                </div>
-            </div>
-            <button class="icon-button inverted">
-                <span class="button-icon">
-                    <i class="fas fa-plus-square"></i> 
-                </span>
-                <span class="button-text">
-                    Add book
-                </span>     
-            </button> 
-        </div>
+        </form>
     </div>
 </section>
 {% endblock %}
@@ -101,9 +75,47 @@
 <script>
     var oldValue = '';
     var typingTimer;
+    var books = [];
+    var currentId = -1;
+
+    function addBookToList(book, index) {
+        $('#book-container').append(
+            ('<div class="book-single" data-id={3}>' +
+            '<div class="book-cover"><img src="{2}"/></div>'+
+            '<div class="book-description">' +
+            '<div class="book-title">{0}</div>' +
+            '<div class="book-author">{1}</div>'+
+            '</div></div>').format(
+                book['title'],
+                book['author'],
+                book['small_image_url'],
+                index
+
+            )
+        )
+    }
+
+    function getGenres() {
+        $.ajax({
+            url: '{{ api_address() }}' + '/genres',
+            success: function(response) {
+                if ('status' in response && response['status'] === 'success' && 'response' in response) {
+                    var genres = response['response']['genres'];
+                    genres.forEach(function (element, index) {
+                        $('#genres').append($('<option>', { 
+                            value: element.toLowerCase(),
+                            text : element
+                        }));
+                    });                  
+                }
+            },
+            error: function() {
+                console.error('Failed!');
+            }
+        })
+    }
 
     function requestBooks() {
-        console.log('Requesting');
         var newValue = $('#book-title').val();
         var token = Cookies.get('token');
         var api_addr = '/book/search?token={0}&query={1}&limit=5'.format(token, newValue);
@@ -114,20 +126,18 @@
                 success: function(response) {
                     if ('status' in response && response['status'] === 'success' && 'response' in response) {
                         $('#book-container').empty();
-                        response['response'].forEach(function (element) {
-                            $('#book-container').append(
-                                ('<div class="book-single">' +
-                                '<div class="book-cover"><img src="{2}"/></div>'+
-                                '<div class="book-description">' +
-                                '<div class="book-title">{0}</div>' +
-                                '<div class="book-author">{1}</div>'+
-                                '</div></div>').format(
-                                    element['title'],
-                                    element['author'],
-                                    element['small_image_url']
-                                )
-                            )
-                        })
+                        books = response['response'];
+                        books.forEach(function (element, index) {
+                            addBookToList(element, index)
+                        });
+
+                        $('.book-single').click(function() {
+                            var id = $(this).data('id');
+                            $('#book-title').val(books[id]['title']);
+                            $('#book-container').empty();
+                            addBookToList(books[id], id);
+                            currentId = id;
+                        });
                         
                     }
                 },
@@ -147,7 +157,39 @@
         $('#book-title').on('keydown', function () {
           clearTimeout(typingTimer);
         });   
-    })
+
+        $('')
+
+        getGenres();
+    });
+
+    function addBook() {
+        if (currentId != -1) {
+            var book = books[currentId];
+            var genre = $('#genres').find(":selected").text();
+            var expires = strftime('%d-%m-%Y', new Date($('#expires').val()));
+            var request_url = '/book/create?token={0}&expires={1}&genre={2}&goodreads_id={3}'.format(
+                Cookies.get('token'), expires, genre, book['goodreads_id']        
+            );
+            $.ajax({
+                url: '{{ api_address() }}' + request_url,
+                success: function(response) {
+                    console.log(response);
+                    if ('status' in response && response['status'] === 'success' && 'response' in response) { 
+                        setCurrentMessage('message', capitalize(response['message']));              
+                    }
+                    else if ('status' in response && response['status'] === 'error') {
+                        setCurrentMessage('error', capitalize(response['message']));
+                    }
+                },
+                error: function() {
+                    console.error('Failed!');
+                    setCurrentMessage('error', 'There has been an error accessing BooX API');
+                }
+            })
+        }
+        return false;
+    }
 </script>
 {% endblock %}
 
