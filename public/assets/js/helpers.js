@@ -29,6 +29,49 @@ function reload() {
     window.location.reload(true);
 }
 
+function getBookTemplate(index, book) {
+    return `
+    <section class="bookentry-container"> 
+        <div class="bookentry-cover">
+            <img alt="Book cover image" src="{image}">
+        </div>
+        <div class="bookentry-info">
+            <h2 class="bookentry-title"><span class="pill">title</span>&nbsp;&nbsp;{title}</h2>
+            <h3 class="bookentry-author"><span class="pill">author</span>&nbsp;&nbsp;{author}</h3>
+            <h4 class="bookentry-author"><span class="pill">added</span>&nbsp;&nbsp;{user}</h4>
+
+            <div class="buttons-container">
+                <div class="buttons-wrapper">
+                <button class="icon-button fb-login">
+                    <span class="button-icon">
+                        <i class="far fa-user"></i>
+                    </span>
+                    <span class="button-text">
+                        See profile
+                    </span>       
+                </button>                            
+                <button class="icon-button fb-login">
+                    <span class="button-icon">
+                        <i class="fab fa-goodreads-g"></i> 
+                    </span>
+                    <span class="button-text">
+                        View on Goodreads
+                    </span>     
+                </button>
+                </div>
+            </div>
+        </div>
+    </section>`.format(
+        {
+            'id' : index,
+            'title' : book['title'],
+            'author' : book['author'],
+            'user' : book['username'],
+            'genre' : book['genre'],
+            'image' : book['cover']
+        }
+    );
+}
 
 /* Port of strftime(). Compatibility notes:
  *

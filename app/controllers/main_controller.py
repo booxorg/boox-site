@@ -45,6 +45,15 @@ def add_book(request={}, variables={}):
     }
     return Controller.response_view('personalized_search.html', pass_variables)    
 
+@Routing.Route(url='/profile/{id::\d+}', method='GET')
+def add_book(request={}, variables={}):
+    pass_variables = {
+        'title' : 'User profile',
+        'id' : variables['id']
+    }
+    return Controller.response_view('viewprofile.html', pass_variables)    
+
+
 @Routing.Route(url='/session', method='GET', middleware=[Params.has_params('key', 'msg')])
 def add_session(variables={}, request={}):
     App.session.set(request.params['key'], request.params['msg'])

@@ -3,104 +3,96 @@
 {% block content %}
 <section class="page-box personalized-search">
     <div class="search-bar">
-        <form>
-            <div class="search-bar-wrapper">
-                <input id="search-bar-input" name="search-bar" placeholder="enter keywords" />
-                <button type="submit" id="search-bar-submit">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button type="button" id="search-bar-more">
-                    <i class="fas fa-chevron-circle-down"></i>
-                </button>
-            </div>
-        </form>
+        <div class="search-bar-wrapper">
+            <input id="search-bar-input" name="search-bar" placeholder="enter keywords" />
+            <button type="button" id="search-bar-more">
+                <i class="fas fa-chevron-circle-down"></i>
+            </button>
+        </div>
     </div>
     <div class="advanced-search">
-        <form>
-            <div id="advanced-search-wrapper" class="advanced-search-wrapper search-hidden">
-                <div class="labeled-input-box">
-                    <div class="box-description">
-                        <div class="box-description-name">
-                            <i class="fas fa-pencil-alt fa-fw"></i>
-                            <span class="box-description-text">
-                                Authors
-                            </span>
-                        </div>
+        <div id="advanced-search-wrapper" class="advanced-search-wrapper search-hidden">
+            <div class="labeled-input-box">
+                <div class="box-description">
+                    <div class="box-description-name">
+                        <i class="fas fa-pencil-alt fa-fw"></i>
+                        <span class="box-description-text">
+                            Authors
+                        </span>
                     </div>
-                    <input type="text" placeholder="J.K. Rowling, Stephen King ..." />
+                </div>
+                <input id="authors" type="text" placeholder="J.K. Rowling, Stephen King ..." />
+                <button type="button" class="button-add">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </div>
+            <div class="labeled-input-box">
+                <div class="box-description">
+                    <div class="box-description-name">
+                        <i class="fas fa-book fa-fw"></i>
+                        <span class="box-description-text">
+                            Genres
+                        </span>
+                    </div>
+                </div>
+                <input id="genres" type="text" placeholder="Fantasy, SciFi, Drama ..." />
+                <button type="button" class="button-add">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </div>
+            <div class="labeled-input-box">
+                <div class="box-description">
+                    <div class="box-description-name">
+                        <i class="fas fa-calendar fa-fw"></i>
+                        <span class="box-description-text">
+                            Before
+                        </span>
+                    </div>
+                </div>
+                <input id="before" type="date"/>
+                <button type="button" class="button-add">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </div>
+            <div class="labeled-input-box">
+                <div class="box-description">
+                    <div class="box-description-name">
+                        <i class="fas fa-calendar fa-fw"></i>
+                        <span class="box-description-text">
+                            After
+                        </span>
+                    </div>
+                </div>
+                <input id="after" type="date"/>
+                <button type="button" class="button-add">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </div>
+            <div class="location-box">
+                <div class="checkbox">
+                    <input id="select-1" type="checkbox">
+                    <label for="select-1">Nearby</label>
+                </div>
+                <div class="labeled-input-box location">
+                <div class="box-description">
+                    <div class="box-description-name">
+                        <i class="fas fa-location-arrow fa-fw"></i>
+                        <span class="box-description-text">
+                            Location
+                        </span>
+                    </div>
+                </div>
+                    <input id="location" placeholder="London, Big Ben Tower" />
                     <button type="button" class="button-add">
                         <i class="fas fa-plus-square"></i>
                     </button>
-                </div>
-                <div class="labeled-input-box">
-                    <div class="box-description">
-                        <div class="box-description-name">
-                            <i class="fas fa-book fa-fw"></i>
-                            <span class="box-description-text">
-                                Genres
-                            </span>
-                        </div>
-                    </div>
-                    <input type="text" placeholder="Fantasy, SciFi, Drama ..." />
-                    <button type="button" class="button-add">
-                        <i class="fas fa-plus-square"></i>
-                    </button>
-                </div>
-                <div class="labeled-input-box">
-                    <div class="box-description">
-                        <div class="box-description-name">
-                            <i class="fas fa-calendar fa-fw"></i>
-                            <span class="box-description-text">
-                                Before
-                            </span>
-                        </div>
-                    </div>
-                    <input type="month"/>
-                    <button type="button" class="button-add">
-                        <i class="fas fa-plus-square"></i>
-                    </button>
-                </div>
-                <div class="labeled-input-box">
-                    <div class="box-description">
-                        <div class="box-description-name">
-                            <i class="fas fa-calendar fa-fw"></i>
-                            <span class="box-description-text">
-                                After
-                            </span>
-                        </div>
-                    </div>
-                    <input type="month"/>
-                    <button type="button" class="button-add">
-                        <i class="fas fa-plus-square"></i>
-                    </button>
-                </div>
-                <div class="location-box">
-                    <div class="checkbox">
-                        <input id="select-1" type="checkbox">
-                        <label for="select-1">Nearby</label>
-                    </div>
-                    <div class="labeled-input-box location">
-                    <div class="box-description">
-                        <div class="box-description-name">
-                            <i class="fas fa-location-arrow fa-fw"></i>
-                            <span class="box-description-text">
-                                Location
-                            </span>
-                        </div>
-                    </div>
-                        <input placeholder="London, Big Ben Tower" />
-                        <button type="button" class="button-add">
-                            <i class="fas fa-plus-square"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-    <div class="search-results">
-        <h1>Recommended For You</h1>
-        <hr/>      
-        {% include 'onebooklayout.html' %} 
+    <h1>Recommended For You</h1>   
+    <hr/> 
+    <div id="search-results" class="search-results">
     </div>
 </section>
 {% endblock %}
@@ -109,29 +101,52 @@
 <script src="{{ full_url('/public/assets/js/personalized_search.js') }}"></script>
 <script src="{{ full_url('/public/assets/js/booktemplate.js') }}"></script>
 <script type="application/javascript">
-
-
     var oldValue = '';
-    $(document).ready(function() {
-        $('#search-bar-input').bind('input', function () {
-            var newValue = $(this).val();
-            var token = Cookies.get('token');
-            if (token) {
-                var api_addr = '/search?token={0}&keywords={1}'.format(token, newValue);
-                if (newValue !== oldValue) {
-                    $.ajax({
-                        url: '{{ api_address() }}' + api_addr,
-                        success: function(response) {
-                            console.log(response);
-                            console.log('OK');
-                        },
-                        error: function() {
-                            console.error('Failed!');
+    var typingTimer;
+
+    function searchBooks() {
+        var newValue = $('#search-bar-input').val();
+        var token = Cookies.get('token');
+        if (token) {
+            var api_addr = '/search?token={0}&keywords={1}'.format(token, newValue); 
+            if (newValue !== oldValue && newValue != '') {
+                oldValue = newValue;
+                $.ajax({
+                    url: '{{ api_address() }}' + api_addr,
+                    success: function(response) {
+                        if ('status' in response && 'response' in response && response['status'] == 'success') {
+                            $('#search-results').empty();
+                            books = response['response'];
+                            books.forEach(function(element, index) {
+                                var bookString = getBookTemplate(index, element);
+                                $('#search-results').append(bookString);
+                            });
                         }
-                    });
-                }
-            }            
-        })
-    })
+                        else if ('status' in response && response['status'] == 'error') {
+                            setCurrentMessage('error', response['message']);
+                        }
+                        else {
+                            setCurrentMessage('error', 'Unable to fetch BooX API');
+                        }
+                        console.log('OK');
+                    },
+                    error: function() {
+                        console.error('Failed!');
+                    }
+                });
+            }
+        }              
+    }
+
+    $(document).ready(function() {
+        $('#search-bar-input').on('keyup', function () {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(searchBooks, 1000);
+        });
+
+        $('#search-bar-input').on('keydown', function () {
+          clearTimeout(typingTimer);
+        });   
+    });
 </script>
 {% endblock %}

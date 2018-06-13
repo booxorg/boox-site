@@ -158,8 +158,6 @@
           clearTimeout(typingTimer);
         });   
 
-        $('')
-
         getGenres();
     });
 
@@ -168,15 +166,18 @@
             var book = books[currentId];
             var genre = $('#genres').find(":selected").text();
             var expires = strftime('%d-%m-%Y', new Date($('#expires').val()));
-            var request_url = '/book/create?token={0}&expires={1}&genre={2}&goodreads_id={3}'.format(
-                Cookies.get('token'), expires, genre, book['goodreads_id']        
+            var request_url = '/book/create?token={0}&expires={1}&genre={2}&goodreads_id={3}&cover={4}'.format(
+                Cookies.get('token'), 
+                expires, 
+                genre, 
+                book['goodreads_id']
             );
             $.ajax({
                 url: '{{ api_address() }}' + request_url,
                 success: function(response) {
                     console.log(response);
                     if ('status' in response && response['status'] === 'success' && 'response' in response) { 
-                        setCurrentMessage('message', capitalize(response['message']));              
+                        setCurrentMessage('success', capitalize(response['message']));              
                     }
                     else if ('status' in response && response['status'] === 'error') {
                         setCurrentMessage('error', capitalize(response['message']));
