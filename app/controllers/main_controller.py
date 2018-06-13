@@ -57,3 +57,10 @@ def add_book(request={}, variables={}):
 def add_session(variables={}, request={}):
     App.session.set(request.params['key'], request.params['msg'])
     return Controller.response_json({'status' : 'success', 'message' : 'session variable set'})
+
+@Routing.Route(url='/onexchange', method='GET')
+def add_book(request={}, variables={}):
+    pass_variables = {
+        'title' : 'Exchange a book'
+    }
+    return Controller.response_view('exchangebook.html', pass_variables)    
