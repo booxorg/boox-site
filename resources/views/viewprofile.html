@@ -44,14 +44,6 @@
                     <div class="profile-button-container">
                         <button class="icon-button inverted">
                             <span class="button-icon">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="button-text">
-                                Send message
-                            </span>       
-                        </button>  
-                        <button class="icon-button inverted">
-                            <span class="button-icon">
                                 <i class="fas fa-edit"></i>
                             </span>
                             <span class="button-text">
@@ -67,7 +59,13 @@
                     'bookcount' : user['book_count']
                 });
                 $('#profile').append(profile);
+
+                user['books'].forEach(function (element, index) {
+                    var str = getBookTemplate(index, element);
+                    $('#profile-books').append(str);
+                });
             }
+
 
             $(document).ready(function() {
                 $.ajax({
@@ -87,10 +85,10 @@
             })
         </script>
     </div>
-    <div class="profile-books">
-        <h1>User's books</h1>
-        <hr/>
-        {% include 'onebooklayout.html' %}
+    <h1>User's books</h1>
+    <hr/>
+    <div id="profile-books" class="profile-books">
+        
     </div>
 </section>
 {% endblock %}
