@@ -4,6 +4,7 @@
 
 /* ======================== STATS =============================== */
 
+
 .main-page {
   background-image: url("../images/reading-925589_1280.jpg");
   background-repeat: no-repeat;
@@ -460,4 +461,8 @@
 .push-message.error {
   background-color: #d9534f;
   color: white;
+}
+
+.hidden {
+  display: none;
 }

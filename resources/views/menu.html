@@ -16,10 +16,13 @@
             B00X
         </a>
     </div>
-    <div class="menu-item right-aligned menu-button block">
+    <div id="menu-logout" class="menu-item right-aligned menu-button block hidden">
+        <a onclick="return logout();" class="centered" href="javascript:void(0);">logout</a>
+    </div>
+    <div id="menu-register" class="menu-item right-aligned menu-button block">
         <a class="centered" href="{{ full_url('/register') }}">register</a>
     </div>
-    <div class="menu-item menu-button block">
+    <div id="menu-login" class="menu-item menu-button block">
         <a class="centered" href="{{ full_url('/login') }}">login</a>
     </div>
     <div class="menu-item menu-button block">

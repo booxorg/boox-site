@@ -35,6 +35,13 @@
                 }
             })
         }
+        $(document).ready(function() {
+            if (Cookies.get('token')) {
+                $('#menu-login').addClass('hidden');
+                $('#menu-register').addClass('hidden');
+                $('#menu-logout').removeClass('hidden');
+            }
+        });
     </script>
     {% block head_scripts %}{% endblock %}
 </head>
@@ -56,7 +63,19 @@
     </div>
     <!-- Scripts go here -->
     {% block scripts %}{% endblock %}
-
+    <script>
+        function logout() {
+            if (Cookies.get('token')) {
+                Cookies.remove('token');
+                setMessage('message', 'Logout successful');
+                window.location.href = '{{ full_url("/") }}';
+            } else {
+                setMessage('error', 'You were not logged in');
+                window.location.href = '{{ full_url("/") }}';
+            }
+            return false;
+        }
+    </script>
     <!-- /.Scripts go here -->
 </body>
 </html>
