@@ -493,15 +493,14 @@
 .book-single .book-title {
   font-size: 1.2em;
   font-style: italic;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .book-single .book-author {
   font-size: 0.8em;
-  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book-single:hover {

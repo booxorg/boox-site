@@ -63,6 +63,7 @@
             success: function (response) {
                 if ('response' in response && 'token' in response['response'] && response['status'] === 'success') {
                     Cookies.set('token', response['response']['token'], { expires: 3 });
+                    Cookies.set('id', response['response']['id'], { expires: 3 });
                     setMessage(
                         'message', capitalize(response['message']),
                         function () { redirect('{{ full_url("/") }}'); }

@@ -68,8 +68,16 @@
 
 
             $(document).ready(function() {
+                var params = new URLSearchParams(window.location.search);
+                var id = 1;
+                if (params.has('id')) {
+                    id = params.get('id');
+                }
+                else {
+                    id = Cookies.get('id');
+                }
                 $.ajax({
-                    url: '{{ api_address() }}' + '/user?id={0}'.format('{{ id }}'),
+                    url: '{{ api_address() }}' + '/user?id={0}'.format(id),
                     success : function(response) {
                         console.log(response);
                         if ('status' in response && response['status'] == 'success') {

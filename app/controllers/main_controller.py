@@ -45,11 +45,10 @@ def add_book(request={}, variables={}):
     }
     return Controller.response_view('personalized_search.html', pass_variables)    
 
-@Routing.Route(url='/profile/{id::\d+}', method='GET')
+@Routing.Route(url='/profile', method='GET')
 def add_book(request={}, variables={}):
     pass_variables = {
-        'title' : 'User profile',
-        'id' : variables['id']
+        'title' : 'User profile'
     }
     return Controller.response_view('viewprofile.html', pass_variables)    
 
