@@ -41,8 +41,32 @@
                             {bookcount}
                         </div>
                     </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-globe fa-fw"></i> <span class="named-label-text">Country</span>
+                        </div>
+                        <div class="named-label-content">
+                            {country}
+                        </div>
+                    </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-map-marker fa-fw"></i> <span class="named-label-text">City</span>
+                        </div>
+                        <div class="named-label-content">
+                            {city}
+                        </div>
+                    </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-street-view fa-fw"></i> <span class="named-label-text">Street</span>
+                        </div>
+                        <div class="named-label-content">
+                            {street}
+                        </div>
+                    </div>
                     <div class="profile-button-container">
-                        <button class="icon-button inverted">
+                        <button onclick="location.href='{{ full_url('/edit-profile') }}'" class="icon-button inverted">
                             <span class="button-icon">
                                 <i class="fas fa-edit"></i>
                             </span>
@@ -56,7 +80,10 @@
                     'email' : user['email'],
                     'firstname' : user['first_name'],
                     'lastname' : user['last_name'],
-                    'bookcount' : user['book_count']
+                    'bookcount' : user['book_count'],
+                    'country' : user['country'],
+                    'city' : user['city'],
+                    'street' : user['street']
                 });
                 $('#profile').append(profile);
 

@@ -57,3 +57,10 @@ def add_book(request={}, variables={}):
 def add_session(variables={}, request={}):
     App.session.set(request.params['key'], request.params['msg'])
     return Controller.response_json({'status' : 'success', 'message' : 'session variable set'})
+
+@Routing.Route(url='/edit-profile', method='GET')
+def edit_profile(variables={}, request={}):
+    pass_variables = {
+        'title' : 'Edit profile'
+    }
+    return Controller.response_view('editprofile.html', pass_variables)  
