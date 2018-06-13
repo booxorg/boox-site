@@ -1,5 +1,16 @@
 {% extends 'common.html' %}
 
+{% block head_scripts %}
+<script>
+    if (!Cookies.get('token')) {
+        setMessage('error', 'You need to be logged in to access this page', function () {
+            redirect('{{ full_url("/login") }}');
+        })
+    }
+</script>
+{% endblock %}
+
+
 {% block content %}
 <section class="page-box addbook">
     <h1>Add a new book</h1>
@@ -14,7 +25,9 @@
                         </span>
                     </div>
                 </div>
-                <input placeholder="Flashforward, How i solved P != NP, How to cook with no ingredients ..." />
+                <input id="book-title" placeholder="Write the book title" />
+            </div>
+            <div id="book-container" class="book-container">
             </div>
             <div class="labeled-input-box">
                 <div class="box-description">
@@ -25,7 +38,7 @@
                         </span>
                     </div>
                 </div>
-                <input placeholder="J.K. Rowling, Stephen King, Robert J. Sawyer ..." />
+                <input readonly placeholder="J.K. Rowling, Stephen King, Robert J. Sawyer ..." />
             </div>
             <div class="labeled-input-box">
                 <div class="box-description">
@@ -41,20 +54,13 @@
             <div class="labeled-input-box">
                 <div class="box-description">
                     <div class="box-description-name">
-                    <i class="fas fa-camera-retro fa-fw"></i> 
-                    <span class="box-description-text">
-                        Cover
-                    </span>
-                </div>
-                </div>
-                <div class="box-complex-input">
-                    <div class="cover-choose">
-                        <div class="btn-choose">
-                            <input type="file" class="file-input" data-box="cover-choose" name="cover-choose-file">
-                        </div>
-                        <div class="cover-choose-label">Select a cover image</div>
+                        <i class="fas fa-camera-retro fa-fw"></i> 
+                        <span class="box-description-text">
+                            Cover
+                        </span>
                     </div>
                 </div>
+                <input readonly placeholder="Cover URL will appear here" />
             </div>
             <div class="labeled-input-box">
                 <div class="box-description">
@@ -91,6 +97,57 @@
 
 {% block scripts %}
 <script src="{{ full_url('/public/assets/js/fileselectcustom.js') }}">
+</script>
+<script>
+    var oldValue = '';
+    var typingTimer;
+
+    function requestBooks() {
+        console.log('Requesting');
+        var newValue = $('#book-title').val();
+        var token = Cookies.get('token');
+        var api_addr = '/book/search?token={0}&query={1}&limit=5'.format(token, newValue);
+        if (newValue !== oldValue) {
+            time = new Date().getTime();
+            $.ajax({
+                url: '{{ api_address() }}' + api_addr,
+                success: function(response) {
+                    if ('status' in response && response['status'] === 'success' && 'response' in response) {
+                        $('#book-container').empty();
+                        response['response'].forEach(function (element) {
+                            $('#book-container').append(
+                                ('<div class="book-single">' +
+                                '<div class="book-cover"><img src="{2}"/></div>'+
+                                '<div class="book-description">' +
+                                '<div class="book-title">{0}</div>' +
+                                '<div class="book-author">{1}</div>'+
+                                '</div></div>').format(
+                                    element['title'],
+                                    element['author'],
+                                    element['small_image_url']
+                                )
+                            )
+                        })
+                        
+                    }
+                },
+                error: function() {
+                    console.error('Failed!');
+                }
+            });
+        } 
+    }
+
+    $(document).ready(function() {
+        $('#book-title').on('keyup', function () {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(requestBooks, 1000);
+        });
+
+        $('#book-title').on('keydown', function () {
+          clearTimeout(typingTimer);
+        });   
+    })
 </script>
 {% endblock %}
 
