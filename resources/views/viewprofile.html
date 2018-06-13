@@ -2,60 +2,90 @@
 
 {% block content %}
 <section class="page-box view-profile">
-    <div class="profile-wrapper">
-        <img alt="User profile picture" src="{{ full_url('/public/assets/images/blank-profile-picture.png')}} " class="profile-image"/>
-        <div class="profile-description">
-            <div class="named-label">
-                <div class="named-label-name">
-                    <i class="fas fa-user-circle fa-fw"></i> <span class="named-label-text">Username</span>
-                </div>
-                <div class="named-label-content">
-                    stickyfingers1231231312312
-                </div>
-            </div>
-            <div class="named-label">
-                <div class="named-label-name">
-                    <i class="fas fa-envelope fa-fw"></i> <span class="named-label-text">Email</span>
-                </div>
-                <div class="named-label-content">
-                    stickyfingers123@gmail.com
-                </div>
-            </div>
-            <div class="named-label">
-                <div class="named-label-name">
-                    <i class="fas fa-tag fa-fw"></i> <span class="named-label-text">Name</span>
-                </div>
-                <div class="named-label-content">
-                    John Cena
-                </div>
-            </div>   
-            <div class="named-label">
-                <div class="named-label-name">
-                    <i class="fas fa-book fa-fw"></i> <span class="named-label-text">Posted books</span>
-                </div>
-                <div class="named-label-content">
-                    5
-                </div>
-            </div>
-            <div class="profile-button-container">
-                <button class="icon-button inverted">
-                    <span class="button-icon">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="button-text">
-                        Send message
-                    </span>       
-                </button>  
-                <button class="icon-button inverted">
-                    <span class="button-icon">
-                        <i class="fas fa-edit"></i>
-                    </span>
-                    <span class="button-text">
-                        Edit profile
-                    </span>       
-                </button>  
-            </div>
-        </div>
+    <div id="profile" class="profile-wrapper">
+        <script>
+            function setProfile(user) {
+
+                var profile = `
+                <img alt="User profile picture" src="{{ full_url('/public/assets/images/blank-profile-picture.png')}} " class="profile-image"/>
+                <div class="profile-description">
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-user-circle fa-fw"></i> <span class="named-label-text">Username</span>
+                        </div>
+                        <div class="named-label-content">
+                            {username}
+                        </div>
+                    </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-envelope fa-fw"></i> <span class="named-label-text">Email</span>
+                        </div>
+                        <div class="named-label-content">
+                            {email}
+                        </div>
+                    </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-tag fa-fw"></i> <span class="named-label-text">Name</span>
+                        </div>
+                        <div class="named-label-content">
+                            {firstname} {lastname}
+                        </div>
+                    </div>   
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-book fa-fw"></i> <span class="named-label-text">Posted books</span>
+                        </div>
+                        <div class="named-label-content">
+                            {bookcount}
+                        </div>
+                    </div>
+                    <div class="profile-button-container">
+                        <button class="icon-button inverted">
+                            <span class="button-icon">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="button-text">
+                                Send message
+                            </span>       
+                        </button>  
+                        <button class="icon-button inverted">
+                            <span class="button-icon">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            <span class="button-text">
+                                Edit profile
+                            </span>       
+                        </button>  
+                    </div>
+                </div>`.format({
+                    'username' : user['username'],
+                    'email' : user['email'],
+                    'firstname' : user['first_name'],
+                    'lastname' : user['last_name'],
+                    'bookcount' : user['book_count']
+                });
+                $('#profile').append(profile);
+            }
+
+            $(document).ready(function() {
+                $.ajax({
+                    url: '{{ api_address() }}' + '/user?id={0}'.format('{{ id }}'),
+                    success : function(response) {
+                        console.log(response);
+                        if ('status' in response && response['status'] == 'success') {
+                            user = response['response'];
+                            setProfile(user);
+                        }
+                    },
+                    error : function(e) {
+                        console.error(e);
+                    }
+                    
+                });
+            })
+        </script>
     </div>
     <div class="profile-books">
         <h1>User's books</h1>
