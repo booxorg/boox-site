@@ -85,8 +85,8 @@ function getBookTemplate(index, book) {
     );
 }
 
-function getExchangeTemplate(exchange_info) {
-  return `
+function getExchangeTemplate(exchange_info, request, id) {
+  string1 = `
   <section class = "exchange-container">
 <div class = "exchange-info"> 
     <div class = "bookentry-exchange">
@@ -111,30 +111,7 @@ function getExchangeTemplate(exchange_info) {
         </div>
     </div>
 
-</div>
-<div class = "button-wrapper">
-<div class = "exchange-btn-container">
-        <button class="icon-button fb-login">
-            <span class="button-icon">
-                <i class="far fa-user"></i>
-            </span>
-            <span class="button-text">
-                See profile
-            </span>       
-        </button>                            
-        <button class="icon-button fb-login">
-            <span class="button-icon">
-                <i class="fab fa-goodreads-g"></i> 
-            </span>
-            <span class="button-text">
-                View on Goodreads
-            </span>     
-        </button>
-</div>
-</div>
-<div class = "status-info">
-    <h2 class="bookentry-title"><span>status: requested</span></h2>
-</section>`.format(
+</div>`.format(
       {
             'image1' : exchange_info['image1'],
             'title1' : exchange_info['title1'],
@@ -143,9 +120,102 @@ function getExchangeTemplate(exchange_info) {
             'image2' : exchange_info['image2'],
             'title2' : exchange_info['title2'],
             'author2' : exchange_info['author2'],
-            'added2' : exchange_info['added2']
+            'added2' : exchange_info['added2'],
+            'button1' : exchange_info['button1'],
+            'button2' : exchange_info['button2'],
+            'exc_stat' : exchange_info['exc_stat']
       }
-  );
+);
+
+
+string2 = `<div class = "button-wrapper">
+<div class = "exchange-btn-container">
+        <button onclick="{func1}({user_id})" class="icon-button fb-login">
+            <span class="button-icon">
+                <i class="far fa-user"></i>
+            </span>
+            <span class="button-text">
+                See profile
+            </span>       
+        </button>                            
+        <button onclick="{func2}({user_id})" class="icon-button fb-login {ishidden1}">
+            <span class="button-icon">
+                <i class="fab fa-goodreads-g"></i> 
+            </span>
+            <span class="button-text">
+                {button1}
+            </span>     
+        </button>
+        <button class="icon-button fb-login {ishidden2}">
+            <span class="button-icon">
+                <i class="far fa-user"></i>
+            </span>
+            <span class="button-text">
+                {button2}
+            </span>       
+        </button>
+</div>
+</div>
+
+<div class = "status-info">
+    <h2 class="bookentry-title"><span>status: {exc_stat}</span></h2>
+</section>`
+
+string2 =  string2.format(
+           {
+             'exc_stat' : exchange_info['exc_stat']
+           }
+);
+
+if(request['BOOKID2'])
+{
+    if(exchange_info['id'] == exchanges['EXCHANGES.RECEIVERID'])
+    {
+      string2 = string2.format(
+        {
+            'button1' : 'Accept offer',
+            'button2' : 'Decline offer',
+            'ishidden1' : '',
+            'ishidden2' : ''
+        }
+      );
+    }
+    else
+    {
+       string2 = string2.format(
+       {
+          'ishidden1' : 'hidden',
+          'ishidden2' : 'hidden'
+       }
+       );
+    }
+}
+else
+{
+    if(exchange_info['id'] == exchanges['EXCHANGES.RECEIVERID'])
+    {
+       string2 = string2.format(
+       {
+          'ishidden1' : 'hidden',
+          'ishidden2' : 'hidden'
+       }
+       );
+    }
+    else
+    {
+        string2 = string2.format(
+        {
+            'button1' : 'Accept offer',
+            'button2' : 'Decline offer',
+            'ishidden1' : '',
+            'ishidden2' : ''
+        }
+        );
+    }
+}
+
+return string1 + string2;
+
 }
 
 /* Port of strftime(). Compatibility notes:

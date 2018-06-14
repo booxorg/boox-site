@@ -64,13 +64,13 @@ function placeRequests()
 				   response['status'] == 'succes')
 				{
 					exchanges = response['response'];
-					status_exchange = response['exchange_status'];
 
 					//userID = getUserID(token, function (userId) {
 
 					//})
 					exchanges.forEach(function(request){
 						exchange_info = {}
+						exchange_info['exc_stat'] = request['exchange_status']
 						getBookInfo(token, request['EXCHANGES.BOOKID1'])
 						.then(function(result) {
 							exchange_info['image1'] = result['response']['cover'];
@@ -81,10 +81,14 @@ function placeRequests()
 							return getBookInfo(token, request['EXCHANGES.BOOKID2']);
 						})
 						.then(function(result) {
-							//exchange_info['image2'] = result['response']['cover'] || '';
-							//exchange_info['title2'] = result['response']['title'];
-							//exchange_info['author2'] = result['response']['author'];
-							//exchange_info['added2'] = result['response']['author'];
+							if('cover' in result)
+							exchange_info['image2'] = result['response']['cover'];
+							if('title' in result) 
+							exchange_info['title2'] = result['response']['title'];
+							if('author' in result)
+							exchange_info['author2'] = result['response']['author'];
+							if('author' in result)
+							exchange_info['added2'] = result['response']['author'];
 							return getUserID(token);
 						})
 						.then(function(id) {
@@ -92,9 +96,10 @@ function placeRequests()
 						})
 						.done(function(result) {
 							console.log(exchange_info);
-							bookHTML = getExchangeTemplate(exchange_info);
+				
+							bookHTML = getExchangeTemplate(exchange_info, request, exchange_info['id']);
 							$('#requests').append(bookHTML);
-						})
+						});
 					});
 				}
 			}
