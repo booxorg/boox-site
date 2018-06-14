@@ -90,10 +90,14 @@
             </div>
         </div>
     </div>
-    <h1>Recommended For You</h1>   
-    <hr/> 
     <div id="search-results" class="search-results">
     </div>
+
+    <h1>Recommended For You</h1>   
+    <hr/> 
+    <div id="recommended-results" class="search-results">
+    </div>
+    
 </section>
 {% endblock %}
 
@@ -133,7 +137,6 @@
                 $.ajax({
                     url: '{{ api_address() }}' + api_addr,
                     success: function(response) {
-                        console.log(response);
                         if ('status' in response && 'response' in response && response['status'] == 'success') {
                             $('#search-results').empty();
                             books = response['response'];
@@ -158,6 +161,38 @@
         }              
     }
 
+    function pullRecommended() {
+        var token = Cookies.get('token');
+        if (token) {
+            var api_addr = '/recommended?token={token}'.format({
+                'token' : token
+            }); 
+            $.ajax({
+                url: '{{ api_address() }}' + api_addr,
+                success: function(response) {
+                    if ('status' in response && 'response' in response && response['status'] == 'success') {
+                        $('#recommended-results').empty();
+                        books = response['response'];
+                        books.forEach(function(element, index) {
+                            var bookString = getBookTemplate(index, element);
+                            $('#recommended-results').append(bookString);
+                        });
+                    }
+                    else if ('status' in response && response['status'] == 'error') {
+                        setCurrentMessage('error', response['message']);
+                    }
+                    else {
+                        setCurrentMessage('error', 'Unable to fetch BooX API');
+                    }
+                    console.log('OK');
+                },
+                error: function() {
+                    console.error('Failed!');
+                }
+            });
+        }                     
+    }
+
     $(document).ready(function() {
         $('#search-bar-input').on('keyup', function () {
             clearTimeout(typingTimer);
@@ -167,6 +202,8 @@
         $('#search-bar-input').on('keydown', function () {
           clearTimeout(typingTimer);
         });   
+
+        pullRecommended();
     });
 </script>
 {% endblock %}
