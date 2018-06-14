@@ -4,11 +4,12 @@
 <section class="page-box">
 	<h1> Book exchanges </h1>
 
-	<div class = "requests">
+	<div id="requests" class="requests">
 	</div>
 </section>
 {% endblock %}
 
+{% block scripts %}
 <script>
 
 function getUserID(token)
@@ -17,31 +18,32 @@ function getUserID(token)
 	if(token)
 	{
 		var api_addr = '/getuserbytoken?token={0}'.format(token);
-		$.ajax({
+		return $.ajax({
 			url: '{{ api_address() }}' + api_addr,
 			success: function(response){
 				if('status' in response && 
 					'response' in response &&
 					response['status'] == 'succes')
-					return response['response']['userid']
+					return response['response']['userid'];
 			}
-		})
+		});
 	}
+	return null;
 }
 
-function getBookInfo(token, id)
+function getBookInfo(token, id) 
 {
 	var token = Cookies.get('token');
-	if(token)
+	if (token)
 	{
 		var api_addr = '/book?token={0}&id={1}'.format(token, id);
-		$.ajax({
+		return $.ajax({
 			url: '{{ api_address() }}' + api_addr,
 			success: function(response){
 				if('status' in response && 
 					'response' in response &&
 					response['status'] == 'succes')
-					return response['response']
+					return response['response'];
 			}
 		});
 	}
@@ -64,28 +66,45 @@ function placeRequests()
 					exchanges = response['response'];
 					status_exchange = response['exchange_status'];
 
-					userID = getUserID(token)
+					//userID = getUserID(token, function (userId) {
 
+					//})
 					exchanges.forEach(function(request){
-						book_info1 = getBookInfo(token, request['EXCHANGES.BOOKID1']);
-						book_info2 = getBoogInfo(token, request['EXCHANGES.BOOKID2']);
-
 						exchange_info = {}
-						exchange_info['image1'] = book_info1['cover'];
-						exchange_info['title1'] = book_info1['title'];
-						exchange_info['author1'] = book_info1['author'];
-						exchange_info['added1'] = book_info1['author'];
+						getBookInfo(token, request['EXCHANGES.BOOKID1'])
+						.then(function(result) {
+							exchange_info['image1'] = result['response']['cover'];
+							exchange_info['title1'] = result['response']['title'];
+							exchange_info['author1'] = result['response']['author'];
+							exchange_info['added1'] = result['response']['author'];
 
-						exchange_info['image2'] = book_info2['cover'];
-						exchange_info['title2'] = book_info2['title'];
-						exchange_info['author2'] = book_info2['author'];
-						exchange_info['added2'] = book_info2['author'];
-
-						bookHTML = getExchangeTemplate();
-						$('#requests').append(bookHTML);
+							return getBookInfo(token, request['EXCHANGES.BOOKID2']);
+						})
+						.then(function(result) {
+							//exchange_info['image2'] = result['response']['cover'] || '';
+							//exchange_info['title2'] = result['response']['title'];
+							//exchange_info['author2'] = result['response']['author'];
+							//exchange_info['added2'] = result['response']['author'];
+							return getUserID(token);
+						})
+						.then(function(id) {
+							exchange_info['id'] = id;
+						})
+						.done(function(result) {
+							console.log(exchange_info);
+							bookHTML = getExchangeTemplate(exchange_info);
+							$('#requests').append(bookHTML);
+						})
 					});
 				}
 			}
 		});
 	}
 }
+
+$(document).ready(function() {
+	placeRequests();
+})
+
+</script>
+{% endblock %}
