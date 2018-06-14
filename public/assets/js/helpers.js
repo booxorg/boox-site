@@ -85,6 +85,19 @@ function getBookTemplate(index, book) {
     );
 }
 
+
+function closeExchange(resp_dict)
+{
+    url_format = '/exchange/finish-exchange?token={0}&ownerid={1}&bookid1={2}&bookid2={3}&accept={4}'. 
+    format(resp_dict['token'], resp_dict['ownerid'], resp_dict['bookid1'], resp_dict['bookid2'], resp_dict['accept']);
+
+    $.ajax({
+      url: '{{ api_address() }}' + url_format,
+      success: function(response){},
+      error: function(){}
+    });
+}
+
 function getExchangeTemplate(exchange_info, request, id) {
   string1 = `
   <section id="exhange-{id}" class="exchange-container">
@@ -147,7 +160,7 @@ string2 = `<div class = "button-wrapper">
                       {button1}
                   </span>     
               </button>
-              <button class="icon-button fb-login {ishidden2}">
+              <button onclick="{func3}({param3})" class="icon-button fb-login {ishidden2}">
                   <span class="button-icon">
                       <i class="far fa-user"></i>
                   </span>
@@ -180,7 +193,16 @@ if(request['BOOKID2'])
             'button1' : 'Accept offer',
             'button2' : 'Decline offer',
             'ishidden1' : '',
-            'ishidden2' : ''
+            'ishidden2' : '',
+            'func2' : 'closeExchange',
+            'param2' : "{\'token\': {0}, \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+             format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
+             1),
+
+             'func3' : 'closeExchange',
+             'param2' : "{\'token\': {0}, \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+             format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
+             0)
         }
       );
     }
