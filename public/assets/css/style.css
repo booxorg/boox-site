@@ -506,3 +506,69 @@
 .book-single:hover {
   background-color: rgba(67, 216, 69, 0.25);
 }
+
+.exchange-page {
+  margin: 0 50px;
+  width: 50%;
+}
+
+.exchange {
+  display: flex;
+  flex-direction: row;
+}
+
+.exchange-container {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background: #314755;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.exchange-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.bookentry-exchange {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bookentry-info-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  flex-grow: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ffffff;
+  align-items: right;
+}
+
+.exchange-btn-container {
+  display: flex;
+  flex-direction: row;
+  width: 97%;
+  margin: 0 auto;
+}
+
+.exchange-btn-container .icon-button {
+  margin: 10px 20px;
+}
+
+.status-info {
+  margin: 0 auto;
+  border-radius: 25px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 10px; 
+  margin-bottom: 10px;
+}

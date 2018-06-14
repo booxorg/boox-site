@@ -85,6 +85,69 @@ function getBookTemplate(index, book) {
     );
 }
 
+function getExchangeTemplate(exchange_info) {
+  return `
+  <section class = "exchange-container">
+<div class = "exchange-info"> 
+    <div class = "bookentry-exchange">
+        <div class = "bookentry-cover">
+                <img alt="Book cover image" src="{image1}">
+        </div>
+        <div class="bookentry-info">
+                <h2 class="bookentry-title"><span class="pill">title</span>&nbsp;&nbsp;{title1}</h2>
+                <h3 class="bookentry-author"><span class="pill">author</span>&nbsp;&nbsp;{author1}</h3>
+                <h4 class="bookentry-author"><span class="pill">added</span>&nbsp;&nbsp;{added1}</h4>
+        </div>
+    </div>
+    <div class = "bookentry-exchange">
+        <div class="bookentry-info-right">
+                <h2 class="bookentry-title">{title2}&nbsp;&nbsp;<span class="pill">title</span></h2>
+                <h3 class="bookentry-author">{author2}&nbsp;&nbsp;<span class="pill">author</span></h3>
+                <h4 class="bookentry-author">{added2}&nbsp;&nbsp;<span class="pill">added</span></h4>
+        </div>    
+
+        <div class="bookentry-cover">
+                <img alt="Book cover image" src="{image2}">
+        </div>
+    </div>
+
+</div>
+<div class = "button-wrapper">
+<div class = "exchange-btn-container">
+        <button class="icon-button fb-login">
+            <span class="button-icon">
+                <i class="far fa-user"></i>
+            </span>
+            <span class="button-text">
+                See profile
+            </span>       
+        </button>                            
+        <button class="icon-button fb-login">
+            <span class="button-icon">
+                <i class="fab fa-goodreads-g"></i> 
+            </span>
+            <span class="button-text">
+                View on Goodreads
+            </span>     
+        </button>
+</div>
+</div>
+<div class = "status-info">
+    <h2 class="bookentry-title"><span>status: requested</span></h2>
+</section>`.format(
+      {
+            'image1' : exchange_info['image1'],
+            'title1' : exchange_info['title1'],
+            'author1' : exchange_info['author1'],
+            'added1' : exchange_info['added1'],
+            'image2' : exchange_info['image2'],
+            'title2' : exchange_info['title2'],
+            'author2' : exchange_info['author2'],
+            'added2' : exchange_info['added2']
+      }
+  );
+}
+
 /* Port of strftime(). Compatibility notes:
  *
  * %c - formatted string is slightly different
