@@ -77,6 +77,14 @@
                     <input id="street" type="text" placeholder="Street">
                 </div>
             </div>
+            <div class="input-icon">
+                <div class="input-wrapper">
+                    <span class="inpicon">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                    </span>
+                    <input id="title-preferences" type="text" placeholder="Title preferences">
+                </div>
+            </div>
             <button type="submit" class="submit-button slide">&nbsp;</button>
         </div>
     </form>
@@ -94,7 +102,6 @@
             $.ajax({
                 url: '{{ api_address() }}' + url_format,
                 success: function (response) {
-                    console.log(response);
                     if (response['status'] === 'success') {
                         $('#firstname').val(response['response']['firstname']);
                         $('#lastname').val(response['response']['lastname']);
@@ -105,6 +112,7 @@
                         $('#country').val(response['response']['country']);
                         $('#city').val(response['response']['city']);
                         $('#street').val(response['response']['street']);      
+                        $('#title-preferences').val(response['response']['title_preferences'])
                     }
                     else {
                         setCurrentMessage('error', 'Fetch failed. {0}'.format(capitalize(response['message'])))
@@ -133,9 +141,10 @@
         var country = $('#country').val();
         var city = $('#city').val();
         var street = $('#street').val();
+        var title_preferences = $('#title-preferences').val()
         var token = Cookies.get('token');
         if (token) {
-            var url_format = '/user/edit?token={token}&password={password}&npassword={npassword}&cnpassword={cnpassword}&fname={fname}&lname={lname}&email={email}&country={country}&city={city}&street={street}'.format(
+            var url_format = '/user/edit?token={token}&password={password}&npassword={npassword}&cnpassword={cnpassword}&fname={fname}&lname={lname}&email={email}&country={country}&city={city}&street={street}&title_preferences={title_preferences}'.format(
                 {
                     'token' : token, 
                     'password' : password,
@@ -146,7 +155,8 @@
                     'email' : email, 
                     'country' : country, 
                     'city' : city, 
-                    'street' : street
+                    'street' : street,
+                    'title_preferences' : title_preferences
                 }
             );
 

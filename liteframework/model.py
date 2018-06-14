@@ -2,6 +2,7 @@ import MySQLdb
 from operator import itemgetter
 import liteframework.application as App
 import re
+import logging
 
 class Model:
 	table_name = ""
