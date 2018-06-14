@@ -98,6 +98,10 @@
 }
 
 
+.exchange-container {
+	margin-top: 25px;
+}
+
 @media (max-width: 1023px) {
 	.bookentry-container {
 		padding: 10px;

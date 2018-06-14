@@ -135,17 +135,6 @@ function getAcceptTemplate(index, book, originalBook, recieverId) {
 }
 
 
-function closeExchange(resp_dict)
-{
-    url_format = '/exchange/finish-exchange?token={0}&ownerid={1}&bookid1={2}&bookid2={3}&accept={4}'. 
-    format(resp_dict['token'], resp_dict['ownerid'], resp_dict['bookid1'], resp_dict['bookid2'], resp_dict['accept']);
-
-    $.ajax({
-      url: '{{ api_address() }}' + url_format,
-      success: function(response){},
-      error: function(){}
-    });
-}
 
 function getExchangeTemplate(exchange_info, request, id) {
   string1 = `
@@ -235,7 +224,7 @@ string2 =  string2.format(
            }
 );
 
-if(request['BOOKID2'])
+if(request['EXCHANGES.BOOKID2'])
 {
     if(exchange_info['id'] == request['EXCHANGES.RECEIVERID'])
     {
@@ -246,12 +235,12 @@ if(request['BOOKID2'])
             'ishidden1' : '',
             'ishidden2' : '',
             'func2' : 'closeExchange',
-            'param2' : "{\'token\': {0}, \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+            'param2' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
              format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
              1),
 
              'func3' : 'closeExchange',
-             'param2' : "{\'token\': {0}, \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+             'param3' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
              format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
              0)
         }
@@ -291,8 +280,10 @@ else
               \'user\' : {0}, 
               \'exchange_id\' : {1},
               \'original_book\' : {2}
-            }`.format(request['EXCHANGES.RECEIVERID'], id, request['EXCHANGES.BOOKID1'])
-
+            }`.format(request['EXCHANGES.RECEIVERID'], id, request['EXCHANGES.BOOKID1']),
+             'func3' : 'declineProposition',
+             'param3' : "{\'token\': '{0}', \'bookid1\' : {1}, \'receiverid\' : {2}}". 
+             format(Cookies.get('token'), request['EXCHANGES.BOOKID1'], request['EXCHANGES.RECEIVERID'])
         }
         );
     }

@@ -23,9 +23,13 @@ function getUserID(token)
 			success: function(response){
 				if('status' in response && 
 					'response' in response &&
-					response['status'] == 'succes')
+					response['status'] == 'success')
+				{
 					return response['response']['userid'];
-			}
+				}
+					
+			},
+			async: false
 		});
 	}
 	return null;
@@ -42,9 +46,12 @@ function getBookInfo(token, id)
 			success: function(response){
 				if('status' in response && 
 					'response' in response &&
-					response['status'] == 'succes')
+					response['status'] == 'success') 
+				{
 					return response['response'];
-			}
+				}
+			},
+			async: false
 		});
 	}
 }
@@ -64,38 +71,39 @@ function placeRequests()
 				   response['status'] == 'success')
 				{
 					var exchanges = response['response'];
-					exchanges.forEach(function(request){
-						exchange_info = {}
-						exchange_info['exc_stat'] = request['exchange_status']
-						getBookInfo(token, request['EXCHANGES.BOOKID1'])
-						.then(function(result) {
-							exchange_info['image1'] = result['response']['cover'];
-							exchange_info['title1'] = result['response']['title'];
-							exchange_info['author1'] = result['response']['author'];
-							exchange_info['added1'] = result['response']['author'];
+					exchanges.forEach(function(request){						
+							(async (req) => {
+								var exchange_info = {}
+								exchange_info['exc_stat'] = req['exchange_status'];
+								console.log(exchange_info);
+								var book1 = await getBookInfo(token, req['EXCHANGES.BOOKID1']);
+								var book2 = await getBookInfo(token, req['EXCHANGES.BOOKID2']);
+								var id_resp = await getUserID(token);
+								exchange_info['image1'] = book1['response']['cover'];
+								exchange_info['title1'] = book1['response']['title'];
+								exchange_info['author1'] = book1['response']['author'];
+								exchange_info['added1'] = book1['response']['username'];
 
-							return getBookInfo(token, request['EXCHANGES.BOOKID2']);
-						})
-						.then(function(result) {
-							console.log(result);
-							exchange_info['image2'] = ('cover' in result) ? result['response']['cover'] : '{{ full_url("/public/assets/images/question_mark.png") }}'
-
-							exchange_info['title2'] = ('title' in result) ? result['response']['title'] : 'unknown yet'
-							exchange_info['author2'] = ('author' in result) ? result['response']['author'] : 'unknown yet'
-
-							exchange_info['added2'] = ('username' in result) ? result['response']['username'] : 'unknown yet'
-							return getUserID(token);
-						})
-						.then(function(id_resp) {
-							exchange_info['id'] = id_resp['response']['userid'];
-						})
-						.done(function(result) {				
-							bookHTML = getExchangeTemplate(exchange_info, request, exchange_info['id']);
-							$('#requests').append(bookHTML);
-						});
+								if ('response' in book2) {
+									exchange_info['image2'] = book2['response']['cover'];
+									exchange_info['title2'] = book2['response']['title'];
+									exchange_info['author2'] = book2['response']['author'];
+									exchange_info['added2'] = book2['response']['username'];
+								}
+								else {
+									exchange_info['image2'] = '{{ full_url("/public/assets/images/question_mark.png") }}';
+									exchange_info['title2'] = 'unknown yet';
+									exchange_info['author2'] = 'unknown yet';
+									exchange_info['added2'] = 'unknown yet';
+								}
+								exchange_info['id'] = id_resp['response']['userid'];
+								bookHTML = getExchangeTemplate(exchange_info, req, exchange_info['id']);
+								$('#requests').append(bookHTML);
+							})(request);
 					});
 				}
-			}
+			},
+			async: false
 		});
 	}
 }
@@ -132,13 +140,55 @@ function acceptBook(book_id, original_book, reciever_id) {
             setCurrentMessage('success', capitalize(response['message']));      
         }
         else {
-            setCurrentMessage('error', 'Edit failed. {0}'.format(capitalize(response['message'])));
+            setCurrentMessage('error', 'Accept failed. {0}'.format(capitalize(response['message'])));
         }
     },
     error: function() {
         setCurrentMessage('error', 'Unable to fetch BooX API');
     }
   });
+}
+
+
+function closeExchange(resp_dict)
+{
+    url_format = '/exchange/finish-exchange?token={0}&ownerid={1}&bookid1={2}&bookid2={3}&accept={4}'. 
+    format(resp_dict['token'], resp_dict['ownerid'], resp_dict['bookid1'], resp_dict['bookid2'], resp_dict['accept']);
+
+    $.ajax({
+      url: '{{ api_address() }}' + url_format,
+      	success: function(response){
+	      	if (response['status'] === 'success') {
+	            setCurrentMessage('success', capitalize(response['message']));      
+	        }
+	        else {
+	            setCurrentMessage('error', 'Close failed. {0}'.format(capitalize(response['message'])));
+	        }
+	    },
+	    error: function() {
+	        setCurrentMessage('error', 'Unable to fetch BooX API');
+	    }
+    });
+}
+
+function declineProposition(resp_dict)
+{
+    url_format = '/exchange/decline-proposition?token={0}&receiverid={1}&bookid1={2}'. 
+    format(resp_dict['token'], resp_dict['receiverid'], resp_dict['bookid1']);
+    console.log(url_format);
+    $.ajax({
+      url: '{{ api_address() }}' + url_format,
+      success: function(response){ if (response['status'] === 'success') {
+        setCurrentMessage('success', capitalize(response['message']));      
+	        }
+	        else {
+	            setCurrentMessage('error', 'Decline failed. {0}'.format(capitalize(response['message'])));
+	        }
+	    },
+	    error: function() {
+	        setCurrentMessage('error', 'Unable to fetch BooX API');
+	    }
+    });
 }
 
 $(document).ready(function() {
