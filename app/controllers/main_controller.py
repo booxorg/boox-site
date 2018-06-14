@@ -65,6 +65,13 @@ def add_book(request={}, variables={}):
     }
     return Controller.response_view('exchangebook.html', pass_variables)    
 
+@Routing.Route(url='/exchanges', method='GET')
+def add_book(request={}, variables={}):
+    pass_variables = {
+        'title' : 'Boox exchanges'
+    }
+    return Controller.response_view('exchange_notifications.html', pass_variables)    
+
 @Routing.Route(url='/edit-profile', method='GET')
 def edit_profile(variables={}, request={}):
     pass_variables = {
