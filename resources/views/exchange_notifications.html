@@ -77,14 +77,13 @@ function placeRequests()
 							return getBookInfo(token, request['EXCHANGES.BOOKID2']);
 						})
 						.then(function(result) {
-							if('cover' in result)
-							exchange_info['image2'] = result['response']['cover'];
-							if('title' in result) 
-							exchange_info['title2'] = result['response']['title'];
-							if('author' in result)
-							exchange_info['author2'] = result['response']['author'];
-							if('author' in result)
-							exchange_info['added2'] = result['response']['author'];
+							console.log(result);
+							exchange_info['image2'] = ('cover' in result) ? result['response']['cover'] : '{{ full_url("/public/assets/images/question_mark.png") }}'
+
+							exchange_info['title2'] = ('title' in result) ? result['response']['title'] : 'unknown yet'
+							exchange_info['author2'] = ('author' in result) ? result['response']['author'] : 'unknown yet'
+
+							exchange_info['added2'] = ('username' in result) ? result['response']['username'] : 'unknown yet'
 							return getUserID(token);
 						})
 						.then(function(id_resp) {
