@@ -123,8 +123,11 @@
                 setMessage('error', 'You have to be logged in', function() {
                     redirect('{{ full_url("/") }}');
                 })
-            }
-            
+            }   
+        }
+
+        function seeProfile(id) {
+            redirect('{{ full_url("/profile") }}' + '?id={0}'.format(id));
         }
     </script>
     <!-- /.Scripts go here -->

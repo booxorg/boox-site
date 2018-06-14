@@ -74,24 +74,16 @@
         $.ajax({
             url: '{{ api_address() }}' + url_format,
             success: function (response) {
-                if (response['status'] === 'success') {
-                    setMessage(
-                        'message', capitalize(response['message']),
-                        function () { redirect('{{ full_url("/") }}'); }
-                    );      
+                console.log(response);
+                if (response['status'] == 'success') {
+                    setCurrentMessage('success', capitalize(response['message']));      
                 }
                 else {
-                    setMessage(
-                        'error', 'Register failed. {0}'.format(capitalize(response['message'])),
-                        function () { redirect('{{ full_url("/") }}'); }
-                    );
+                    setCurrentMessage('error', 'Register failed. {0}'.format(capitalize(response['message'])));
                 }
             },
             error: function() {
-                setMessage(
-                    'error', 'Unable to fetch BooX API',
-                    function () { redirect('{{ full_url("/") }}'); }
-                );
+                setCurrentMessage('error', 'Unable to fetch BooX API');
             }
         });
         return false;

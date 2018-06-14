@@ -220,7 +220,9 @@ string2 = `<div class = "button-wrapper">
 string2 =  string2.format(
            {
              'exc_stat' : exchange_info['exc_stat'],
-             'id' : id
+             'id' : id,
+             'func1' : 'seeProfile',
+             'param1' : request['EXCHANGES.RECEIVERID']
            }
 );
 
@@ -235,12 +237,12 @@ if(request['EXCHANGES.BOOKID2'])
             'ishidden1' : '',
             'ishidden2' : '',
             'func2' : 'closeExchange',
-            'param2' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+            'param2' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}}". 
              format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
              1),
 
              'func3' : 'closeExchange',
-             'param3' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}". 
+             'param3' : "{\'token\': '{0}', \'ownerid\' : {1}, \'bookid1\' : {2}, \'bookid2\' : {3}, \'accept\' : {4}}". 
              format(Cookies.get('token'), request['EXCHANGES.OWNERID'], request['EXCHANGES.BOOKID1'], request['EXCHANGES.BOOKID2'], 
              0)
         }
