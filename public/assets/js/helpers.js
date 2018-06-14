@@ -80,7 +80,56 @@ function getBookTemplate(index, book) {
             'user_id' : book['user_id'],
             'genre' : book['genre'],
             'image' : book['cover'],
-            'goodreads-id' : book['goodreads_id']
+            'goodreads-id' : book['goodreads_id'],
+        }
+    );
+}
+
+function getAcceptTemplate(index, book, originalBook, recieverId) {
+    return `
+    <section class="bookentry-container"> 
+        <div class="bookentry-cover">
+            <img alt="Book cover image" src="{image}">
+        </div>
+        <div class="bookentry-info">
+            <h2 class="bookentry-title"><span class="pill">title</span>&nbsp;&nbsp;{title}</h2>
+            <h3 class="bookentry-author"><span class="pill">author</span>&nbsp;&nbsp;{author}</h3>
+            <h4 class="bookentry-author"><span class="pill">added</span>&nbsp;&nbsp;{user}</h4>
+
+            <div class="buttons-container">
+                <div class="buttons-wrapper">                         
+                <a target="_blank" href="https://www.goodreads.com/book/show/{goodreads-id}" class="icon-button">
+                    <span class="button-icon">
+                        <i class="fab fa-goodreads-g"></i> 
+                    </span>
+                    <span class="button-text">
+                        View on Goodreads
+                    </span>     
+                </a>
+                <button onclick="return acceptBook({book_id}, {original_book}, {reciever_id});" class="icon-button">
+                    <span class="button-icon">
+                        <i class="fas fa-plug"></i> 
+                    </span>
+                    <span class="button-text">
+                        Accept
+                    </span>     
+                </button>
+                </div>
+            </div>
+        </div>
+    </section>`.format(
+        {
+            'id' : index,
+            'book_id' : book['id'],
+            'title' : book['title'],
+            'author' : book['author'],
+            'user' : book['username'],
+            'user_id' : book['user_id'],
+            'genre' : book['genre'],
+            'image' : book['cover'],
+            'goodreads-id' : book['goodreads_id'],
+            'original_book' : originalBook,
+            'reciever_id' : recieverId
         }
     );
 }
@@ -100,7 +149,7 @@ function closeExchange(resp_dict)
 
 function getExchangeTemplate(exchange_info, request, id) {
   string1 = `
-  <section id="exhange-{id}" class="exchange-container">
+  <section id="exchange-{id}" class="exchange-container">
     <div class="exchange-info"> 
         <div class = "bookentry-exchange">
             <div class = "bookentry-cover">
@@ -176,11 +225,13 @@ string2 = `<div class = "button-wrapper">
               <span>status: {exc_stat}</span>
             </h2>
           </div>
+          <div id="proposal-books-{id}" class="proposal-books"
 </section>`
 
 string2 =  string2.format(
            {
-             'exc_stat' : exchange_info['exc_stat']
+             'exc_stat' : exchange_info['exc_stat'],
+             'id' : id
            }
 );
 
@@ -236,7 +287,12 @@ else
             'ishidden1' : '',
             'ishidden2' : '',
             'func2' : 'openList',
-            'param2' : request['EXCHANGES.RECEIVERID']
+            'param2' : `{
+              \'user\' : {0}, 
+              \'exchange_id\' : {1},
+              \'original_book\' : {2}
+            }`.format(request['EXCHANGES.RECEIVERID'], id, request['EXCHANGES.BOOKID1'])
+
         }
         );
     }
@@ -245,6 +301,7 @@ else
 return string1 + string2;
 
 }
+
 
 /* Port of strftime(). Compatibility notes:
  *
