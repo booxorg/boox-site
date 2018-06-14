@@ -61,7 +61,7 @@ function placeRequests()
 			success: function(response) {
 				if('status' in response && 
 				   'response' in response &&
-				   response['status'] == 'succes')
+				   response['status'] == 'success')
 				{
 					var exchanges = response['response'];
 					exchanges.forEach(function(request){
@@ -90,9 +90,7 @@ function placeRequests()
 						.then(function(id_resp) {
 							exchange_info['id'] = id_resp['response']['userid'];
 						})
-						.done(function(result) {
-							console.log(exchange_info);
-				
+						.done(function(result) {				
 							bookHTML = getExchangeTemplate(exchange_info, request, exchange_info['id']);
 							$('#requests').append(bookHTML);
 						});
@@ -101,6 +99,47 @@ function placeRequests()
 			}
 		});
 	}
+}
+
+function openList(dict) {
+  $.ajax({
+    url : '{{ api_address() }}' + '/user/books?token={0}&user={1}&exchange_id={2}'.format(Cookies.get('token'), dict['user'], dict['exchange_id']),
+    success : function(response) {
+      books = response['response'];
+      $('#proposal-books-' + dict['exchange_id']).empty();
+      books.forEach(function(element, index) {
+      	var str = getAcceptTemplate(
+      		index, 
+      		element, 
+      		dict['original_book'],
+      		dict['user']
+  		);
+      	$('#proposal-books-' + dict['exchange_id']).append(str);
+      })
+    }
+  })
+}
+
+function acceptBook(book_id, original_book, reciever_id) {
+  $.ajax({
+    url : '{{ api_address() }}' + '/exchange/match-book?token={0}&receiverid={1}&bookid1={2}&bookid2={3}'.format(
+    	Cookies.get('token'), 
+    	reciever_id,
+    	original_book,
+    	book_id
+	),
+    success : function(response) {
+    	if (response['status'] === 'success') {
+            setCurrentMessage('success', capitalize(response['message']));      
+        }
+        else {
+            setCurrentMessage('error', 'Edit failed. {0}'.format(capitalize(response['message'])));
+        }
+    },
+    error: function() {
+        setCurrentMessage('error', 'Unable to fetch BooX API');
+    }
+  });
 }
 
 $(document).ready(function() {
