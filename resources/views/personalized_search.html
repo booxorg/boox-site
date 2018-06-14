@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <input id="authors" type="text" placeholder="J.K. Rowling, Stephen King ..." />
-                <button type="button" class="button-add">
+                <button onclick="searchBooks(true);" type="button" class="button-add">
                     <i class="fas fa-plus-square"></i>
                 </button>
             </div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <input id="genres" type="text" placeholder="Fantasy, SciFi, Drama ..." />
-                <button type="button" class="button-add">
+                <button onclick="searchBooks(true);" type="button" class="button-add">
                     <i class="fas fa-plus-square"></i>
                 </button>
             </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <input id="before" type="date"/>
-                <button type="button" class="button-add">
+                <button onclick="searchBooks(true);" type="button" class="button-add">
                     <i class="fas fa-plus-square"></i>
                 </button>
             </div>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <input id="after" type="date"/>
-                <button type="button" class="button-add">
+                <button onclick="searchBooks(true);" type="button" class="button-add">
                     <i class="fas fa-plus-square"></i>
                 </button>
             </div>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                     <input id="location" placeholder="London, Big Ben Tower" />
-                    <button type="button" class="button-add">
+                    <button onclick="searchBooks(true);" type="button" class="button-add">
                         <i class="fas fa-plus-square"></i>
                     </button>
                 </div>
@@ -104,16 +104,36 @@
     var oldValue = '';
     var typingTimer;
 
-    function searchBooks() {
+    function searchBooks(not_search_bar = false) {
         var newValue = $('#search-bar-input').val();
         var token = Cookies.get('token');
+        var authors = $('#authors').val();
+        var genres = $('#genres').val();
+        var before = '';
+        if ($('#before').val()) {
+            before = strftime('%d-%m-%Y', new Date($('#before').val()));
+        }
+        var after = '';
+        if ($('#after').val()) {
+            after = strftime('%d-%m-%Y', new Date($('#after').val()));
+        }
+        var location = $('#location').val();
         if (token) {
-            var api_addr = '/search?token={0}&keywords={1}'.format(token, newValue); 
-            if (newValue !== oldValue && newValue != '') {
+            var api_addr = '/search?token={token}&keywords={keywords}&authors={authors}&genres={genres}&before={before}&after={after}&location={location}'.format({
+                'token' : token,
+                'keywords' : newValue,
+                'authors' : authors,
+                'genres' : genres,
+                'before' : before,
+                'after' : after,
+                'location' : location
+            }); 
+            if ((newValue !== oldValue && newValue != '') || (not_search_bar)) {
                 oldValue = newValue;
                 $.ajax({
                     url: '{{ api_address() }}' + api_addr,
                     success: function(response) {
+                        console.log(response);
                         if ('status' in response && 'response' in response && response['status'] == 'success') {
                             $('#search-results').empty();
                             books = response['response'];

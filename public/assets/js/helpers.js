@@ -29,6 +29,7 @@ function reload() {
     window.location.reload(true);
 }
 
+
 function getBookTemplate(index, book) {
     return `
     <section class="bookentry-container"> 
@@ -42,20 +43,28 @@ function getBookTemplate(index, book) {
 
             <div class="buttons-container">
                 <div class="buttons-wrapper">
-                <button class="icon-button fb-login">
+                <a target="_blank" href="/profile?id={user_id}" class="icon-button">
                     <span class="button-icon">
                         <i class="far fa-user"></i>
                     </span>
                     <span class="button-text">
                         See profile
                     </span>       
-                </button>                            
-                <button class="icon-button fb-login">
+                </a>                            
+                <a target="_blank" href="https://www.goodreads.com/book/show/{goodreads-id}" class="icon-button">
                     <span class="button-icon">
                         <i class="fab fa-goodreads-g"></i> 
                     </span>
                     <span class="button-text">
                         View on Goodreads
+                    </span>     
+                </a>
+                <button onclick="return requestBook({book_id});" class="icon-button">
+                    <span class="button-icon">
+                        <i class="fas fa-plug"></i> 
+                    </span>
+                    <span class="button-text">
+                        Request
                     </span>     
                 </button>
                 </div>
@@ -64,11 +73,14 @@ function getBookTemplate(index, book) {
     </section>`.format(
         {
             'id' : index,
+            'book_id' : book['id'],
             'title' : book['title'],
             'author' : book['author'],
             'user' : book['username'],
+            'user_id' : book['user_id'],
             'genre' : book['genre'],
-            'image' : book['cover']
+            'image' : book['cover'],
+            'goodreads-id' : book['goodreads_id']
         }
     );
 }
