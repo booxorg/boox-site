@@ -53,10 +53,10 @@
             <div class="stat-item-data">
                 <div class="loader"></div>
                 <div class="number">
-                    <span id="nearby" class="number-text">0</span>
+                    <span id="genres" class="number-text">0</span>
                 </div>
             </div>  
-            <span class="stat-name">Nearby</span>
+            <span class="stat-name">Genres</span>
         </div>
     </div>
 </section>
@@ -80,7 +80,7 @@
         $.ajax({
             url: '{{ api_address() }}' + '/report/info',
             success : function(response) {
-                var attributes = ['users', 'connections', 'locations', 'books', 'authors', 'nearby'];
+                var attributes = ['users', 'connections', 'locations', 'books', 'authors', 'genres'];
                 attributes.forEach(function (element) {
                     if ('response' in response && element in response['response']) {
                         create_interval($('#' + element).get(0), parseInt(response['response'][element]));
