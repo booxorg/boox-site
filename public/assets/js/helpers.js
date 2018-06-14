@@ -87,31 +87,31 @@ function getBookTemplate(index, book) {
 
 function getExchangeTemplate(exchange_info, request, id) {
   string1 = `
-  <section class = "exchange-container">
-<div class = "exchange-info"> 
-    <div class = "bookentry-exchange">
-        <div class = "bookentry-cover">
-                <img alt="Book cover image" src="{image1}">
+  <section id="exhange-{id}" class="exchange-container">
+    <div class="exchange-info"> 
+        <div class = "bookentry-exchange">
+            <div class = "bookentry-cover">
+              <img alt="Book cover image" src="{image1}">
+            </div>
+            <div class="bookentry-info">
+              <h2 class="bookentry-title"><span class="pill">title</span>&nbsp;&nbsp;{title1}</h2>
+              <h3 class="bookentry-author"><span class="pill">author</span>&nbsp;&nbsp;{author1}</h3>
+              <h4 class="bookentry-author"><span class="pill">added</span>&nbsp;&nbsp;{added1}</h4>
+            </div>
         </div>
-        <div class="bookentry-info">
-                <h2 class="bookentry-title"><span class="pill">title</span>&nbsp;&nbsp;{title1}</h2>
-                <h3 class="bookentry-author"><span class="pill">author</span>&nbsp;&nbsp;{author1}</h3>
-                <h4 class="bookentry-author"><span class="pill">added</span>&nbsp;&nbsp;{added1}</h4>
-        </div>
-    </div>
-    <div class = "bookentry-exchange">
-        <div class="bookentry-info-right">
-                <h2 class="bookentry-title">{title2}&nbsp;&nbsp;<span class="pill">title</span></h2>
-                <h3 class="bookentry-author">{author2}&nbsp;&nbsp;<span class="pill">author</span></h3>
-                <h4 class="bookentry-author">{added2}&nbsp;&nbsp;<span class="pill">added</span></h4>
-        </div>    
+        <div class = "bookentry-exchange">
+            <div class="bookentry-info-right">
+              <h2 class="bookentry-title">{title2}&nbsp;&nbsp;<span class="pill">title</span></h2>
+              <h3 class="bookentry-author">{author2}&nbsp;&nbsp;<span class="pill">author</span></h3>
+              <h4 class="bookentry-author">{added2}&nbsp;&nbsp;<span class="pill">added</span></h4>
+            </div>    
 
-        <div class="bookentry-cover">
-                <img alt="Book cover image" src="{image2}">
+            <div class="bookentry-cover">
+              <img alt="Book cover image" src="{image2}">
+            </div>
         </div>
-    </div>
 
-</div>`.format(
+    </div>`.format(
       {
             'image1' : exchange_info['image1'],
             'title1' : exchange_info['title1'],
@@ -123,42 +123,46 @@ function getExchangeTemplate(exchange_info, request, id) {
             'added2' : exchange_info['added2'],
             'button1' : exchange_info['button1'],
             'button2' : exchange_info['button2'],
-            'exc_stat' : exchange_info['exc_stat']
+            'exc_stat' : exchange_info['exc_stat'],
+            'id' : id
       }
 );
 
 
 string2 = `<div class = "button-wrapper">
-<div class = "exchange-btn-container">
-        <button onclick="{func1}({user_id})" class="icon-button fb-login">
-            <span class="button-icon">
-                <i class="far fa-user"></i>
-            </span>
-            <span class="button-text">
-                See profile
-            </span>       
-        </button>                            
-        <button onclick="{func2}({user_id})" class="icon-button fb-login {ishidden1}">
-            <span class="button-icon">
-                <i class="fab fa-goodreads-g"></i> 
-            </span>
-            <span class="button-text">
-                {button1}
-            </span>     
-        </button>
-        <button class="icon-button fb-login {ishidden2}">
-            <span class="button-icon">
-                <i class="far fa-user"></i>
-            </span>
-            <span class="button-text">
-                {button2}
-            </span>       
-        </button>
-</div>
-</div>
+            <div class="exchange-btn-container">
+              <button onclick="{func1}({param1})" class="icon-button fb-login">
+                  <span class="button-icon">
+                      <i class="far fa-user"></i>
+                  </span>
+                  <span class="button-text">
+                      See profile
+                  </span>       
+              </button>                            
+              <button onclick="{func2}({param2})" class="icon-button fb-login {ishidden1}">
+                  <span class="button-icon">
+                      <i class="fab fa-goodreads-g"></i> 
+                  </span>
+                  <span class="button-text">
+                      {button1}
+                  </span>     
+              </button>
+              <button class="icon-button fb-login {ishidden2}">
+                  <span class="button-icon">
+                      <i class="far fa-user"></i>
+                  </span>
+                  <span class="button-text">
+                      {button2}
+                  </span>       
+              </button>
+            </div>
+          </div>
 
-<div class = "status-info">
-    <h2 class="bookentry-title"><span>status: {exc_stat}</span></h2>
+          <div class = "status-info">
+            <h2 class="bookentry-title">
+              <span>status: {exc_stat}</span>
+            </h2>
+          </div>
 </section>`
 
 string2 =  string2.format(
@@ -169,7 +173,7 @@ string2 =  string2.format(
 
 if(request['BOOKID2'])
 {
-    if(exchange_info['id'] == exchanges['EXCHANGES.RECEIVERID'])
+    if(exchange_info['id'] == request['EXCHANGES.RECEIVERID'])
     {
       string2 = string2.format(
         {
@@ -192,7 +196,7 @@ if(request['BOOKID2'])
 }
 else
 {
-    if(exchange_info['id'] == exchanges['EXCHANGES.RECEIVERID'])
+    if(exchange_info['id'] == request['EXCHANGES.RECEIVERID'])
     {
        string2 = string2.format(
        {
@@ -205,10 +209,12 @@ else
     {
         string2 = string2.format(
         {
-            'button1' : 'Accept offer',
+            'button1' : 'Open list',
             'button2' : 'Decline offer',
             'ishidden1' : '',
-            'ishidden2' : ''
+            'ishidden2' : '',
+            'func2' : 'openList',
+            'param2' : request['EXCHANGES.RECEIVERID']
         }
         );
     }

@@ -63,11 +63,7 @@ function placeRequests()
 				   'response' in response &&
 				   response['status'] == 'succes')
 				{
-					exchanges = response['response'];
-
-					//userID = getUserID(token, function (userId) {
-
-					//})
+					var exchanges = response['response'];
 					exchanges.forEach(function(request){
 						exchange_info = {}
 						exchange_info['exc_stat'] = request['exchange_status']
@@ -91,8 +87,8 @@ function placeRequests()
 							exchange_info['added2'] = result['response']['author'];
 							return getUserID(token);
 						})
-						.then(function(id) {
-							exchange_info['id'] = id;
+						.then(function(id_resp) {
+							exchange_info['id'] = id_resp['response']['userid'];
 						})
 						.done(function(result) {
 							console.log(exchange_info);
