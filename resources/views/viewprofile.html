@@ -65,6 +65,14 @@
                             {street}
                         </div>
                     </div>
+                    <div class="named-label">
+                        <div class="named-label-name">
+                            <i class="fas fa-street-view fa-fw"></i> <span class="named-label-text">Title preferences</span>
+                        </div>
+                        <div class="named-label-content">
+                            {title_preferences}
+                        </div>
+                    </div>
                     <div class="profile-button-container">
                         <button onclick="location.href='{{ full_url('/edit-profile') }}'" class="icon-button inverted">
                             <span class="button-icon">
@@ -83,7 +91,8 @@
                     'bookcount' : user['book_count'],
                     'country' : user['country'],
                     'city' : user['city'],
-                    'street' : user['street']
+                    'street' : user['street'],
+                    'title_preferences' : user['title_preference']
                 });
                 $('#profile').append(profile);
 

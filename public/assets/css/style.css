@@ -308,7 +308,7 @@
   flex-direction: row;
   width: 60%;
   margin: 0 auto;
-  height: 400px;
+  height: 460px;
   -webkit-box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
   -moz-box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
   box-shadow: 0px 0px 44px -1px rgba(0,0,0,0.48);
@@ -319,12 +319,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: flex-start;
-  width: 300px;
+  width: 350px;
   height: 100%;
 }
 
 .view-profile .profile-wrapper .profile-image {
-  max-width: 300px;
+  max-width: 350px;
   width: 100%;
   object-fit: fill;
 }
